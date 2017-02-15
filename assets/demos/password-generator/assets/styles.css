@@ -1,0 +1,165 @@
+/*
+  Password Generator by TheDragonRing (thedragonring.me)
+  Copyright © 2017 TheDragonRing - Creative Commons Attribution 4.0 International License
+*/
+
+/* GLOBAL */
+
+@charset "UTF-8";
+@import url("font-awesome/css/font-awesome.min.css");
+@import url('https://fonts.googleapis.com/css?family=Cairo');
+@import url("https://fonts.googleapis.com/css?family=PT+Sans");
+@import url('https://fonts.googleapis.com/css?family=Enriqueta');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+* {
+  z-index: 3;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+::selection {
+  color: #fff;
+  background: #a61419;
+}
+
+::-moz-selection {
+  color: #fff;
+  background: #a61419;
+}
+
+[fadeIn] {
+  visibility: hidden;
+}
+
+#main {
+  margin: auto 30px 125px 30px;
+}
+
+/* FOOTER */
+
+footer {
+  z-index: 3;
+  position: absolute;
+}
+
+footer ul {
+  bottom: 0;
+  margin: 0;
+  width: 100%;
+  position: fixed;
+  text-align: center;
+  list-style-type: none;
+  background-color: #f1f1f1;
+  border-top: 5px solid #cfcfcf;
+}
+
+footer li {
+  padding: 15px 0px;
+  display: inline-block;
+}
+
+
+footer li a {
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font: 15px "PT Sans", sans-serif;
+}
+
+/* TITLE */
+
+#title {
+  width: 100%;
+  padding: 30px;
+  text-align: center;
+  display: inline-block;
+}
+
+#title h1 {
+  font: 50px "Enriqueta", serif;
+}
+
+#title h2 {
+  padding: 20px;
+  border-top: 5px solid #000;
+  font: 30px "Indie Flower", serif;
+}
+
+#title a {
+  color: #000;
+  text-decoration: none;
+  border-bottom: 1px dotted #000;
+}
+
+/* GENERATOR */
+
+#generator {
+  width: 100%;
+  padding: 30px;
+  display: inline-block;
+  border: 5px inset #cfcfcf;
+  background-color: #fcfcfc;
+}
+
+#generator label {
+  display: inline-block;
+  font: 50px "Cairo", serif;
+}
+
+#generator input {
+  width: 99.5%;
+  padding: 7.5px;
+  border-radius: 5px;
+  border: 1px solid #cfcfcf;
+  background-color: #f3f3f3;
+  font: 25px "Cairo", serif;
+}
+
+#generator input[name=pass] {
+  padding-right: 55px;
+}
+
+#generator input:focus {
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #000;
+}
+
+#generator [generateBtn] {
+  color: #fff;
+  width: 99.5%;
+  padding: 7.5px;
+  margin: 15px 0px;
+  text-align: center;
+  border-radius: 5px;
+  display: inline-block;
+  text-decoration: none;
+  border: 1px solid #000;
+  background-color: #a61419;
+  font: 25px "Cairo", serif;
+}
+
+#generator [copyBtn] {
+  color: #000;
+  position: relative;
+  text-decoration: none;
+}
+
+#generator [copyBtn] img {
+  width: 45px;
+  height: 45px;
+  margin-bottom: -15px;
+  margin-left: -67.5px;
+}
+
+@media screen and (max-width: 1330px){
+  #generator input[name=pass] {
+    width: 97.5%;
+    padding-right: 75px;
+  }
+}

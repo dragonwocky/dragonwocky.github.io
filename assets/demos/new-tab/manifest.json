@@ -1,0 +1,10 @@
+{
+  "manifest_version": 2,
+  "name": "New Tab",
+  "offline_enabled": true,
+  "short_name": "New Tab",
+  "version": "0.1",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  }
+}

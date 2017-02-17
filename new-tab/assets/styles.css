@@ -1,0 +1,94 @@
+/*
+  New Tab by TheDragonRing (thedragonring.me)
+  Copyright © 2017 TheDragonRing - Creative Commons Attribution 4.0 International License
+*/
+
+/* GLOBAL */
+
+@charset "UTF-8";
+
+* {
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+html:before {
+  content: "";
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: fixed;
+  filter: blur(1px);
+  -o-filter: blur(1px);
+  -ms-filter: blur(1px);
+  background-size: cover;
+  -moz-filter: blur(1px);
+  -webkit-filter: blur(1px);
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-image: url("background.png");
+}
+
+body {
+  margin: 250px 0px 0px 0px;
+}
+
+::selection {
+  color: #fff;
+  background: #a61419;
+}
+
+::-moz-selection {
+  color: #fff;
+  background: #a61419;
+}
+
+[fadeIn] {
+  visibility: hidden;
+}
+
+h1 {
+  width: 75%;
+  color: white;
+  margin: auto;
+  padding: 50px;
+  text-align: center;
+  font: 50px sans-serif;
+  border-bottom: 3px solid white;
+}
+
+div {
+ width: 100%;
+}
+
+input {
+  width: 50%;
+  padding: 15px;
+  display: block;
+  margin: 50px auto;
+  border-radius: 5px;
+  font: 30px cursive;
+  background-color: none;
+  border: 1px solid #cfcfcf;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid #000;
+}
+
+footer {
+  right: 0;
+  bottom: 0;
+  padding: 15px;
+  position: absolute;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+  font: 15px sans-serif;
+  text-transform: uppercase;
+}

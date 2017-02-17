@@ -17,6 +17,11 @@ $(document).ready(function(){
     }, 500);
   });
 
+  $.get('https://api.github.com/repos/thedragonring/new-tab/releases/latest', function(data){
+    $('#new-tab #download').attr('href', data.zipball_url);
+    $('#new-tab #downloadCount').html(data.assets.download_count);
+  });
+
   function getYear(){
     var year = new Date().getFullYear();
     if(year === 2017){

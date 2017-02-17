@@ -39,4 +39,4 @@ Downloading & Installing:
 
 Screenshot:
 -----------
-![New Tab Screenshot](https://raw.githubusercontent.com/TheDragonRing/new-tab/master/screenshot.png)
+![New Tab Screenshot](https://raw.githubusercontent.com/TheDragonRing/thedragonring.github.io/master/new-tab/screenshot.png)

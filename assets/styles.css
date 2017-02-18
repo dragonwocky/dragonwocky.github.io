@@ -35,6 +35,19 @@ body {
   visibility: hidden;
 }
 
+.warning {
+  text-align: center;
+  font-style: italic;
+  font: 20px "Cairo", serif;
+  border-top: 1px solid #cfcfcf;
+}
+
+.warning a {
+  color: #000;
+  text-decoration: none;
+  border-bottom: 1px dotted #000;
+}
+
 /* HEADER */
 
 header {
@@ -307,16 +320,6 @@ footer ul li a {
   font: 50px "Cairo", serif;
 }
 
-#form .name {
-  width: 50%;
-  float: left;
-}
-
-#form .email {
-  width: 50%;
-  float: right;
-}
-
 #form .subject, #form .message {
   width: 100%;
 }
@@ -351,18 +354,19 @@ footer ul li a {
   justify-content: center;
 }
 
-#form .actions > input {
+#form .actions > a {
+  color: #000;
   margin: 10px;
   padding: 10px 20%;
-  text-align: center;
-  border: 1px solid #000;
   border-radius: 3px;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid #000;
   background-color: #f3f3f3;
-  color: #000;
   font: 30px "Cairo", serif;
 }
 
-#form .actions input[special] {
+#form .actions a[special] {
   color: #fff;
   background-color: #a61419;
 }
@@ -505,11 +509,10 @@ footer ul li a {
 }
 
 .row section p {
-  font-style: italic;
-  font: 17.5px "Cairo", serif;
-  margin-bottom: 0px;
   line-height: 25px;
   text-align: right;
+  margin-bottom: 0px;
+  font: 17.5px "Cairo", serif;
 }
 
 .row section a {
@@ -576,12 +579,12 @@ footer ul li a {
 }
 
 #post h2 {
-  font: 20px "Indie Flower", serif;
-  text-align: center;
   padding: 25px;
   margin: 0px 20%;
-  border-bottom: 3px solid #cfcfcf;
   font-style: italic;
+  text-align: center;
+  font: 20px "Indie Flower", serif;
+  border-bottom: 3px solid #cfcfcf;
 }
 
 #post p {
@@ -589,30 +592,4 @@ footer ul li a {
   text-align: left;
   margin: 50px 5%;
   line-height: 37.5px;
-}
-
-#comments p {
-  text-align: center;
-  font: 30px "Cairo", serif;
-  font-style: italic;
-  padding: 10px;
-  border-top: 1px solid #cfcfcf;
-  border-bottom: 1px solid #cfcfcf;
-}
-
-
-/* SCRIPT */
-
-.script {
-  padding: 15%;
-}
-
-.script h1 {
-  text-align: center;
-  font: 25px "Enriqueta", serif;
-}
-
-.script a {
-  text-decoration: none;
-  border-bottom: 1px dotted #000;
 }

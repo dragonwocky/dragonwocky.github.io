@@ -25,6 +25,20 @@ $(document).ready(function(){
     }
   });
 
+  $.get('https://api.github.com/repos/thedragonring/new-tab/releases/latest', function(data){
+    $('#new-tab #download').attr('href', data.zipball_url);
+  });
+  $.get('https://api.github.com/repos/thedragonring/password-generator/releases/latest', function(data){
+    $('#password-generator #download').attr('href', data.zipball_url);
+  });
+  $.get('https://api.github.com/repos/thedragonring/fireworks/releases/latest', function(data){
+    $('#fireworks #download').attr('href', data.zipball_url);
+    $('#fireworks #downloadOther').attr('href', data.assets[0].browser_download_url);
+  });
+  $.get('https://api.github.com/repos/thedragonring/alphahex/releases/latest', function(data){
+    $('#alphahex #download').attr('href', data.zipball_url);
+  });
+
   $('[name=subject]').keypress(function(event){
     if(event.which === 13){
       $('[name=message]').focus();

@@ -258,6 +258,15 @@ footer ul li a {
 
 /* ABOUT */
 
+@media screen and (min-width: 751px) {
+
+  #about {
+    max-width: 75%;
+    margin: 0 auto;
+  }
+
+}
+
 #about {
   width: 100%;
   padding: 30px;
@@ -308,6 +317,15 @@ footer ul li a {
 }
 
 /* FORM */
+
+@media screen and (min-width: 751px) {
+
+  #form {
+    max-width: 75%;
+    margin: 0 auto;
+  }
+
+}
 
 #form {
   width: 100%;
@@ -373,6 +391,15 @@ footer ul li a {
 
 /* PROJECTS */
 
+@media screen and (min-width: 751px) {
+
+  #projects {
+    max-width: 75%;
+    margin: 0 auto;
+  }
+
+}
+
 #projects {
   width: 100%;
   padding: 30px;
@@ -424,6 +451,7 @@ footer ul li a {
 
   #projects img {
     width: 40%;
+    margin: 150px auto;
     float: right;
     display: inline;
     border: 3px solid #cfcfcf;
@@ -488,6 +516,15 @@ footer ul li a {
 
 /* BLOG */
 
+@media screen and (min-width: 751px) {
+
+  #posts {
+    max-width: 75%;
+    margin: 0 auto;
+  }
+
+}
+
 #posts {
   width: 100%;
   padding: 30px;
@@ -535,7 +572,7 @@ footer ul li a {
   .row > section {
     margin: 30px;
     padding: 10px;
-    width: 30%;
+    width: 40%;
     border: 3px solid #cfcfcf;
     border-radius: 10px;
     background-color: #f3f3f3;
@@ -562,6 +599,15 @@ footer ul li a {
 }
 
 /* POST */
+
+@media screen and (min-width: 751px) {
+
+  #post {
+    max-width: 75%;
+    margin: 0 auto;
+  }
+
+}
 
 #post {
   width: 100%;

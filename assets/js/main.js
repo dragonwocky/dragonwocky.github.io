@@ -25,6 +25,9 @@ $(document).ready(function(){
     }
   });
 
+  $.get('https://api.github.com/repos/thedragonring/mini-pet/releases/latest', function(data){
+    $('#mini-pet #download').attr('href', data.zipball_url);
+  });
   $.get('https://api.github.com/repos/thedragonring/new-tab/releases/latest', function(data){
     $('#new-tab #download').attr('href', data.zipball_url);
   });

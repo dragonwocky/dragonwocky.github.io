@@ -1,0 +1,185 @@
+/*
+  Alphahex by TheDragonRing (thedragonring.me)
+  Copyright © 2017 TheDragonRing - Creative Commons Attribution 4.0 International License
+*/
+
+/* GLOBAL */
+
+@import url("font-awesome/css/font-awesome.min.css");
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+* {
+  box-sizing: border-box;
+  color: #fff;
+}
+
+html:before {
+  content: "";
+  z-index: -1;
+  background-image: url("images/background.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-filter: brightness(75%);
+  filter: brightness(75%);
+  position: fixed;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  visibility: hidden;
+}
+
+article {
+  display: none;
+}
+
+a {
+  border-bottom: 1px dotted #fff;
+  text-decoration: none;
+  color: #fff;
+}
+
+hr {
+  border: 0;
+  border-bottom: 1px dashed #fff;
+  background: #999;
+  width: 5%;
+}
+
+hr.vertical {
+  transform: rotate(90deg);
+}
+
+/* HIGHLIGHTED TEXT */
+
+::selection {
+  background: #a61419;
+}
+
+::-moz-selection {
+  background: #a61419;
+}
+
+/* HOME PAGE */
+
+#home {
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  position: absolute;
+  text-align: center;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  padding: 15px;
+  left: 50%;
+  top: 40%;
+}
+
+#home img {
+  border: 1px solid #fff;
+  border-radius: 100%;
+  height: 20%;
+  width: 20%;
+}
+
+#home h1 {
+  font: 50px "Source Sans Pro", sans-serif;
+  letter-spacing: 3px;
+  margin: 15px;
+}
+
+#home p {
+  font: 20px "Source Sans Pro", sans-serif;
+  border-bottom: 1px solid #fff;
+  border-top: 1px solid #fff;
+  padding: 15px;
+}
+
+#home ul {
+  list-style-type: none;
+  width: 100%;
+}
+
+#home ul li {
+  display: inline-block;
+  padding: 15px 0px;
+}
+
+#home ul li a {
+  font: 20px "Source Sans Pro", sans-serif;
+  border: 1px solid #fff;
+  padding: 8px 16px;
+}
+
+#home ul li:first-child a {
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+#home ul li:last-child a {
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* OTHER PAGES */
+
+#about {
+  margin-top: 30%;
+}
+
+article {
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  border: 1px solid #fff;
+  position: absolute;
+  text-align: center;
+  margin-bottom: 5%;
+  padding: 15px;
+  left: 50%;
+  top: 50%;
+}
+
+article a > i {
+  border: none;
+  float: right;
+}
+
+article h1 {
+  font: 50px "Source Sans Pro", sans-serif;
+  text-decoration: underline;
+  text-align: left;
+}
+
+article p {
+  font: 20px "Source Sans Pro", sans-serif;
+  text-transform: none;
+  text-align: left;
+}
+
+article img {
+  border: 1px solid #fff;
+  border-radius: 5px;
+  width: 100%;
+}
+
+/* FOOTER */
+
+footer {
+  font: 15px "Source Sans Pro", sans-serif;
+  background-color: rgba(1, 2, 3, 0.75);
+  transform: translate(-50%, 0%);
+  border-top-right-radius: 50px;
+  border-top-left-radius: 50px;
+  text-transform: uppercase;
+  border: 1px solid #fff;
+  border-bottom: none;
+  text-align: center;
+  position: fixed;
+  margin: none;
+  width: 75%;
+  bottom: 0;
+  left: 50%;
+}

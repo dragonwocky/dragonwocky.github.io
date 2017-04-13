@@ -31,7 +31,7 @@ permalink: /404.html
         }
       });
     }
-    urlExists(url, function(exists){
+    urlExists('./', function(exists){
       window.location.assign('./#' + /[^\/]*$/.exec(window.location.href)[0]);
       if(/[^\/]*$/.exec(window.location.href)[0] === 'projects'){
         window.location.assign('./#work');

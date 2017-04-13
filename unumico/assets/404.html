@@ -19,7 +19,7 @@ permalink: /404.html
   $(document).ready(function(){
 
     //Redirect to home page with ID of page they tried to visit.
-    window.location.assign('../unumico/#' + /[^\/]*$/.exec(window.location.href)[0]);
+    window.location.assign('./#' + /[^\/]*$/.exec(window.location.href)[0]);
     if(/[^\/]*$/.exec(window.location.href)[0] === 'projects'){
       window.location.assign('../#work');
     }

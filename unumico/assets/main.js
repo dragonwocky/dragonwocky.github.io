@@ -1,5 +1,5 @@
 /*
-  Something by TheDragonRing (thedragonring.me)
+  Unumico by TheDragonRing (thedragonring.me)
   Copyright © 2017 TheDragonRing - Creative Commons Attribution 4.0 International License
 */
 
@@ -39,8 +39,8 @@ $(document).ready(function(){
   });
 
   //Manage download links.
-  $.get('https://api.github.com/repos/thedragonring/something/releases/latest', function(data){
-    $('[name=something] .download').attr('href', data.zipball_url);
+  $.get('https://api.github.com/repos/thedragonring/unumico/releases/latest', function(data){
+    $('[name=unumico] .download').attr('href', data.zipball_url);
   });
 
   //Manage page changes.
@@ -56,7 +56,7 @@ $(document).ready(function(){
         .fadeIn(1500);
         //Change page title.
         var $siteName = /[^\|]*$/.exec($('title').html())[0];
-        $('title').html(capitalizeFirstLetter(/[^\#]*$/.exec(window.location.href)[0]) + ' |' + $siteName);
+        $('title').html(capitalizeFirstLetter(/[^\#]*$/.exec(window.location.href)[0]) + ' | ' + $siteName);
       }
       //Make sure only the current article is showing.
       if($(this).attr('id') !== /[^\#]*$/.exec(window.location.href)[0] && $(this).css('display') === 'block'){
@@ -68,13 +68,14 @@ $(document).ready(function(){
         $('#home').fadeIn(1500);
         var $currentTitle = $('title').html();
         var $siteName = /[^\|]*$/.exec($('title').html())[0];
-        var $newName = 'Home |' + $siteName;
-        if($currentTitle !== $newName){
-          $('title').html($newName);
+        if($currentTitle !== 'Home |' + $siteName){
+          $('title').html('Home | ' + $siteName);
         }
       }
     });
   }
+  //Set to correct page on load.
+  $('title').html('Home | ' + /[^\|]*$/.exec($('title').html())[0]);
   //Continually process and execute page changes.
   setInterval(function(){
     changePage();

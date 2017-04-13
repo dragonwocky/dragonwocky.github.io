@@ -1,5 +1,5 @@
 /*
-  Something by TheDragonRing (thedragonring.me)
+  Unumico by TheDragonRing (thedragonring.me)
   Copyright © 2017 TheDragonRing - Creative Commons Attribution 4.0 International License
 */
 
@@ -35,8 +35,25 @@ html:before {
 
 body {
   visibility: hidden;
-  padding-left: 25%;
-  padding-right: 25%;
+  padding: 5% 25%;
+}
+
+@media screen and (max-width: 1125px) {
+
+  body {
+    padding: 5% 10%;
+    padding-bottom: 7.5%;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+
+  body {
+    padding: 5%;
+    padding-bottom: 17.5%;
+  }
+
 }
 
 a {
@@ -131,7 +148,7 @@ hr.vertical {
 #home {
   text-transform: uppercase;
   text-align: center;
-  margin-top: 20%;
+  margin-top: 5%;
   padding: 15px;
   width: 100%;
 }
@@ -194,6 +211,49 @@ hr.vertical {
   border-top-right-radius: 10px;
 }
 
+@media screen and (max-width: 500px) {
+
+  #home img {
+    height: 30%;
+    width: 30%;
+  }
+
+}
+
+@media screen and (max-width: 750px) {
+
+  #home p {
+    font-size: 15px;
+  }
+
+  #home ul {
+    padding: 0;
+  }
+
+  #home ul li {
+    padding: 3px;
+    width: 62.5%;
+  }
+
+  #home ul li a {
+    font: 15px "Source Sans Pro", sans-serif;
+    display: block;
+  }
+
+  #home ul li:first-child a {
+    border-radius: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  #home ul li:last-child a {
+    border-radius: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+}
+
 /* OTHER PAGES */
 
 article {
@@ -202,7 +262,6 @@ article {
   border: 1px solid #fff;
   display: none;
   padding: 15px;
-  margin: 10% auto;
   width: 100%;
 }
 
@@ -430,7 +489,7 @@ input[type="radio"], input[type="checkbox"]{
 
 .option span.checkbox:hover::before {
   background-color: rgba(51, 52, 53, 0.5);
-	box-shadow: 0 0 0 1px #ffffff;
+  box-shadow: 0 0 0 1px #ffffff;
 }
 
 .option span.checkbox::after {
@@ -440,6 +499,18 @@ input[type="radio"], input[type="checkbox"]{
   content: "\f00c";
   left: -31px;
   top: 2px;
+}
+
+@media screen and (max-width: 550px) {
+
+  .option {
+    padding-left: 50px;
+  }
+
+  .option label {
+    font-size: 12.5px;
+  }
+
 }
 
 /* TABLES */
@@ -510,7 +581,7 @@ input::placeholder, textarea::placeholder {
 
 input:focus, textarea:focus, select:focus {
   background-color: rgba(51, 52, 53, 0.5);
-	box-shadow: 0 0 0 1px #ffffff;
+  box-shadow: 0 0 0 1px #ffffff;
   outline: none;
 }
 
@@ -549,4 +620,22 @@ footer {
   width: 75%;
   bottom: 0;
   left: 50%;
+}
+
+@media screen and (max-width: 1125px) {
+
+  footer {
+    width: 90%;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+
+  footer {
+    font: 12.5px "Source Sans Pro", sans-serif;
+    border-radius: 0;
+    width: 100%;
+  }
+
 }

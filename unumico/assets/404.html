@@ -19,10 +19,24 @@ permalink: /404.html
   $(document).ready(function(){
 
     //Redirect to home page with ID of page they tried to visit.
-    window.location.assign('./#' + /[^\/]*$/.exec(window.location.href)[0]);
-    if(/[^\/]*$/.exec(window.location.href)[0] === 'projects'){
-      window.location.assign('../#work');
+    function urlExists(url, callback){
+      $.ajax({
+        type: 'HEAD',
+        url: url,
+        success: function(){
+          callback(true);
+        },
+        error: function() {
+          callback(false);
+        }
+      });
     }
+    urlExists(url, function(exists){
+      window.location.assign('./#' + /[^\/]*$/.exec(window.location.href)[0]);
+      if(/[^\/]*$/.exec(window.location.href)[0] === 'projects'){
+        window.location.assign('./#work');
+      }
+    });
 
   });
 

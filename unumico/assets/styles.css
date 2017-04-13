@@ -33,6 +33,17 @@ html:before {
   width: 100%;
 }
 
+@media screen and (max-width: 500px) {
+
+  html:before {
+    -webkit-background-size: auto;
+    -moz-background-size: auto;
+    -o-background-size: auto;
+    background-size: auto;
+  }
+
+}
+
 body {
   visibility: hidden;
   padding: 5% 25%;
@@ -635,6 +646,8 @@ footer {
   footer {
     font: 12.5px "Source Sans Pro", sans-serif;
     border-radius: 0;
+    border: none;
+    border-top: 1px solid #fff;
     width: 100%;
   }
 

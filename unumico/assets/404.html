@@ -13,7 +13,19 @@ permalink: /404.html
   <title>404 Not Found - Redirecting...</title>
   <meta charset="UTF-8">
   <meta name="author" content="TheDragonRing">
-  <meta http-equiv="refresh" content="0; ../" <script>document.write(/[^\/]*$/.exec(window.location.href)[0])</script>>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script>
+
+  $(document).ready(function(){
+
+    //Redirect to home page with ID of page they tried to visit.
+    window.location.assign('../unumico/#' + /[^\/]*$/.exec(window.location.href)[0]);
+    if(/[^\/]*$/.exec(window.location.href)[0] === 'projects'){
+      window.location.assign('../#work');
+    }
+
+  });
+
+  </script>
 </head>
 </html>

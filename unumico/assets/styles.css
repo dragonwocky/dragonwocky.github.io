@@ -189,6 +189,7 @@ hr.vertical {
 
 #home ul {
   list-style-type: none;
+  padding: 0;
   width: 100%;
 }
 
@@ -235,10 +236,6 @@ hr.vertical {
 
   #home p {
     font-size: 15px;
-  }
-
-  #home ul {
-    padding: 0;
   }
 
   #home ul li {
@@ -342,6 +339,12 @@ article ul.icons li {
   height: 3rem;
   width: 3rem;
   margin: 5px;
+}
+
+article ul.icons li svg {
+  vertical-align: text-bottom;
+  display: inline-block;
+  width: 1.5rem;
 }
 
 article ul.icons li:hover, article i.close:hover {

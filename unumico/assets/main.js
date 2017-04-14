@@ -1,6 +1,6 @@
 /*
-  Unumico by TheDragonRing (thedragonring.me)
-  Copyright © 2017 TheDragonRing - Creative Commons Attribution 4.0 International License
+Unumico by TheDragonRing (thedragonring.me)
+Copyright © 2017 TheDragonRing - Creative Commons Attribution 4.0 International License
 */
 
 $(document).ready(function(){
@@ -41,6 +41,22 @@ $(document).ready(function(){
   //Manage download links.
   $.get('https://api.github.com/repos/thedragonring/unumico/releases/latest', function(data){
     $('[name=unumico] .download').attr('href', data.zipball_url);
+  });
+  $.get('https://api.github.com/repos/thedragonring/mini-pet/releases/latest', function(data){
+    $('[name=mini-pet] .download').attr('href', data.zipball_url);
+  });
+  $.get('https://api.github.com/repos/thedragonring/new-tab/releases/latest', function(data){
+    $('[name=new-tab] .download').attr('href', data.zipball_url);
+  });
+  $.get('https://api.github.com/repos/thedragonring/password-generator/releases/latest', function(data){
+    $('[name=password-generator] .download').attr('href', data.zipball_url);
+  });
+  $.get('https://api.github.com/repos/thedragonring/fireworks/releases/latest', function(data){
+    $('[name=fireworks] .other-download').attr('href', data.zipball_url);
+    $('[name=fireworks] .download').attr('href', data.assets[0].browser_download_url);
+  });
+  $.get('https://api.github.com/repos/thedragonring/alphahex/releases/latest', function(data){
+    $('[name=alphahex] .download').attr('href', data.zipball_url);
   });
 
   //Manage page changes.
@@ -87,37 +103,42 @@ $(document).ready(function(){
     }
   });
 
-  //Manage changing the link to the correct mailto url.
-  $('.form #submit').hover(function(){
+  //Automatically update all forms to match each other.
+  $('*').change(function(){
+    var $name = $(this).attr('name');
+    $('[name=' + $name + ']')
+    .val($(this).val())
+    .css('display', 'auto');
+  });
+  $('.form .submit').click(function(){
+    //Manage changing the link to the correct mailto url.
     var $inputs = [$('[name=name]').val(), $('[name=email]').val(), $('[name=subject]').val(), $('[name=message]').val()];
-    var $filled = [false, false, false, false]
+    var $filled = [false, false, false, false];
     for(var i = 0; i < $inputs.length; i++) {
       if($inputs[i] === ''){ //Check if all the fields are filed in.
-        $('.form #submit').attr('href', '#');
+        $('.form .submit').attr('href', '#');
       }else{
         $filled[i] = true;
       }
     }
     if($filled[0] && $filled[1] && $filled[2] && $filled[3]){ //Set the link to the correct mailto url.
       var $subject = $('[name=subject]').val();
-      var $body = 'Name: ' + $('[name=name]').val() + '%0D%0AEmail:  ' + $('[name=email]').val() + '%0D%0ABody: ' + $('[name=message]').val();
+      var $body = 'Name: ' + $('[name=name]').val() + '%0A Email:  ' + $('[name=email]').val() + '%0A Message: ' + encodeURI($('[name=message]').val());
       var $url = 'mailto:' + $('.form').attr('data-email-to') + '?subject=' + $subject + '&body=' + $body;
       $(this).attr('href', $url);
     }
-  });
-  //Stop going back home on click with an empty form.
-  $('.form #submit').click(function(){
+    //Stop going back home on click with an empty form.
     if($(this).attr('href') === '#'){
       event.preventDefault();
-      alert('Please fill in all the fields before submittings the form!');
+      alert('Please fill in all the fields before submitting the form!');
     }
   });
   //Clear form input on click of a button with the id 'reset'.
-  $('.form #reset').click(function(){
+  $('.form .reset').click(function(){
     event.preventDefault();
     $('.form input').val('');
     $('.form textarea').val('');
-    $('.from #submit').attr('href', '#');
+    $('.from .submit').attr('href', '#');
   });
 
   //Read page GET requests.

@@ -19,9 +19,9 @@ permalink: /404.html
   $(document).ready(function(){
 
     if(window.location.href.slice(-1) === '/'){
-      window.location.assign('../#' + /[^\/]*$/.exec(window.location.href)[0]);
+      window.location.assign('../');
     }else{
-      window.location.assign('./#' + /[^\/]*$/.exec(window.location.href)[0]);
+      window.location.assign('./');
     }
 
   });

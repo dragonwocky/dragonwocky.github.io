@@ -115,7 +115,7 @@ function shell() {
       }
     }
   });
-  $(window).on('keyup', function (e) {
+  $(window).keyup(function (e) {
     if (loggedIn) {
       var key = e.which;
       // Input text.

@@ -49,10 +49,10 @@ var command = '',
   };
 
 // Add neccessary CSS.
-$('head').append('<style type="text/css">a,body{color:#fff}body{background:#000;font-family:Courier}a{text-decoration:none;font-weight:700}p{margin:0}.cursor{height:3px;width:10px;margin-left:5px;margin-bottom:-1px;background:#fff;display:inline-block}.mobile-input{opacity:0}body{-webkit-touch-callout: none;-webkit-user-select:none;-moz-user-select: none;-ms-user-select: none;user-select: none;}</style>');
+$('head').append('<style type="text/css">a,body{color:#fff;width:100%;overflow-wrap:break-word;overflow-x:hidden;}body{background:#000;font-family:Courier}a{text-decoration:none;font-weight:700}p{margin:0}.cursor{height:3px;width:10px;margin-left:5px;margin-bottom:-1px;background:#fff;display:inline-block}.cmd-input{margin-top:-1.25rem;font-size:1rem;font-family:Courier;color:#fff;background:none;border:none;outline:none;padding:none;margin:none;width:100%;resize:none;}body{-webkit-touch-callout:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}</style>');
 // Add neccessary <div> elements.
 $(window).bind("load", function () {
-  document.body.innerHTML = '<div class="init"></div><div class="terminal"></div><input class="mobile-input"></input><div class="typed"></div>';
+  document.body.innerHTML = '<div class="init"></div><div class="terminal"></div><div class="typed"></div>';
   initializeTermy();
 });
 
@@ -81,8 +81,10 @@ function initializeTermy() {
 
 // Adds prefix.
 function displayPrefix() {
-  $('.terminal').append('<p id="' + commandCount + '"><span style="color: #0f0">' + user + '@' + host + '</span>:<span style="color: #00f">~ $</span> <span class="input"></span><span class="cursor"></span><br></p>');
+  $('.terminal').append('<p id="' + commandCount + '"><span style="color: #0f0">' + user + '@' + host + '</span>:<span style="color: #00f">~ $</span> <textarea class="cmd-input"></textarea></p>');
   commandCount++;
+  $('.cmd-input').css('textIndent', (304 - 45) + 'px');
+  autosize($('.cmd-input'));
   $(this).scrollTop($(this).height());
 }
 
@@ -96,40 +98,25 @@ function flashingCursor() {
 }
 setInterval('flashingCursor()', 1200);
 
-// Enables text input on mobile.
-$(window).click(function () {
-  $('.mobile-input').focus();
+// Focuses input.
+$(document).click(function () {
+  $('.cmd-input').focus();
 });
+setInterval(function(){ $(document).trigger("click") }, 5);
 
 // Enables input of commands.
 function shell() {
   displayPrefix();
-  $(document).on('keydown', function (e) {
-    if (loggedIn) {
-      // Backspace.
-      if (e.which === 8) {
-        e.preventDefault();
-        command = command.length !== 0 ? command.substr(0, command.length - 1) : '';
-        $(this).scrollTop($(this).height());
-        $('#' + (commandCount - 1) + ' .input').html(command);
-      }
-    }
-  });
-  $(window).keyup(function (e) {
+  $(document).keyup(function (e) {
     if (loggedIn) {
       var key = e.which;
       // Input text.
-      if (key !== 13) {
-        var c = String.fromCharCode(key);
-        // Only allow letters.
-        !(/^[\w\d\s\.\?\!-]/i).test(c) ? c = c.replace(/[^\w\d\s\.\?\!-]/i, '') : null;
-        command += c;
-        $('#' + (commandCount - 1) + ' .input').append(c);
-        $(this).scrollTop($(this).height());
-      } else {
+      if (key === 13) {
+        command = $('.cmd-input').val().trim();
         if (command) {
+          $('.cmd-input').replaceWith(`<span>${command}</span><br>`);
           $('.cursor').remove();
-          // Turnn input into command.
+          // Turn input into command.
           var raw = command,
             arguments = command.split(' '),
             arguments = arguments.filter(function (e) {
@@ -234,8 +221,7 @@ function clear(args) {
 // exit - logs out, to execute commands once again the page must be reloaded.
 function exit(args, url) {
   loggedIn = false;
-  $(window).unbind('keyup');
-  $(window).unbind('keydown');
+  $(document).unbind('keyup');
   var logout = '<br>';
   logout += '>> Logged out<br>';
   logout += '>> Closed connection to ' + host + '<br>';

@@ -115,7 +115,7 @@ function shell() {
       }
     }
   });
-  $(window).keypress(function (e) {
+  $(window).on('keyup', function (e) {
     if (loggedIn) {
       var key = e.which;
       // Input text.
@@ -234,7 +234,7 @@ function clear(args) {
 // exit - logs out, to execute commands once again the page must be reloaded.
 function exit(args, url) {
   loggedIn = false;
-  $(window).unbind('keypress');
+  $(window).unbind('keyup');
   $(window).unbind('keydown');
   var logout = '<br>';
   logout += '>> Logged out<br>';

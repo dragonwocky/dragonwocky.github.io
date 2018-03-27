@@ -191,7 +191,17 @@ body {
   position: relative;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 
+  @media screen and (min-width: 339px) {
+    .button {
+      float: right;
+    }
+  }
+
   @media screen and (max-width: 339px) {
+    .button {
+      margin-top: 15px;
+      width: 100%;
+    }
     .card-footer-item span {
       font-size: 0.8em;
     }

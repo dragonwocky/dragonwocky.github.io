@@ -6536,7 +6536,13 @@ body {
 .card {
   position: relative;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5); }
+  @media screen and (min-width: 339px) {
+    .card .button {
+      float: right; } }
   @media screen and (max-width: 339px) {
+    .card .button {
+      margin-top: 15px;
+      width: 100%; }
     .card .card-footer-item span {
       font-size: 0.8em; } }
 

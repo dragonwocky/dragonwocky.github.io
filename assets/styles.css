@@ -6453,7 +6453,7 @@ html {
   min-height: 100%;
   min-width: 100%;
   max-width: 100%;
-  background: url("images/background.png"); }
+  background: url("images/background.jpg"); }
 
 body {
   padding: 1.5rem;
@@ -6495,7 +6495,7 @@ body {
       border-bottom: none; }
       .profile .main-banner .tabs ul a {
         border-bottom: none;
-        background: url("images/background.png"); }
+        background: url("images/background.jpg"); }
     @media screen and (min-width: 769px) {
       .profile .main-banner {
         clip-path: polygon(0 0, 125% 0, 65% 80%, 15% 100%, 0 100%); }

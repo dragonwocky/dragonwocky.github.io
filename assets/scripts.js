@@ -5,6 +5,13 @@
  */
 
 window.onload = () => {
+  // fade out load-message elements
+  document.querySelectorAll('.loading').forEach(el => {
+    el.classList.add('fadeOut');
+    setTimeout(() => {
+      el.style.display = 'none';
+    }, 750);
+  });
   // animate popping elements
   document.querySelectorAll('.pop').forEach((el, i) => {
     setTimeout(() => {

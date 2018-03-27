@@ -1,0 +1,94 @@
+<!--
+  thedragonring.me - my personal website
+  ==================================================================
+  Copyright (c) 2017 TheDragonRing <thedragonring.bod@gmail.com>, under the MIT License
+-->
+
+  <!DOCTYPE html>
+  <html>
+
+  <head>
+    <title>Building Websites | TheDragonRing's Blog</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The home website of a 13 year old programmer who is continually confused by his own code and addicted to reading books.">
+    <meta name="keywords" content="TheDragonRing, Home, Contact, Projects, Blog, GitHub, Twitter, Coding, Designing, Programs, Templates">
+    <meta name="author" content="TheDragonRing">
+    <meta http-equiv="refresh" content="300">
+    <link rel="shortcut icon" type="image/x-icon" href="../../../assets/favicon.ico">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../assets/styles.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../../../assets/js/main.js"></script>
+  </head>
+  <body>
+    <header>
+      <ul class="normal">
+        <li><a href="../../../" left>Home</a></li>
+        <li><a href="../../../contact">Contact</a></li>
+        <li><a class="heading">TheDragonRing</a></li>
+        <li><a href="../../../projects">Projects</a></li>
+        <li><a href="../../" active right>Blog</a></li>
+      </ul>
+      <ul class="mobile">
+        <li><a class="heading">TheDragonRing</a></li>
+          <br>
+        <li><a href="../../../" left>Home</a></li>
+        <li><a href="../../../contact">Contact</a></li>
+        <li><i class="fas fa-code fa-2x"></i></li>
+        <li><a href="../../../projects">Projects</a></li>
+        <li><a href="../../" active right>Blog</a></li>
+      </ul>
+    </header>
+    <section id="main" fadeIn>
+      <section id="post">
+        <h1>Building Websites</h1>
+        <h2>Written on February 18th 2017 by TheDragonRing</h2>
+          <br>
+        <p>
+          When it comes to making websites, everyone faces the same problem: “How do I make a website that looks good, and has everything I want it to?” – And the answer for most people is simple. Find a template.
+            <br>
+          I faced the same problem, but I had used templates before. To transform a template into my very own custom website would take a lot of time, effort and a decent knowledge of HTML & CSS. But what many people don’t realise is that they don’t actually need to use a template, it doesn’t actually take as much more time or effort to make your own website from scratch (provided you have that decent knowledge of HTML & CSS). Anyway, most templates only come with the bare bones of the site, and don’t include any scripts, which are a lot harder to put together than the site itself.
+            <br>
+  	      So if using a template would be hard anyway… I might as well make it myself - and it would be a good learning experience too!
+            <br>
+          And then I encountered my second big problem. I was skilful enough in HTML… But I had no idea what I would be doing when it came to CSS, JS and PHP (I had only ever extended stuff with it, never made something from scratch). So I did research. A lot of research. First I read through pages and pages of websites like w3schools.com. Then I took a couple of the courses on codecademy.com, looked at the source of other templates and read through other people’s tutorials.<br>
+          Finally, I thought I was ready. So I started. Simple as that: I decided on what content I wanted on my site, what links I wanted in the header and what colour scheme I would use. Then bit by bit I developed the site from files on my computer, and was surprised by how easy it actually was. Every time I encountered a problem (not mobile friendly, image positioning errors, et cetera) all I had to do was a quick google search that provided me with Stack Overflow answers and more W3Schools pages. Other times stuff I’d learnt from the Codecademy helped a lot and taught me how to do many various things.
+            <br>
+          But then I encountered my biggest problem yet. Scripts. The email form was easy enough (I’d done one before). The download counter was different. I searched online. No good looking results (except paid stuff). So instead I devised my own system that created and edited a file, adding 1 every time someone downloaded something, then displaying the number in brackets next to the download link on the projects page. How would I do this? I had no idea. So once again it was research time. I learnt all about PHP file handling and then used my newfound knowledge to make my idea a reality. And, after a lot of bug fixing it finally worked... Doing exactly what I wanted it to!
+            <br>
+          The site was almost ready to publish. There was only one thing to do: add the comments system. This proved the hardest part of creating the website. I tried many different softwares (including creating my own) but none of them worked. Then when I finally did find a free commenting software that worked I wanted to begin working on it immediately. Until I read the license. I had planned to edit the code a bit and then integrate it directly into the site instead of just running alongside it as a separate software. But it was licensed under the GNU Affero General Public License… Which basically meant that if I did what I was planning I would have to license the template (a Lorem Ipsum version of my site that I was going to release to the public with all the scripts included after I’d finished it) under the GNU Affero General Public License and stick notices about the original commenting software everywhere. Which I definitely did not want to do. In the end I decided to use Disqus, a popular tool for blog post comments. The only reasons I hadn’t been using it from the start was because it meant that if I did use it then the comments wouldn’t come packaged with the template and I wouldn’t have total control over the data.
+            <br>
+  	      Overall developing your own website from scratch has its ups and downs, advantages and disadvantages. It is a good learning experience and gives you total control over keeping your site’s content clean, completely customizable and compact. Building a site from scratch takes a lot of time, effort, patience, and skill.
+        </p>
+          <br>
+        <section id="comments">
+          <div id="disqus_thread"></div>
+          <script>
+            var disqus_config = function () {
+              this.page.url = "https://thedragonring.me/blog/posts/building-websites/";
+              this.page.identifier = "january-2017/building-websites";
+            };
+
+            (function() {
+              var d = document, s = d.createElement("script");
+              s.src = "https://thedragonrings-blog.disqus.com/embed.js";
+              s.setAttribute("data-timestamp", +new Date());
+              (d.head || d.body).appendChild(s);
+            })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </section>
+      </section>
+    </section>
+    <footer>
+      <ul>
+        <li><a href="http://twitter.com/TheDragonRing" target="_blank"><i class="fab fa-twitter"></i></a></li>
+        <li><a href="" scrollToTop><i class="fas fa-chevron-up"></i></a></li>
+        <li><a href="http://github.com/TheDragonRing" target="_blank"><i class="fab fa-github-alt"></i></a></li>
+          <br>
+        <li><a href="../../../" id="copyright"></a></li>
+      </ul>
+    </footer>
+  </body>
+</html>

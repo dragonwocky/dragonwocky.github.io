@@ -1,0 +1,242 @@
+/*
+ * thedragonring.me - my personal website
+ * ================================================================== 
+ * Copyright (c) 2018 TheDragonRing <thedragonring.bod@gmail.com>, under the MIT License
+ */
+
+@charset "utf-8";
+
+// change primary and link colour(s) to red
+$primary: #c21a1a;
+$link: #c21a1a;
+
+// add custom colours
+// for this to work, add the following to the bottom of 'bulma/utilities/derived-variables.sass':
+// $colors: map-merge($colors, $custom-colours)
+// $custom-colours: ('blurple': (#7289da, #fff));
+
+// custom settings
+.is-rounded {
+  border-radius: 50%;
+}
+
+.is-horizontal-center {
+  justify-content: center;
+}
+
+.has-border-white {
+  border: 1px solid #fff;
+}
+
+.has-icon-left {
+  padding-left: 0.4em;
+}
+
+.has-bg-img {
+  background: url('images/background.jpg') center bottom;
+  background-size: cover;
+}
+
+/* bulma.io v0.6.2 | MIT License | github.com/jgthms/bulma */
+// './bulma/utilities/derived-variables.sass' is modified
+@import './bulma/utilities/_all';
+@import './bulma/base/_all';
+@import './bulma/elements/_all';
+@import './bulma/components/_all';
+@import './bulma/grid/_all';
+@import './bulma/layout/_all';
+
+// entire document
+html {
+  background-color: #fff;
+  min-height: 100%;
+  min-width: 100%;
+  max-width: 100%;
+}
+body {
+  padding: 1.5rem;
+  overflow-x: hidden;
+  font-family: monospace;
+
+  @media screen and (max-width: 768px) {
+    & {
+      padding: 0;
+    }
+  }
+}
+
+// main banner (profile)
+.profile {
+  position: relative;
+  margin-bottom: 2rem;
+
+  .is-shadow {
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0 0, 125% 0, 65% 80%, 15% 100%, 0 100%);
+    position: absolute;
+    &.is-near {
+      z-index: -1;
+      top: 5px;
+      left: 5px;
+      background-color: #000;
+    }
+    &.is-far {
+      z-index: -2;
+      top: 10px;
+      left: 10px;
+      background-color: #222;
+    }
+
+    @media screen and (min-width: 1024px) {
+      & {
+        clip-path: polygon(0 0, 95% 0, 50% 75%, 15% 100%, 0 100%);
+      }
+    }
+  }
+
+  .main-banner {
+    padding: 1.5em 1.5em 0 1.5em;
+
+    * {
+      color: #fff;
+      outline: none;
+    }
+
+    .title {
+      font-size: 1.95rem;
+    }
+
+    .tabs ul,
+    .tabs ul a {
+      border-bottom: none;
+    }
+
+    @media screen and (min-width: 769px) {
+      & {
+        clip-path: polygon(0 0, 125% 0, 65% 80%, 15% 100%, 0 100%);
+      }
+
+      .banner-text {
+        margin-left: 1em;
+      }
+      hr {
+        width: 16em;
+      }
+
+      .tabs {
+        display: none;
+      }
+    }
+
+    @media screen and (min-width: 1024px) {
+      & {
+        clip-path: polygon(0 0, 95% 0, 50% 75%, 15% 100%, 0 100%);
+      }
+
+      .banner-text {
+        margin-left: 2em;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .banner-text {
+        text-align: center;
+      }
+    }
+  }
+}
+
+// columns (projects)
+.work {
+  &.columns {
+    padding: 0;
+    margin: 0;
+
+    .column {
+      margin: 0 0.25em;
+
+      @media screen and (min-width: 1024px) {
+        &:nth-child(2) {
+          margin-top: -1.75rem;
+        }
+        &:nth-child(3) {
+          margin-top: -4.75rem;
+        }
+        &:nth-child(4) {
+          margin-top: -11rem;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        & {
+          margin: 0 1.25em;
+        }
+      }
+    }
+
+    @media screen and (max-width: 1023px) {
+      & {
+        display: block;
+      }
+    }
+  }
+}
+
+// cards (projects)
+.card {
+  position: relative;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+
+  @media screen and (max-width: 339px) {
+    .card-footer-item span {
+      font-size: 0.8em;
+    }
+  }
+}
+
+// footer
+.footer {
+  padding: 1rem;
+}
+
+// shadows
+.is-shadow {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  &.is-near {
+    z-index: -1;
+    top: 5px;
+    left: 5px;
+    background-color: #000;
+  }
+  &.is-far {
+    z-index: -2;
+    top: 10px;
+    left: 10px;
+    background-color: #222;
+  }
+}
+
+// animations
+.pop {
+  display: none;
+}
+.popped {
+  animation: pop 0.75s ease;
+  background-color: #fff;
+  color: #000;
+}
+@keyframes pop {
+  from {
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.025);
+  }
+  to {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,266 @@
+/*
+  Alphahex by TheDragonRing (thedragonring.me)
+  Copyright © 2017 TheDragonRing - Creative Commons Attribution 4.0 International License
+*/
+
+/* GLOBAL */
+
+@import url("font-awesome/css/font-awesome.min.css");
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300italic,600italic,300,600');
+
+* {
+  box-sizing: border-box;
+  color: #fff;
+}
+
+html:before {
+  content: "";
+  z-index: -1;
+  background-image: url("images/background.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-filter: brightness(75%);
+  filter: brightness(75%);
+  position: fixed;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  visibility: hidden;
+  padding-left: 25%;
+  padding-right: 25%;
+}
+
+a {
+  border-bottom: 1px dotted #fff;
+  text-decoration: none;
+  color: #fff;
+}
+
+code {
+  font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier;
+  background-color: rgba(51, 52, 53, 0.50);
+  border-radius: 7.5px;
+  padding: 3px;
+}
+
+pre {
+  font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier;
+  background-color: rgba(51, 52, 53, 0.50);
+  white-space: -moz-pre-wrap;
+  white-space: -o-pre-wrap;
+  white-space: pre-wrap;
+  border: 1px solid #fff;
+  text-transform: none;
+  border-radius: 5px;
+  padding: 15px;
+  width: 100%;
+}
+
+blockquote {
+  font: 20px "Source Sans Pro", sans-serif;
+  background-color: rgba(1, 2, 3, 0.30);
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+  border-left: 5px solid #fff;
+  text-transform: none;
+  font-weight: 1000;
+  font-style: italic;
+  padding: 10px;
+}
+
+hr {
+  border: 0;
+  background: #333;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75));
+  height: 1px;
+}
+
+hr:not(.vertical) {
+  margin: 50px 0;
+}
+
+hr:not(.vertical)::after {
+  content: "§";
+  display: inline-block;
+  position: relative;
+  padding: 0 0.25em;
+  font-size: 1.5em;
+  top: -0.7em;
+}
+
+hr.vertical {
+  border-bottom: 1px dashed #fff;
+  transform: rotate(90deg);
+  background: #999;
+  width: 5%;
+}
+
+/* HIGHLIGHTED TEXT */
+
+::selection {
+  background: #a61419;
+}
+
+::-moz-selection {
+  background: #a61419;
+}
+
+/* HOME PAGE */
+
+#home {
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 20%;
+  padding: 15px;
+  width: 100%;
+}
+
+#home img {
+  border: 1px solid #fff;
+  border-radius: 100%;
+  height: 20%;
+  width: 20%;
+}
+
+#home h1 {
+  font: 50px "Source Sans Pro", sans-serif;
+  letter-spacing: 3px;
+  font-weight: 600;
+  margin: 15px;
+}
+
+#home p {
+  font: 20px "Source Sans Pro", sans-serif;
+  border-bottom: 1px solid #fff;
+  border-top: 1px solid #fff;
+  padding: 15px;
+}
+
+#home ul {
+  list-style-type: none;
+  width: 100%;
+}
+
+#home ul li {
+  display: inline-block;
+  padding: 15px 0px;
+}
+
+#home ul li a {
+  font: 20px "Source Sans Pro", sans-serif;
+  border: 1px solid #fff;
+  padding: 8px 16px;
+}
+
+#home ul li:first-child a {
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+#home ul li:last-child a {
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* OTHER PAGES */
+
+article {
+  background-color: rgba(1, 2, 3, 0.25);
+  text-transform: uppercase;
+  border: 1px solid #fff;
+  display: none;
+  padding: 15px;
+  margin: 10% auto;
+  width: 100%;
+}
+
+article i.close {
+  float: right;
+}
+
+article h1 {
+  font: 50px "Source Sans Pro", sans-serif;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+article h2 {
+  font: 40px "Source Sans Pro", sans-serif;
+  font-weight: 600;
+}
+
+article h3 {
+  font: 35px "Source Sans Pro", sans-serif;
+  font-weight: 600;
+}
+
+article h4 {
+  font: 30px "Source Sans Pro", sans-serif;
+  font-weight: 600;
+}
+
+article h5 {
+  font: 25px "Source Sans Pro", sans-serif;
+  font-weight: 600;
+}
+
+article h6 {
+  font: 20px "Source Sans Pro", sans-serif;
+  font-weight: 600;
+}
+
+article p, article li {
+  font: 20px "Source Sans Pro", sans-serif;
+  text-transform: none;
+  margin: none;
+}
+
+article ul.icons {
+  list-style-type: none;
+  padding: 0;
+}
+
+article ul.icons li {
+  border: 1px solid #fff;
+  display: inline-block;
+  line-height: 3rem;
+  border-radius: 100%;
+  text-align: center;
+  height: 3rem;
+  width: 3rem;
+  margin: 5px;
+}
+
+article ul.icons li:hover {
+  background-color: rgba(51, 52, 53, 0.50);
+}
+
+article img {
+  border: 1px solid #fff;
+  border-radius: 5px;
+  width: 100%;
+}
+
+/* FOOTER */
+
+footer {
+  font: 15px "Source Sans Pro", sans-serif;
+  background-color: rgba(1, 2, 3, 0.75);
+  transform: translate(-50%, 0%);
+  border-top-right-radius: 50px;
+  border-top-left-radius: 50px;
+  text-transform: uppercase;
+  border: 1px solid #fff;
+  border-bottom: none;
+  text-align: center;
+  position: fixed;
+  margin: none;
+  width: 75%;
+  bottom: 0;
+  left: 50%;
+}

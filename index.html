@@ -32,443 +32,143 @@
 
 <body>
 
-  <!-- Loading -->
-  <div class="loading">
-  </div>
+  <div id="html-body-div" style="display: none">
 
-  <!-- Profile -->
-  <div class="profile">
-    <div class="is-shadow is-near is-hidden-mobile"></div>
-    <div class="is-shadow is-far is-hidden-mobile"></div>
-    <section id="profile" class="main-banner has-bg-img">
-      <div class="columns is-bold">
-        <div class="column is-2 has-text-centered">
-          <div class="is-flex is-horizontal-center">
-            <figure class="image is-128x128">
-              <img class="is-rounded has-border-white" src="assets/images/avatar.jpg">
-            </figure>
-          </div>
-          <br>
-          <a href="https://twitter.com/thedragonring">
-            <span class="icon">
-              <i class="fab fa-twitter"></i>
-            </span>
-          </a>
-          <a href="https://github.com/thedragonring">
-            <span class="icon">
-              <i class="fab fa-github"></i>
-            </span>
-          </a>
-          <a href="https://glitch.com/@thedragonring">
-            <span class="icon">
-              <i class="fas fa-code"></i>
-            </span>
-          </a>
-          <a href="https://boxofdevs.com/discord">
-            <span class="icon">
-              <i class="fab fa-discord"></i>
-            </span>
-          </a>
-          <a href="mailto:thedragonring.bod@gmail.com">
-            <span class="icon">
-              <i class="fas fa-envelope"></i>
-            </span>
-          </a>
-        </div>
-        <div class="column is-5 banner-text">
-          <hr class="is-hidden-tablet">
-          <br class="is-hidden-touch">
-          <p class="subtitle">Hey! I'm a self-taught 14-year-old programmer who's often confused and loves reading books.
-          </p>
-          <hr>
-          <p class="title">TheDragonRing</p>
-        </div>
-      </div>
-      <br>
-      <div class="tabs is-medium is-centered is-boxed is-hidden-desktop">
-        <ul>
-          <li class="is-active">
-            <a>
-              <span></span>
+    <!-- Loading -->
+    <div class="loading">
+    </div>
+
+    <!-- Profile -->
+    <div class="profile">
+      <div class="is-shadow is-near is-hidden-mobile"></div>
+      <div class="is-shadow is-far is-hidden-mobile"></div>
+      <section id="profile" class="main-banner has-bg-img">
+        <div class="columns is-bold">
+          <div class="column is-2 has-text-centered">
+            <div class="is-flex is-horizontal-center">
+              <figure class="image is-128x128">
+                <img class="is-rounded has-border-white" src="assets/images/avatar.jpg">
+              </figure>
+            </div>
+            <br>
+            <a href="https://twitter.com/thedragonring">
+              <span class="icon">
+                <i class="fab fa-twitter"></i>
+              </span>
             </a>
-          </li>
-        </ul>
-      </div>
+            <a href="https://github.com/thedragonring">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+            </a>
+            <a href="https://glitch.com/@thedragonring">
+              <span class="icon">
+                <i class="fas fa-code"></i>
+              </span>
+            </a>
+            <a href="https://boxofdevs.com/discord">
+              <span class="icon">
+                <i class="fab fa-discord"></i>
+              </span>
+            </a>
+            <a href="mailto:thedragonring.bod@gmail.com">
+              <span class="icon">
+                <i class="fas fa-envelope"></i>
+              </span>
+            </a>
+          </div>
+          <div class="column is-5 banner-text">
+            <hr class="is-hidden-tablet">
+            <br class="is-hidden-touch">
+            <p class="subtitle">Hey! I'm a self-taught 14-year-old programmer who's often confused and loves reading books.
+            </p>
+            <hr>
+            <p class="title">TheDragonRing</p>
+          </div>
+        </div>
+        <br>
+        <div class="tabs is-medium is-centered is-boxed is-hidden-desktop">
+          <ul>
+            <li class="is-active">
+              <a>
+                <span></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <!-- Work -->
+    <section id="work" class="work columns">
+      <div class="column" id="col1"></div>
+      <div class="column" id="col2"></div>
+      <div class="column" id="col3"></div>
+      <div class="column" id="col4"></div>
     </section>
+
+    <a class="button is-rounded about-trigger modal-button" data-target="#about">
+      <span class="icon">
+        <i class="fas fa-book"></i>
+      </span>
+      <span>About</span>
+    </a>
+    <div class="modal" id="about">
+      <div class="modal-background" data-close-modal="#about"></div>
+      <div class="modal-card">
+        <section class="modal-card-body">
+          <button class="delete" aria-label="close" data-close-modal="#about">
+          </button>
+          <div class="content">
+            <h3>Hey</h3>
+            <p>I'm a teenage Australian web developer.</p>
+            <h3>Skills</h3>
+            <p>I started off attempting to build stuff with PHP (before I'd learnt the language) in January 2015. That only
+              partially worked out. Partway through 2016, I decided to learn something new.
+              <br> HTML and CSS were simple enough, yet still painful enough to present a challenge. I was making websites, but
+              they had no functionality. Time for some JavaScript.
+              <br> Currently, I build websites like this, and use JS for most of my projects. I'm building a JavaScript library
+              (Termy), working on a Discord bot with Node.js, and learning Python.
+              <br> So... HTML, CSS, JS, PHP and (soon) Python.</p>
+            <h3>Interests</h3>
+            <p>As you can probably tell, I like programming. I also happen to be sightly addicted to reading (mainly fiction
+              novels). People say I read too much, but that's impossible... right?
+              <br> Playing Minecraft is another hobby of mine - a great way to express creativity. I build big and small on my
+              creative worlds, and a part of a few thriving survival realms.</p>
+            <hr>
+            <blockquote>
+              <i>“Theory is when you know something, but it doesn’t work. Practice is when something works, but you don’t know
+                why. Programmers combine theory and practice: Nothing works and they don’t know why.”</i>
+              <br>
+              <span class="has-padded-tab">- Unknown (but accurate)</span>
+            </blockquote>
+            <blockquote>
+              <i>“A reader lives a thousand lives before he dies. The man who never reads lives only one.”</i>
+              <br>
+              <span class="has-padded-tab">- George R. R. Martin</span>
+            </blockquote>
+            <blockquote>
+              <i>“Imagination is the beginning of creation. You imagine what you desire, you will what you imagine, and at last,
+                you create what you will.”</i>
+              <br>
+              <span class="has-padded-tab">- George Bernard Shaw</span>
+            </blockquote>
+          </div>
+        </section>
+      </div>
+    </div>
+
   </div>
 
-  <!-- Work -->
-  <section id="work" class="work columns">
-    <div class="column">
-      <div id="termy" class="card with-shadow pop" data-pop-delay="1">
-        <div class="card-image">
-          <figure class="image">
-            <img src="https://github.com/TheDragonRing/termy/raw/master/termy.gif">
-          </figure>
-        </div>
-        <footer class="card-header card-footer">
-          <a href="./termy" class="card-footer-item">
-            <span class="icon is-small">
-              <i class="fas fa-eye"></i>
-            </span>
-            <span class="has-icon-left">View</span>
-          </a>
-          <a href="https://github.com/TheDragonRing/termy/archive/master.zip" class="card-footer-item">
-            <span class="icon is-small">
-              <i class="fas fa-download"></i>
-            </span>
-            <span class="has-icon-left">Download</span>
-          </a>
-          <a href="https://github.com/TheDragonRing/termy" class="card-footer-item">
-            <span class="icon is-small">
-              <i class="fas fa-code"></i>
-            </span>
-            <span class="has-icon-left">Code</span>
-          </a>
-        </footer>
-        <div class="card-content">
-          <p class="is-size-4">Termy</p>
-          <div class="content">
-            An easily customisable web terminal interface built with JavaScript for menus, games and whatever else you can come up with!
-            <br>
-            <strong>Used:</strong> JS, jQuery, typed.js
-            <br>
-            <strong>Initiated:</strong> December 2017
-            <br>
-            <strong>License:</strong> MIT License
-            <br>
-            <strong>Status:</strong> Active
-            <!-- <br>
-            <a class="button is-primary is-rounded">
-              More...</a>
-            <br> -->
-          </div>
-        </div>
-      </div>
-      <br>
-      <div id="unumico" class="card with-shadow pop" data-pop-delay="5">
-        <div class="card-image">
-          <figure class="image">
-            <img src="assets/images/work/unumico.jpg">
-          </figure>
-        </div>
-        <footer class="card-header card-footer">
-          <a href="./unumico" class="card-footer-item">
-            <span class="icon is-small">
-              <i class="fas fa-eye"></i>
-            </span>
-            <span class="has-icon-left">View</span>
-          </a>
-          <a href="https://github.com/TheDragonRing/unumico/archive/master.zip" class="card-footer-item">
-            <span class="icon is-small">
-              <i class="fas fa-download"></i>
-            </span>
-            <span class="has-icon-left">Download</span>
-          </a>
-          <a href="https://github.com/TheDragonRing/unumico" class="card-footer-item">
-            <span class="icon is-small">
-              <i class="fas fa-code"></i>
-            </span>
-            <span class="has-icon-left">Code</span>
-          </a>
-        </footer>
-        <div class="card-content">
-          <p class="is-size-4">Unumico</p>
-          <div class="content">
-            This is a small one-page website template that can be used to build simple, but nice, websites for almost anything.
-            <br>
-            <strong>Used:</strong> HTML, CSS, FontAwesome, JS, jQuery
-            <br>
-            <strong>Initiated:</strong> April - May 2017
-            <br>
-            <strong>License:</strong> MIT License
-            <br>
-            <strong>Status:</strong> Complete
-          </div>
-        </div>
-      </div>
-      <br>
-      <div id="old1" class="card with-shadow pop" data-pop-delay="9">
-        <div class="card-image">
-          <figure class="image">
-            <img src="assets/images/work/old1.jpg">
-          </figure>
-        </div>
-        <footer class="card-header card-footer">
-          <a href="old/1" class="card-footer-item">
-            <span class="icon is-small">
-              <i class="fas fa-eye"></i>
-            </span>
-            <span class="has-icon-left">View</span>
-          </a>
-        </footer>
-        <div class="card-content">
-          <p class="is-size-4">thedragonring.me v1</p>
-          <div class="content">
-            Version 1 of my website.
-            <br>
-            <strong>Used:</strong> HTML, XML, CSS, FontAwesome, JS, jQuery
-            <br>
-            <strong>Initiated:</strong> January 2017
-            <br>
-            <strong>License:</strong> MIT License
-            <br>
-            <strong>Status:</strong> Archived
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="column">
-      <div id="red-dragon" class="card with-shadow pop" data-pop-delay="2">
-        <div class="card-image">
-          <figure class="image">
-            <img src="assets/images/work/builds/red-dragon.jpg">
-          </figure>
-        </div>
-        <div class="card-content">
-          <p class="is-size-4">Red Dragon</p>
-          <div class="content">
-            I like dragons, so I built one. Sadly, he has no tail.
-            <br>
-            <strong>Used:</strong> Minecraft: Windows 10 Edition
-            <br>
-            <strong>Initiated:</strong> December 2017
-            <br>
-            <strong>License:</strong> MIT License
-            <br>
-            <strong>Status:</strong> Complete
-          </div>
-        </div>
-      </div>
-      <br>
-      <div id="alphahex" class="card with-shadow pop" data-pop-delay="6">
-        <div class="card-image">
-          <figure class="image">
-            <img src="assets/images/work/alphahex.jpg">
-          </figure>
-        </div>
-        <footer class="card-header card-footer">
-          <a href="./alphahex" class="card-footer-item">
-            <span class="icon is-small">
-              <i class="fas fa-eye"></i>
-            </span>
-            <span class="has-icon-left">View</span>
-          </a>
-          <a href="https://github.com/TheDragonRing/alphahex/archive/master.zip" class="card-footer-item">
-            <span class="icon is-small">
-              <i class="fas fa-download"></i>
-            </span>
-            <span class="has-icon-left">Download</span>
-          </a>
-          <a href="https://github.com/TheDragonRing/alphahex" class="card-footer-item">
-            <span class="icon is-small">
-              <i class="fas fa-code"></i>
-            </span>
-            <span class="has-icon-left">Code</span>
-          </a>
-        </footer>
-        <div class="card-content">
-          <p class="is-size-4">Alphahex</p>
-          <div class="content">
-            This is the first website template I have ever made from scratch. It was mostly a learning experience to see what I could
-            do and add to my skills.
-            <br>
-            <strong>Used:</strong> HTML, XML, CSS, FontAwesome, JS, jQuery
-            <br>
-            <strong>Initiated:</strong> January - February 2017
-            <br>
-            <strong>License:</strong> MIT License
-            <br>
-            <strong>Status:</strong> Complete
-          </div>
-        </div>
-      </div>
-      <br>
-      <div id="old2" class="card with-shadow pop" data-pop-delay="10">
-        <div class="card-image">
-          <figure class="image">
-            <img src="assets/images/work/old2.jpg">
-          </figure>
-        </div>
-        <footer class="card-header card-footer">
-          <a href="old/2" class="card-footer-item">
-            <span class="icon is-small">
-              <i class="fas fa-eye"></i>
-            </span>
-            <span class="has-icon-left">View</span>
-          </a>
-        </footer>
-        <div class="card-content">
-          <p class="is-size-4">thedragonring.me v2</p>
-          <div class="content">
-            Version 2 of my website.
-            <br>
-            <strong>Used:</strong> HTML, CSS, FontAwesome, JS, jQuery
-            <br>
-            <strong>Initiated:</strong> April - May 2017
-            <br>
-            <strong>License:</strong> MIT License
-            <br>
-            <strong>Status:</strong> Archived
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="column">
-      <div id="slime" class="card with-shadow pop" data-pop-delay="3">
-        <div class="card-image">
-          <figure class="image">
-            <img src="assets/images/work/builds/slime.jpg">
-          </figure>
-        </div>
-        <div class="card-content">
-          <p class="is-size-4">Slime</p>
-          <div class="content">
-            Just a slime wearing a hat in midair.
-            <br>
-            <strong>Used:</strong> Minecraft: Windows 10 Edition
-            <br>
-            <strong>Initiated:</strong> February 2018
-            <br>
-            <strong>License:</strong> MIT License
-            <br>
-            <strong>Status:</strong> Complete
-          </div>
-        </div>
-      </div>
-      <br>
-      <div id="skin-statue" class="card with-shadow pop" data-pop-delay="7">
-        <div class="card-image">
-          <figure class="image">
-            <img src="assets/images/work/builds/skin-statue.jpg">
-          </figure>
-        </div>
-        <div class="card-content">
-          <p class="is-size-4">Skin Statue</p>
-          <div class="content">
-            I was bored, so I built a statue of my Minecraft skin.
-            <br>
-            <strong>Used:</strong> Minecraft: Windows 10 Edition
-            <br>
-            <strong>Initiated:</strong> Sometime in 2016 &amp; February 2018
-            <br>
-            <strong>License:</strong> MIT License
-            <br>
-            <strong>Status:</strong> Complete
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="column">
-      <!--div id="hidecoords" class="card with-shadow pop" data-pop-delay="4">
-        <div class="card-image">
-          <figure class="image">
-            <img src="assets/images/work/hidecoords.jpg">
-          </figure>
-        </div>
-        <footer class="card-header card-footer">
-          <a href="#" class="card-footer-item">
-            <span class="icon is-small">
-              <i class="fas fa-file-archive"></i>
-            </span>
-            <span class="has-icon-left">.ZIP</span>
-          </a>
-          <a href="#" class="card-footer-item">
-            <span class="icon is-small">
-              <i class="fas fa-download"></i>
-            </span>
-            <span class="has-icon-left">.MCPACK</span>
-          </a>
-          <a href="#" class="card-footer-item">
-            <span class="icon is-small">
-              <i class="fas fa-code"></i>
-            </span>
-            <span class="has-icon-left">Code</span>
-          </a>
-        </footer>
-        <div class="card-content">
-          <p class="is-size-4">HideCoords</p>
-          <div class="content">
-            A simple add-on to hide your coordinates - useful if you're on a realm or world with them turned on and you want them off
-            for yourself, but still on for others.
-            <br>
-            <strong>Used:</strong> JSON
-            <br>
-            <strong>Initiated:</strong> February 2018
-            <br>
-            <strong>License:</strong> MIT License
-            <br>
-            <strong>Status:</strong> Complete
-          </div>
-        </div>
-      </div-->
-      <br>
-      <div id="fancy-storage" class="card with-shadow pop" data-pop-delay="4">
-        <div class="card-image">
-          <figure class="image">
-            <img src="assets/images/work/builds/fancy-storage.jpg">
-          </figure>
-        </div>
-        <div class="card-content">
-          <p class="is-size-4">Fancy Storage</p>
-          <div class="content">
-            A fancy storage system I made on season 1 of the Quantum Craft realm.
-            <br>
-            <strong>Used:</strong> Minecraft: Windows 10 Edition
-            <br>
-            <strong>Initiated:</strong> October - November 2017
-            <br>
-            <strong>License:</strong> MIT License
-            <br>
-            <strong>Status:</strong> Complete
-          </div>
-        </div>
-      </div>
-      <br>
-      <div id="fireworks" class="card with-shadow pop" data-pop-delay="8">
-        <div class="card-image">
-          <figure class="image">
-            <img src="assets/images/work/fireworks.jpg">
-          </figure>
-        </div>
-        <footer class="card-header card-footer">
-          <a href="https://github.com/TheDragonRing/fireworks/archive/master.zip" class="card-footer-item">
-            <span class="icon is-small">
-              <i class="fas fa-file-archive"></i>
-            </span>
-            <span class="has-icon-left">.ZIP</span>
-          </a>
-          <a href="https://github.com/TheDragonRing/fireworks/raw/master/fireworks.mcaddon" class="card-footer-item">
-            <span class="icon is-small">
-              <i class="fas fa-download"></i>
-            </span>
-            <span class="has-icon-left">.MCPACK</span>
-          </a>
-          <a href="https://github.com/TheDragonRing/fireworks" class="card-footer-item">
-            <span class="icon is-small">
-              <i class="fas fa-code"></i>
-            </span>
-            <span class="has-icon-left">Code</span>
-          </a>
-        </footer>
-        <div class="card-content">
-          <p class="is-size-4">Fireworks</p>
-          <div class="content">
-            We all love fireworks, don't we? And since Minecraft: PE &amp; Win10 Edition didn't have fireworks... I added them! Fire
-            Charges have been replaced with magnificent exploding balls of colour to light up your night sky!
-            <br>
-            <strong>Used:</strong> JSON &amp; Adobe Photoshop CC
-            <br>
-            <strong>Initiated:</strong> January - February 2017
-            <br>
-            <strong>License:</strong> MIT License
-            <br>
-            <strong>Status:</strong> Archived (outdated)
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Javascript Requirement Alert -->
+  <noscript>
+    To access this site JavaScript must be enabled.
+    <br> Head over to
+    <a href="https://www.enable-javascript.com/" target="_blank">this site</a> for instructions on enabling JavaScript in your web browser.
+  </noscript>
+  <script>
+    document.getElementById('html-body-div').style.display = 'block';
+  </script>
 
 </body>
 

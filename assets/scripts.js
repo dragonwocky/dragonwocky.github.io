@@ -226,6 +226,7 @@ window.onload = () => {
               <section class="modal-card-body">
                 <button class="delete" aria-label="close" data-close-modal="#fancy-storage .modal">
                 </button>
+                <br>
                 <img src="${loadAnimation}" style="width: 100%"
                     data-src="assets/images/work/builds/fancy-storage/wood.jpg"
                     alt="wood" />
@@ -325,7 +326,7 @@ window.onload = () => {
       ${
         project.image
           ? `<div class="card-image">
-        <figure class="image">
+        <figure class="image" style="min-height: 150px">
           <img src="${project.image}">
         </figure>
       </div>`

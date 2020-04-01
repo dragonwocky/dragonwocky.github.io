@@ -1,40 +1,22 @@
-1;
-1;
-1;
-1;
-1;
-1;
-1;
-1;
-1;
-1;
-1;
-1;
-1;
-1;
-1;
-1;
-1;
-1;
-1;
-1;
-1;
+/*
+ * dragonwocky.me
+ * (c) 2020 dragonwocky <thedragonring.bod@gmail.com>
+ * (https://dragonwocky.me/) under the MIT license
+ */
 
+let constructed = false;
 const construct = () => {
-  const calc = (a, b) => {
-    const per = Number((a / b).toFixed(1));
-    if (!Number.isFinite(per) || isNaN(per) || per === 0) return -15;
-    if (per > 0.5) return per * 15;
-    return per + 0.5 * -15;
-  };
+  if (document.readyState !== 'complete' || constructed) return false;
+  constructed = true;
 
-  document.querySelectorAll('.portfolio section').forEach(el => {
-    el.addEventListener('mousemove', ev => {
-      requestAnimationFrame(() => {
-        el.style.setProperty('--mouseX', calc(ev.offsetX, el.offsetWidth));
-        el.style.setProperty('--mouseY', calc(ev.offsetY, el.offsetHeight));
-      });
-    });
+  const portfolio = document.querySelectorAll('.portfolio > section');
+  VanillaTilt.init(portfolio, {
+    reverse: true,
+    max: 15,
+    scale: 1.04,
+    speed: 500,
+    glare: true,
+    'max-glare': 0.05
   });
 };
 

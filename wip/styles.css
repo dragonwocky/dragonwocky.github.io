@@ -199,11 +199,6 @@ body {
   border-top: 4px solid #850000;
   box-shadow: 0 0 10px #000;
   cursor: pointer;
-  transition: transform 150ms ease;
-}
-.portfolio section:hover {
-  transform: scale(1.04) rotateX(calc(var(--mouseY) * 1deg))
-    rotateY(calc(var(--mouseX) * -1deg));
 }
 .portfolio section h2 {
   font-size: 1em;
@@ -213,20 +208,6 @@ body {
 .portfolio section a {
   color: #eee;
   text-decoration: dotted underline;
-}
-
-@media screen and (max-width: 1024px) {
-  :host {
-    min-width: 80vw;
-    padding: 0 10px;
-    justify-content: center;
-    margin: 50px 0;
-  }
-  .cards {
-    grid-template-columns: repeat(auto-fill, minmax(60vw, 0.9fr));
-    min-width: 100%;
-    height: 100%;
-  }
 }
 
 code {

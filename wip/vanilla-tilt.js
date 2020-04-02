@@ -366,23 +366,12 @@ var VanillaTilt = (function () {
           ? (values.percentageY * this.settings['max-glare']) / 100
           : 0;
 
-      this.element.style.transform =
-        'perspective(' +
-        this.settings.perspective +
-        'px) ' +
-        'rotateX(' +
-        (this.settings.axis === 'x' ? 0 : values.tiltY) +
-        'deg) ' +
-        'rotateY(' +
-        (this.settings.axis === 'y' ? 0 : values.tiltX) +
-        'deg) ' +
-        'scale3d(' +
-        scale +
-        ', ' +
-        scale +
-        ', ' +
-        scale +
-        ')';
+      this.element.style.transform = `
+        perspective(${this.settings.perspective}px)
+        rotateX(${this.settings.axis === 'x' && hovered ? 0 : values.tiltY}deg)
+        rotateY(${this.settings.axis === 'y' && hovered ? 0 : values.tiltX}deg)
+        scale3d(${scale}, ${scale}, ${scale})
+      `;
 
       if (this.glare) {
         this.glareElement.style.transform = `rotate(${values.angle}deg) translate(-50%, -50%)`;

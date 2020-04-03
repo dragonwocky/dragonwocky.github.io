@@ -9,9 +9,7 @@ data.posts = data.posts || [];
   const template = await fsp.readFile('./template.html', 'utf8');
   data.contact = data.contact.map(
     entry => `
-      <li class="badge" ${
-        entry.colour ? `style="--badge: ${entry.colour}"` : ''
-      }>
+      <li class="badge" style="--badge: ${entry.colour}">
         <a href="${entry.url}">
           <b><img
               src="${entry.image}"
@@ -25,7 +23,7 @@ data.posts = data.posts || [];
   );
   data.portfolio = data.portfolio.map(
     entry => `
-        <section style="border-top-color: ${entry.colour};">
+        <section style="--card: ${entry.colour};">
           <a href="${entry.url}" class="card-link"></a>
           <div class="card-content">
             <h3>${entry.name}</h3>
@@ -34,7 +32,7 @@ data.posts = data.posts || [];
               entry.badges
                 ? '<ul>' +
                   (entry.badges.github
-                    ? `<li class="badge" style="--badge: #b7c0cbb4" ${
+                    ? `<li class="badge" style="--badge: #858c93" ${
                         entry.badges.npm
                           ? ''
                           : `data-githubV="${entry.badges.github}"`

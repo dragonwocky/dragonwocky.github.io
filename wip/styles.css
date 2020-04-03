@@ -5,38 +5,41 @@
  */
 
 :root {
-  --primary: #5b2c12;
-  --absolute: #000;
-  --contrast: #fff;
+  --primary: #f31145;
   --text: rgba(0, 0, 0, 0.84);
   --link: var(--primary);
-  --grey: #6f6f6f;
-  --bg: #fbfcfc;
-  --box: #f2f3f4;
-  --code: #f7f9f9;
-  --button: #eee;
-  --border: #e5e7e9;
-  --shadow: #eee;
   --glow: transparent;
-  --scroll: #e9e9e9;
-  --hover: #dedede;
+
+  --bg: #f5f5f5;
+  --box: #f7f7f7;
+  --shadow: #e7e7e7;
+
+  --light-grey: #888;
+  --dark-grey: #52555c;
+
+  --scroll: #b2b2b2;
+  --scroll-hover: #d3d3d3;
+
+  --button: #e9e9e9;
+  --badge: #333333;
+  --card: var(--primary);
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --absolute: #fff;
-    --contrast: #000;
     --text: #ddd;
-    --link: #603620;
-    --grey: #52555c;
-    --bg: #0e0f0f;
-    --box: #050505;
-    --code: #000;
-    --button: #2d2d2d;
-    --border: #2d2e2f;
-    --shadow: #070707;
     --glow: var(--primary);
-    --scroll: #202225;
-    --hover: #36393f;
+
+    --bg: #0e0f0f;
+    --box: #080808;
+    --shadow: #070707;
+
+    --light-grey: #ccc;
+
+    --scroll: #1e2021;
+    --scroll-hover: #282a2b;
+
+    --button: #2d2d2d;
+    --badge: #020202;
   }
 }
 
@@ -83,10 +86,11 @@ h2 {
   margin: 2em;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 .bio div img {
   width: 11em;
-  box-shadow: 0 0 20px #000;
+  box-shadow: 0 0 20px var(--shadow);
   border-radius: 50%;
 }
 .bio h1 {
@@ -102,13 +106,12 @@ section ul {
 }
 .slide {
   position: relative;
-  animation: slide 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: slide 150ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .badge {
   display: block;
   margin: 0.5em 0;
-  --badge: rgba(0, 0, 0, 0.84);
 }
 .badge img,
 .badge svg {
@@ -127,20 +130,20 @@ section ul {
 .badge a {
   line-height: calc(1.65em + 5px);
   vertical-align: middle;
-  color: #eee;
+  color: var(--text);
   padding: 5px 0;
 }
 .badge a b {
   background-color: var(--button);
   font-weight: normal;
+  box-shadow: inset 0 0 3px var(--shadow);
   padding: 5px 10px 5px 6px;
-  box-shadow: inset 0 0 3px #000;
   z-index: 1;
 }
 .badge a span {
-  color: #eee;
   background: var(--badge);
-  padding: 4.8px 9px;
+  color: #fafafa;
+  padding: 5px 9px;
 }
 
 .bio nav {
@@ -152,13 +155,13 @@ section ul {
 .bio nav li a {
   margin: 1em 1em 1em 0;
   font-weight: bold;
-  color: #ccc;
+  color: var(--light-grey);
   font-weight: bold;
   transition: font-weight 150ms ease;
 }
 .bio nav li a.active {
-  color: #f31145;
-  text-shadow: 0 0 0.75em #f31145;
+  color: var(--link);
+  text-shadow: 0 0 0.75em var(--glow);
 }
 .bio nav li a:hover {
   font-weight: lighter;
@@ -170,19 +173,14 @@ main {
   flex-wrap: wrap;
 }
 section {
-  max-width: calc(66% - 2em);
-  flex-grow: 1;
+  flex: 1 1 100%;
   margin: 1em;
   padding: 1em 1.4em;
   border-radius: 2px;
-  border-top: 4px solid #850000;
-  box-shadow: 0 0 10px #000;
-  background: #0a0a0a;
-  color: #eee;
+  border-top: 4px solid var(--card);
+  box-shadow: 0 0 10px var(--shadow);
+  background: var(--box);
   cursor: pointer;
-}
-section:nth-child(3n + 1) {
-  max-width: calc(33% - 2em);
 }
 section .card-link {
   width: 100%;
@@ -202,7 +200,7 @@ section p {
   margin: 0 0 1em 0;
 }
 section p a {
-  color: #eee;
+  color: var(--text);
   text-decoration: dotted underline;
 }
 section .badge {
@@ -225,11 +223,11 @@ footer {
   width: 100%;
   margin: 2em 1.6em;
   font-size: 0.8em;
-  color: var(--grey);
+  color: var(--dark-grey);
 }
 footer a {
   text-decoration: dotted underline;
-  color: var(--grey);
+  color: var(--dark-grey);
 }
 
 code {
@@ -249,30 +247,39 @@ code:before {
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-corner {
   background-color: transparent;
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  background-color: #1e2021;
+  background-color: var(--scroll);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #282a2b;
+  background: var(--scroll-hover);
 }
 
 @media (min-width: 769px) {
   body {
     display: grid;
-    grid-template-columns: 2fr 5fr;
+    grid-template-columns: 2fr 5.5fr;
+  }
+  .bio {
+    margin-right: 0;
   }
   main {
     overflow-y: auto;
   }
   footer {
     text-align: right;
+  }
+  section {
+    flex-basis: calc(33% - 2em);
+  }
+  section:nth-of-type(3n) {
+    flex-basis: calc(55% - 2em);
   }
 }
 @media (max-width: 768px) {

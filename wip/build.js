@@ -49,7 +49,6 @@ data.posts = data.posts || [];
                         <a href="https://www.npmjs.com/package/${entry.badges.npm}">
                           <b><img
                               src="https://raw.githubusercontent.com/npm/logos/master/npm%20logo/npm-logo-red.png"
-                              style="width: 1.25em; height: auto"
                             />npm</b>
                         </a>
                       </li>`
@@ -57,7 +56,7 @@ data.posts = data.posts || [];
                   (entry.badges.license.length
                     ? `<li class="badge" style="--badge: ${entry.colour}">
                         <a href="${entry.badges.license[1]}">
-                          <b>license</b><span>${entry.badges.license[0]}</span>
+                          <b><svg></svg>license</b><span>${entry.badges.license[0]}</span>
                         </a>
                       </li>`
                     : '') +

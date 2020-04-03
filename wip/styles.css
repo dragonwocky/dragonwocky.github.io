@@ -62,6 +62,12 @@ body {
   font-family: 'Nunito Sans', sans-serif;
 }
 
+h2 {
+  font-size: 1em;
+  font-weight: normal;
+  margin: 0 0 1em 0;
+}
+
 @keyframes slide {
   0% {
     z-index: -1;
@@ -71,38 +77,9 @@ body {
     z-index: -1;
   }
   100% {
-    z-index: 0;
+    z-index: auto;
     right: 0%;
   }
-}
-
-h2 {
-  font-size: 1em;
-  font-weight: normal;
-  margin: 0 0 1em 0;
-}
-
-.bio {
-  margin: 2em;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-}
-.bio div img {
-  width: 11em;
-  box-shadow: 0 0 20px var(--shadow);
-  border-radius: 50%;
-}
-.bio h1 {
-  font-size: 2em;
-  margin: 0;
-}
-.bio .contact,
-.bio nav ol,
-section ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
 }
 .slide {
   position: relative;
@@ -110,34 +87,31 @@ section ul {
 }
 
 .badge {
-  display: block;
   margin: 0.5em 0;
 }
 .badge img,
 .badge svg {
-  height: 1.25em;
-  width: auto;
+  max-height: 1.25em;
+  max-width: 1.25em;
   margin: 0 0.4em 0 0.25em;
   display: inline-block;
   vertical-align: middle;
 }
-.badge a *:first-child:not(img):not(svg) {
-  padding-left: 10px;
-}
-.badge a b:last-child {
-  padding-right: 15px;
+.badge svg:empty {
+  max-width: 0.4em;
+  margin: 0;
 }
 .badge a {
   line-height: calc(1.65em + 5px);
   vertical-align: middle;
-  color: var(--text);
   padding: 5px 0;
+  color: var(--text);
 }
 .badge a b {
   background-color: var(--button);
-  font-weight: normal;
   box-shadow: inset 0 0 3px var(--shadow);
   padding: 5px 10px 5px 6px;
+  font-weight: normal;
   z-index: 1;
 }
 .badge a span {
@@ -145,25 +119,65 @@ section ul {
   color: #fafafa;
   padding: 5px 9px;
 }
+.badge a b:last-child {
+  padding-right: 15px;
+}
+section .badge {
+  display: inline-block;
+  margin-right: 7px;
+}
+section .badge b {
+  box-shadow: none;
+}
+section .badge a > :first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+section .badge a > :last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
 
-.bio nav {
+aside {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+aside div img {
+  width: 11em;
+  box-shadow: 0 0 20px var(--shadow);
+  border-radius: 50%;
+}
+aside h1 {
+  font-size: 2em;
+  margin: 0;
+}
+aside ul,
+aside ol,
+section ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+aside nav {
   margin-top: auto;
 }
-.bio nav ol li {
+aside nav ol li {
   display: inline-block;
 }
-.bio nav li a {
+aside nav li a {
   margin: 1em 1em 1em 0;
   font-weight: bold;
   color: var(--light-grey);
   font-weight: bold;
   transition: font-weight 150ms ease;
 }
-.bio nav li a.active {
+aside nav li a.active {
   color: var(--link);
   text-shadow: 0 0 0.75em var(--glow);
 }
-.bio nav li a:hover {
+aside nav li a:hover {
   font-weight: lighter;
 }
 
@@ -203,21 +217,6 @@ section p a {
   color: var(--text);
   text-decoration: dotted underline;
 }
-section .badge {
-  display: inline-block;
-  margin-right: 7px;
-}
-section .badge b {
-  box-shadow: none;
-}
-section .badge a > :first-child {
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-section .badge a > :last-child {
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
 
 footer {
   width: 100%;
@@ -228,22 +227,6 @@ footer {
 footer a {
   text-decoration: dotted underline;
   color: var(--dark-grey);
-}
-
-code {
-  user-select: text;
-  display: block;
-}
-code:before {
-  counter-increment: line;
-  content: counter(line) ' ';
-  color: var(--grey);
-  text-align: right;
-  width: 2.5em;
-  display: inline-block;
-  padding-right: 0.5em;
-  margin-right: 1em;
-  border-right: 2px solid var(--grey);
 }
 
 ::-webkit-scrollbar {
@@ -261,19 +244,21 @@ code:before {
   background: var(--scroll-hover);
 }
 
+@media (max-width: 1030px) and (min-width: 769px) {
+  aside {
+    font-size: 0.8em;
+  }
+}
 @media (min-width: 769px) {
   body {
     display: grid;
     grid-template-columns: 2fr 5.5fr;
   }
-  .bio {
-    margin-right: 0;
+  aside {
+    padding-right: 1em;
   }
   main {
     overflow-y: auto;
-  }
-  footer {
-    text-align: right;
   }
   section {
     flex-basis: calc(33% - 2em);
@@ -281,12 +266,12 @@ code:before {
   section:nth-of-type(3n) {
     flex-basis: calc(55% - 2em);
   }
+  footer {
+    text-align: right;
+  }
 }
 @media (max-width: 768px) {
   body {
-    text-align: center;
-  }
-  .bio nav ol {
     text-align: center;
   }
 }

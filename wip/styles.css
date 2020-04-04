@@ -118,6 +118,7 @@ h2 {
   margin: 0 0.4em 0 0.25em;
   display: inline-block;
   vertical-align: middle;
+  margin-bottom: 2.5px;
 }
 .badge svg:empty {
   max-width: 0.4em;
@@ -168,8 +169,8 @@ aside {
   background: var(--sidebar);
   color: #fff;
 }
-aside div img {
-  width: 11em;
+aside h1 img {
+  width: 11rem;
   border-radius: 50%;
 }
 aside ul,
@@ -323,6 +324,20 @@ footer a {
   }
   aside {
     padding-bottom: 1.5em;
+  }
+  aside h1 {
+    margin-bottom: 0.5em;
+    line-height: calc(1.65em + 5px);
+    vertical-align: middle;
+    padding: 5px 0;
+  }
+  aside h1 img {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.4em 0 0.25em;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 2.5px;
   }
   nav .active {
     border-bottom: 1px solid var(--link);

@@ -130,7 +130,13 @@ const construct = async () => {
           'githubV@portfolio/' + el.getAttribute('data-githubV')
         ] = res;
         badge(el, res);
-      });
+      })
+      .catch(err =>
+        badge(
+          el,
+          localStorage['githubV@portfolio/' + el.getAttribute('data-githubV')]
+        )
+      );
   });
   document.querySelectorAll('[data-npmV]').forEach(el => {
     fetch('https://api.npms.io/v2/package/' + el.getAttribute('data-npmV'))
@@ -140,7 +146,13 @@ const construct = async () => {
         if (!res) throw Error;
         localStorage['npmV@portfolio/' + el.getAttribute('data-npmV')] = res;
         badge(el, 'v' + res);
-      });
+      })
+      .catch(err =>
+        badge(
+          el,
+          localStorage['npmV@portfolio/' + el.getAttribute('data-npmV')]
+        )
+      );
   });
 };
 

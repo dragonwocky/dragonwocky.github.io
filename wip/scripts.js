@@ -19,7 +19,7 @@ class HashRouter {
       .map(entry => {
         const ID = entry.getAttribute('href');
         console.log(ID);
-        entry.onclick = async ev => {
+        entry.onclick = ev => {
           ev.preventDefault();
           this.set(ID);
         };
@@ -81,7 +81,7 @@ class HashRouter {
 }
 
 let constructed = false;
-const construct = async () => {
+const construct = () => {
   if (document.readyState !== 'complete' || constructed) return false;
   constructed = true;
 
@@ -94,6 +94,17 @@ const construct = async () => {
     speed: 500,
     glare: true,
     'max-glare': 0.02
+  });
+
+  function scrollTop() {
+    document.documentElement.scroll({ top: 0, behavior: 'smooth' });
+    document.querySelector('main').scroll({ top: 0, behavior: 'smooth' });
+  }
+  document.querySelectorAll('.backToTop').forEach(button => {
+    button.addEventListener('click', scrollTop);
+    button.addEventListener('keyup', ev =>
+      ev.key === 'Enter' ? scrollTop() : true
+    );
   });
 
   function badge(el, content) {
@@ -109,12 +120,6 @@ const construct = async () => {
         .forEach(child => child.classList.add('slide'));
     }
   }
-  document.querySelectorAll('.backToTop').forEach(button =>
-    button.addEventListener('click', ev => {
-      document.documentElement.scroll({ top: 0, behavior: 'smooth' });
-      document.querySelector('main').scroll({ top: 0, behavior: 'smooth' });
-    })
-  );
 
   document.querySelectorAll('[data-githubV]').forEach(el => {
     fetch(

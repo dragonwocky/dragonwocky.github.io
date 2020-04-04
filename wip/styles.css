@@ -15,13 +15,15 @@
   --bg: #fff;
   --box: #fcfcfc;
   --sidebar: #090909;
-  --shadow: #e7e7e7;
+  --shadow: rgba(15, 15, 15, 0.1);
 
   --light-grey: #ccc;
   --dark-grey: #52555c;
 
   --scroll: #b2b2b2;
   --scroll-hover: #d3d3d3;
+  --dark-scroll: #36393f;
+  --dark-scroll-hover: #4f5257;
 
   --button: #2d2d2d;
   --badge: var(--primary);
@@ -32,15 +34,15 @@
   :root {
     --text: #ddd;
 
-    --bg: #101010;
+    --bg: #0a0a0a;
     --box: #040404;
     --sidebar: #000;
-    --shadow: #070707;
+    --shadow: transparent;
 
-    --light-grey: #ccc;
+    --dark-grey: #8a8a8a;
 
-    --scroll: #202225;
-    --scroll-hover: #36393f;
+    --scroll: var(--dark-scroll);
+    --scroll-hover: var(--dark-scroll-hover);
     --card-button: var(--button);
   }
 }
@@ -62,6 +64,28 @@ body {
   color: var(--text);
   background-color: var(--bg);
   font-family: 'Quicksand', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: var(--scroll);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scroll-hover);
+}
+
+aside::-webkit-scrollbar-thumb {
+  background-color: var(--dark-scroll);
+}
+aside::-webkit-scrollbar-thumb:hover {
+  background: var(--dark-scroll-hover);
 }
 
 h1 {
@@ -127,7 +151,7 @@ h2 {
 .badge a {
   line-height: calc(1.65em + 5px);
   vertical-align: middle;
-  padding: 5px 0;
+  padding: 5px 0 7px 0;
   color: var(--light-text);
 }
 .badge b {
@@ -224,7 +248,7 @@ section {
   padding: 1em 1.4em;
   border-radius: 2px;
   border-top: 4px solid var(--card);
-  box-shadow: 0 0 10px var(--shadow);
+  box-shadow: var(--shadow) 8px 14px 38px, var(--shadow) 1px 3px 8px;
   background: var(--box);
 }
 section .card-link {
@@ -256,31 +280,18 @@ footer {
   color: var(--dark-grey);
   width: 100%;
 }
-footer button {
-  color: var(--text);
+footer .backToTop {
+  width: 2em;
+  height: 2em;
   background: var(--card-button);
   border: none;
   cursor: pointer;
-  padding: 0.1em 0.5em;
+  padding: 0.1em 0.2em;
+  border-radius: 5px;
 }
 footer a {
   text-decoration: dotted underline;
   color: var(--dark-grey);
-}
-
-::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
-}
-::-webkit-scrollbar-corner {
-  background-color: transparent;
-}
-::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  background-color: var(--scroll);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--scroll-hover);
 }
 
 @media (max-width: 1030px) and (min-width: 769px) {
@@ -314,8 +325,10 @@ footer a {
   footer br {
     display: none;
   }
-  footer button {
+  footer .backToTop {
     margin-left: 1em;
+    position: relative;
+    top: 0.5em;
   }
 }
 @media (max-width: 768px) {

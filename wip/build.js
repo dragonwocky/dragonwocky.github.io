@@ -9,7 +9,9 @@ data.posts = data.posts || [];
   const template = await fsp.readFile('./template.html', 'utf8');
   data.contact = data.contact.map(
     entry => `
-      <li class="badge" style="--badge: ${entry.colour}">
+      <li class="badge" ${
+        entry.colour ? `style="--badge: ${entry.colour}"` : ''
+      }>
         <a href="${entry.url}">
           <b><img
               src="${entry.image}"
@@ -23,7 +25,7 @@ data.posts = data.posts || [];
   );
   data.portfolio = data.portfolio.map(
     entry => `
-        <section style="--card: ${entry.colour};">
+        <section ${entry.colour ? `style="--card: ${entry.colour}"` : ''}>
           <a href="${entry.url}" class="card-link"></a>
           <div class="card-content">
             <h3>${entry.name}</h3>
@@ -54,9 +56,13 @@ data.posts = data.posts || [];
                       </li>`
                     : '') +
                   (entry.badges.license.length
-                    ? `<li class="badge" style="--badge: ${entry.colour}">
+                    ? `<li class="badge" ${
+                        entry.colour ? `style="--badge: ${entry.colour}"` : ''
+                      }>
                         <a href="${entry.badges.license[1]}">
-                          <b><svg></svg>license</b><span>${entry.badges.license[0]}</span>
+                          <b><svg></svg>license</b><span>${
+                            entry.badges.license[0]
+                          }</span>
                         </a>
                       </li>`
                     : '') +

@@ -119,7 +119,6 @@
     {
       "name": "notion-enhancer",
       "desc": "an enhancer/customiser for the all-in-one productivity workspace <a href='https://www.notion.so/'>notion.so</a>",
-      "colour": "#asdfghjkl;'",
       "url": "https://dragonwocky.me/notion-enhancer/#",
       "badges": {
         "github": "dragonwocky/notion-enhancer",

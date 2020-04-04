@@ -302,7 +302,7 @@ footer a {
 @media (min-width: 769px) {
   body {
     display: grid;
-    grid-template-columns: 2fr 5.5fr;
+    grid-template-columns: 25% 75%;
   }
   aside {
     padding-right: 1em;

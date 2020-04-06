@@ -221,7 +221,7 @@ aside nav li a.active {
   color: var(--link);
   text-shadow: 0 0 0.75em var(--link);
 }
-aside nav li a:hover {
+html:not([data-useragent*='Safari']) aside nav li a:hover {
   font-weight: lighter;
 }
 
@@ -250,6 +250,7 @@ section {
   border-top: 4px solid var(--card);
   box-shadow: var(--shadow) 8px 14px 38px, var(--shadow) 1px 3px 8px;
   background: var(--box);
+  position: relative;
 }
 section .card-link {
   width: 100%;

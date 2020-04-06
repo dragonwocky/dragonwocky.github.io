@@ -16,16 +16,15 @@ class HashRouter {
 
     this._nav = [...document.querySelectorAll('nav a[href^="#"]')];
     this._pages = this._nav
-      .map(entry => {
+      .map((entry) => {
         const ID = entry.getAttribute('href');
-        console.log(ID);
-        entry.onclick = ev => {
+        entry.onclick = (ev) => {
           ev.preventDefault();
           this.set(ID);
         };
         return document.getElementById(ID.slice(1));
       })
-      .filter(x => x);
+      .filter((x) => x);
     this._default = `#${this._pages[0].id}`;
     window.onhashchange = this.watchHash.bind(this);
 
@@ -41,14 +40,14 @@ class HashRouter {
   parseID(ID) {
     if (!ID || typeof ID !== 'string') ID = location.hash || this._default;
     if (!ID.startsWith('#')) ID = `#${ID}`;
-    if (!this._nav.find(el => el.getAttribute('href') === ID))
+    if (!this._nav.find((el) => el.getAttribute('href') === ID))
       ID = this._default;
     return ID;
   }
 
   highlightLink(ID) {
     this.ID = this.parseID(ID);
-    this._nav.forEach(el =>
+    this._nav.forEach((el) =>
       el.getAttribute('href') === this.ID
         ? el.classList.add('active')
         : el.classList.remove('active')
@@ -57,8 +56,7 @@ class HashRouter {
   }
   showPage(ID) {
     this.ID = this.parseID(ID);
-    console.log(this._pages);
-    this._pages.forEach(el =>
+    this._pages.forEach((el) =>
       `#${el.id}` === this.ID
         ? el.classList.add('visible')
         : el.classList.remove('visible')
@@ -85,6 +83,13 @@ const construct = () => {
   if (document.readyState !== 'complete' || constructed) return false;
   constructed = true;
 
+  document.documentElement.setAttribute('data-useragent', navigator.userAgent);
+  document.documentElement.setAttribute('data-platform', navigator.platform);
+  document.documentElement.className +=
+    !!('ontouchstart' in window) || !!('onmsgesturechange' in window)
+      ? ' touch'
+      : '';
+
   new HashRouter();
 
   VanillaTilt.init(document.querySelectorAll('#portfolio > section'), {
@@ -93,16 +98,16 @@ const construct = () => {
     scale: 1.03,
     speed: 500,
     glare: true,
-    'max-glare': 0.02
+    'max-glare': 0.02,
   });
 
   function scrollTop() {
     document.documentElement.scroll({ top: 0, behavior: 'smooth' });
     document.querySelector('main').scroll({ top: 0, behavior: 'smooth' });
   }
-  document.querySelectorAll('.backToTop').forEach(button => {
+  document.querySelectorAll('.backToTop').forEach((button) => {
     button.addEventListener('click', scrollTop);
-    button.addEventListener('keyup', ev =>
+    button.addEventListener('keyup', (ev) =>
       ev.key === 'Enter' ? scrollTop() : true
     );
   });
@@ -116,19 +121,19 @@ const construct = () => {
     while (next.nextSibling && next.nextSibling.offsetTop === el.offsetTop) {
       next = next.nextSibling;
       [...next.childNodes]
-        .filter(node => node instanceof HTMLElement)
-        .forEach(child => child.classList.add('slide'));
+        .filter((node) => node instanceof HTMLElement)
+        .forEach((child) => child.classList.add('slide'));
     }
   }
 
-  document.querySelectorAll('[data-githubV]').forEach(el => {
+  document.querySelectorAll('[data-githubV]').forEach((el) => {
     fetch(
       `https://api.github.com/repos/${el.getAttribute(
         'data-githubV'
       )}/releases/latest`
     )
-      .then(res => (res.ok ? res.json() : { message: 'Not Found' }))
-      .then(res => {
+      .then((res) => (res.ok ? res.json() : { message: 'Not Found' }))
+      .then((res) => {
         res = res.message !== 'Not Found' ? res.tag_name : 0;
         if (!res) throw Error;
         localStorage[
@@ -136,23 +141,24 @@ const construct = () => {
         ] = res;
         badge(el, res);
       })
-      .catch(err =>
+      .catch((err) =>
         badge(
           el,
           localStorage['githubV@portfolio/' + el.getAttribute('data-githubV')]
         )
       );
   });
-  document.querySelectorAll('[data-npmV]').forEach(el => {
+  document.querySelectorAll('[data-npmV]').forEach((el) => {
     fetch('https://api.npms.io/v2/package/' + el.getAttribute('data-npmV'))
-      .then(res => (res.ok ? res.json() : { message: 'Not Found' }))
-      .then(res => {
+      .then((res) => (res.ok ? res.json() : { message: 'Not Found' }))
+      .then((res) => {
         res = res.code !== 'NOT_FOUND' ? res.collected.metadata.version : 0;
         if (!res) throw Error;
-        localStorage['npmV@portfolio/' + el.getAttribute('data-npmV')] = res;
+        localStorage['npmV@portfolio/' + el.getAttribute('data-npmV')] =
+          'v' + res;
         badge(el, 'v' + res);
       })
-      .catch(err =>
+      .catch((err) =>
         badge(
           el,
           localStorage['npmV@portfolio/' + el.getAttribute('data-npmV')]

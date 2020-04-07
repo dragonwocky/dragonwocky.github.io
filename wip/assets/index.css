@@ -1,0 +1,149 @@
+/*
+ * dragonwocky.me
+ * (c) 2020 dragonwocky <thedragonring.bod@gmail.com>
+ * (https://dragonwocky.me/) under the MIT license
+ */
+
+@import './main.css';
+
+@keyframes slide {
+  0% {
+    z-index: -1;
+    right: 50%;
+  }
+  99% {
+    z-index: -1;
+  }
+  100% {
+    z-index: auto;
+    right: 0%;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.slide {
+  position: relative;
+  animation: slide 150ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+main > *:not(article):not(footer) {
+  display: none;
+}
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1em;
+}
+.card-container > h1 {
+  display: none;
+}
+article:not(.card-container) p br {
+  display: none;
+}
+article {
+  padding: 2em;
+  animation: fadeIn 500ms ease;
+}
+article:not(.visible) {
+  display: none;
+  animation: fadeOut 500ms ease;
+}
+
+article > h3 {
+  text-decoration: underline;
+}
+.card {
+  flex: 1 1 100%;
+  margin: 1em;
+  padding: 1em 1.4em;
+  border-radius: 2px;
+  border-top: 4px solid var(--card);
+  box-shadow: var(--shadow) 8px 14px 38px, var(--shadow) 1px 3px 8px;
+  background: var(--box);
+  position: relative;
+}
+.card .card-link {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.card .card-content a {
+  position: relative;
+  z-index: 1;
+}
+.card p {
+  font-size: 1em;
+  font-weight: normal;
+  margin: 0 0 1em 0;
+}
+.card p a {
+  color: var(--text);
+  text-decoration: dotted underline;
+}
+
+.card .badge b {
+  box-shadow: none;
+  color: var(--text);
+  background-color: var(--card-button);
+}
+.card .badge a > :first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.card .badge a > :last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+@media (min-width: 769px) {
+  main {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  article:not(.card-container) {
+    font-size: 1.1em;
+  }
+  .card {
+    flex-basis: calc(33% - 2em);
+  }
+  .card:nth-of-type(3n) {
+    flex-basis: calc(55% - 2em);
+  }
+}
+@media (max-width: 1030px) and (min-width: 769px) {
+  aside {
+    font-size: 0.8em;
+  }
+  article:not(.card-container) {
+    font-size: 1em;
+  }
+}
+@media (max-width: 768px) {
+  main {
+    text-align: center;
+  }
+  #hire-me {
+    padding-top: 0em;
+  }
+  #hire-me h1 {
+    display: none;
+  }
+}

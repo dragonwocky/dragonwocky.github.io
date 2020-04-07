@@ -1,0 +1,38 @@
+{
+  "contact": [
+    {
+      "title": "reddit",
+      "tag": "@thedragonring",
+      "colour": "#de3d02",
+      "url": "https://www.reddit.com/user/thedragonring",
+      "image": "https://styles.redditmedia.com/t5_6/styles/communityIcon_a8uzjit9bwr21.png"
+    },
+    {
+      "title": "github",
+      "tag": "@dragonwocky",
+      "colour": "#858c93",
+      "url": "https://github.com/dragonwocky",
+      "image": "https://github.githubassets.com/images/modules/logos_page/Octocat.png"
+    },
+    {
+      "title": "twitter",
+      "tag": "@dragonwocky",
+      "colour": "#3390c9",
+      "url": "https://twitter.com/dragonwocky",
+      "image": "https://maxcdn.icons8.com/Color/PNG/48/Social_Networks/twitter-48.png"
+    },
+    {
+      "title": "discord",
+      "tag": "@dragonwocky#8449",
+      "colour": "#6073b5",
+      "url": "https://discordapp.com/invite/g39aNQe",
+      "image": "https://discordapp.com/assets/f8389ca1a741a115313bede9ac02e2c0.svg"
+    },
+    {
+      "title": "email",
+      "tag": "thedragonring.bod@gmail.com",
+      "url": "mailto:thedragonring.bod@gmail.com",
+      "image": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/mozilla/36/envelope_2709.png"
+    }
+  ]
+}

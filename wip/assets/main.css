@@ -88,50 +88,6 @@ aside::-webkit-scrollbar-thumb:hover {
   background: var(--dark-scroll-hover);
 }
 
-h1 {
-  font-size: 2em;
-  margin: 0;
-}
-h2 {
-  font-size: 1em;
-  font-weight: normal;
-  margin: 0 0 1em 0;
-}
-
-@keyframes slide {
-  0% {
-    z-index: -1;
-    right: 50%;
-  }
-  99% {
-    z-index: -1;
-  }
-  100% {
-    z-index: auto;
-    right: 0%;
-  }
-}
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-.slide {
-  position: relative;
-  animation: slide 150ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
 .badge {
   margin: 0.5em 0;
 }
@@ -167,22 +123,9 @@ h2 {
 .badge b:last-child {
   padding-right: 15px;
 }
-section .badge {
+.card .badge {
   display: inline-block;
   margin-right: 7px;
-}
-section .badge b {
-  box-shadow: none;
-  color: var(--text);
-  background-color: var(--card-button);
-}
-section .badge a > :first-child {
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-section .badge a > :last-child {
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
 }
 
 aside {
@@ -193,13 +136,22 @@ aside {
   background: var(--sidebar);
   color: #fff;
 }
+aside h1 {
+  font-size: 2em;
+  margin: 0;
+}
 aside h1 img {
   width: 11rem;
   border-radius: 50%;
 }
+aside h2 {
+  font-size: 1em;
+  font-weight: normal;
+  margin: 0 0 1em 0;
+}
 aside ul,
 aside ol,
-section ul {
+.card ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -223,55 +175,6 @@ aside nav li a.active {
 }
 html:not([data-useragent*='Safari']) aside nav li a:hover {
   font-weight: lighter;
-}
-
-#portfolio {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 1em;
-}
-article:not(#portfolio) h3 {
-  text-decoration: underline;
-}
-
-article {
-  padding: 2em;
-  animation: fadeIn 500ms ease;
-}
-article:not(.visible) {
-  display: none !important;
-  animation: fadeOut 500ms ease;
-}
-section {
-  flex: 1 1 100%;
-  margin: 1em;
-  padding: 1em 1.4em;
-  border-radius: 2px;
-  border-top: 4px solid var(--card);
-  box-shadow: var(--shadow) 8px 14px 38px, var(--shadow) 1px 3px 8px;
-  background: var(--box);
-  position: relative;
-}
-section .card-link {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-}
-section .card-content a {
-  position: relative;
-  z-index: 1;
-}
-section p {
-  font-size: 1em;
-  font-weight: normal;
-  margin: 0 0 1em 0;
-}
-section p a {
-  color: var(--text);
-  text-decoration: dotted underline;
 }
 
 footer {
@@ -308,17 +211,6 @@ footer a {
   aside {
     padding-right: 1em;
   }
-  main {
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-  }
-  section {
-    flex-basis: calc(33% - 2em);
-  }
-  section:nth-of-type(3n) {
-    flex-basis: calc(55% - 2em);
-  }
   footer {
     text-align: right;
     padding: 2.5em;
@@ -333,10 +225,8 @@ footer a {
   }
 }
 @media (max-width: 768px) {
-  body {
-    text-align: center;
-  }
   aside {
+    text-align: center;
     padding-bottom: 1.5em;
   }
   aside h1 {
@@ -355,11 +245,5 @@ footer a {
   }
   nav .active {
     border-bottom: 1px solid var(--link);
-  }
-  #hire-me {
-    padding-top: 0em;
-  }
-  #hire-me h1 {
-    display: none;
   }
 }

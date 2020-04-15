@@ -1,0 +1,325 @@
+/*
+ * notion-py renderer ~ pygments theme
+ * (c) 2020 dragonwocky <thedragonring.bod@gmail.com>
+ * (https://dragonwocky.me/) under the MIT license
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+
+:root {
+  --code-inline: #1e4821;
+  --code-background: rgb(243, 243, 243);
+  --code-details: rgb(80, 80, 80);
+  --code-details_bg: rgb(233, 233, 233);
+  --code-generic: #000;
+  --code-generic_deleted: #461a25;
+  --code-generic_deleted_bg: #fdb8c0;
+  --code-generic_inserted: #24292e;
+  --code-generic_inserted_bg: #acf2bd;
+  --code-generic_output: #808080;
+  --code-generic_output_bg: #ececec;
+  --code-generic_heading: #ef5939;
+  --code-error: #bd1147; /* potentially some kind of string? */
+  --code-comment: #707070;
+  --code-comment_preproc: #4c2879;
+  --code-keyword: rgba(22, 77, 114, 0.84);
+  --code-keyword_constant: #4c2879;
+  --code-keyword_type: #4c2879;
+  --code-literal: rgba(0, 0, 0, 0.84);
+  --code-literal_number: #4c2879;
+  --code-literal_string: #d03869;
+  --code-literal_string_special: #960a36;
+  --code-name: rgb(44, 113, 65);
+  --code-name_builtin: #000;
+  --code-name_attribute: #07a;
+  --code-name_constant: #177f80;
+  --code-name_entity: #159828;
+  --code-name_function: #990000;
+  --code-name_tag: #151552;
+  --code-name_variable: #0086b3;
+  --code-operator: rgba(0, 0, 0, 0.84);
+  --code-punctuation: #458;
+  --code-whitespace: rgba(0, 0, 0, 0.05);
+  --code-highlight: #ffffcc;
+}
+
+.notion-page code {
+  font: 0.85em 'Source Code Pro', 'SFMono-Regular', Consolas, 'Liberation Mono',
+    Menlo, Courier, monospace;
+  background: var(--code-background);
+  color: var(--code-inline);
+  border-radius: 0.1em;
+  padding: 0.2em 0.4em;
+}
+
+.notion-page .notion-code {
+  position: relative;
+  font: 1.03225806em 'Source Code Pro', 'SFMono-Regular', Consolas,
+    'Liberation Mono', Menlo, Courier, monospace;
+  margin: 0.5em 0 0.5em calc(var(--level, 0) * 1.25rem);
+  padding: 0;
+}
+.notion-page .notion-code pre {
+  background: var(--code-background);
+  color: var(--code-generic);
+  border-radius: 0.3em;
+  margin: 0;
+  padding-right: 1em;
+  overflow-x: auto;
+}
+.notion-page .notion-code::before {
+  content: var(--code-lang, none);
+  color: var(--code-details);
+  font: 0.7em 'Source Code Pro', 'SFMono-Regular', Consolas, 'Liberation Mono',
+    Menlo, Courier, monospace;
+  font-weight: bold;
+  background: var(--code-details_bg);
+  border-bottom-left-radius: 0.05em;
+  border-top-right-radius: 0.3em;
+  position: absolute;
+  right: 0;
+  top: 0;
+  letter-spacing: -0.01em;
+  padding: 0.3em 1em;
+}
+
+/* line numbers */
+.notion-page .notion-code .lineno {
+  color: var(--code-details);
+  background: var(--code-details_bg);
+  display: inline-block;
+  padding: 0 0.25em 0 0.75em;
+  margin-right: 1.25em;
+  position: relative;
+  user-select: none;
+}
+.notion-page .notion-code pre > span:nth-child(2) .lineno {
+  padding-top: 2em;
+}
+.notion-page .notion-code pre > span:last-child .lineno {
+  padding-bottom: 1.65em;
+}
+
+/* highlight */
+.notion-page .notion-code .hll {
+  background-color: var(--code-highlight);
+}
+
+/* generic */
+.notion-page .notion-code .g,
+/* generic/emphasis */
+.notion-page .notion-code .ge
+/* generic/prompt */
+.notion-page .notion-code .gp,
+/* generic/strong */
+.notion-page .notion-code .gs,
+/* generic/traceback */
+.notion-page .notion-code .gt {
+  color: var(--code-generic);
+}
+/* generic/deleted */
+.notion-page .notion-code .gd {
+  color: var(--code-generic_deleted);
+  background-color: var(--code-generic_deleted_bg);
+}
+/* generic/inserted */
+.notion-page .notion-code .gi {
+  color: var(--code-generic_inserted);
+  background-color: var(--code-generic_inserted_bg);
+}
+/* generic/output */
+.notion-page .notion-code .go {
+  color: var(--code-generic_output);
+  background-color: var(--code-generic_output_bg);
+}
+/* generic/emphasis */
+.notion-page .notion-code .ge {
+  text-decoration: underline;
+}
+/* generic/heading */
+.notion-page .notion-code .gh {
+  color: var(--code-generic_heading);
+}
+/* generic/subheading */
+.notion-page .notion-code .gu {
+  color: var(--code-generic_heading);
+}
+/* generic/error */
+.notion-page .notion-code .gr {
+  color: var(--code-error);
+}
+
+/* error ??? */
+.notion-page .notion-code .err {
+  color: var(--code-error);
+}
+
+/* comment */
+.notion-page .notion-code .c,
+/* comment/multiline */
+.notion-page .notion-code .cm ,
+/* comment/single */
+.notion-page .notion-code .c1,
+/* comment/special */
+.notion-page .notion-code .cs {
+  color: var(--code-comment);
+}
+/* comment/preproc */
+.notion-page .notion-code .cp {
+  color: var(--code-comment_preproc);
+  font-weight: bold;
+}
+
+/* keyword */
+.notion-page .notion-code .k,
+/* keyword/declaration */
+.notion-page .notion-code .kd,
+/* keyword/namespace */
+.notion-page .notion-code .kn,
+/* keyword/pseudo */
+.notion-page .notion-code .kp,
+/* keyword/reserved */
+.notion-page .notion-code .kr {
+  color: var(--code-keyword);
+  font-weight: bold;
+}
+/* keyword/constant */
+.notion-page .notion-code .kc {
+  color: var(--code-keyword_constant);
+}
+/* keyword/type */
+.notion-page .notion-code .kt {
+  color: var(--code-keyword_type);
+  font-weight: bold;
+}
+
+/* literal */
+.notion-page .notion-code .l,
+/* literal/date */
+.notion-page .notion-code .ld {
+  color: #000000;
+}
+/* literal/number */
+.notion-page .notion-code .m,
+/* literal/number/float */
+.notion-page .notion-code .mf,
+/* literal/number/hex */
+.notion-page .notion-code .mh,
+/* literal/number/integer */
+.notion-page .notion-code .mi,
+/* literal/number/oct */
+.notion-page .notion-code .mo,
+/* literal/number/integer/long */
+.notion-page .notion-code .il {
+  color: var(--code-literal_number);
+}
+/* literal/string */
+.notion-page .notion-code .s,
+/* literal/string/backtick */
+.notion-page .notion-code .sb,
+/* literal/string/char */
+.notion-page .notion-code .sc,
+/* literal/string/doc */
+.notion-page .notion-code .sd,
+/* literal/string/double */
+.notion-page .notion-code .s2,
+/* literal/string/heredoc */
+.notion-page .notion-code .sh,
+/* literal/string/interpol */
+.notion-page .notion-code .si,
+/* literal/string/other */
+.notion-page .notion-code .sx,
+/* literal/string/single */
+.notion-page .notion-code .s1,
+/* literal/string/symbol */
+.notion-page .notion-code .ss {
+  color: var(--code-literal_string);
+}
+/* literal/string/escape */
+.notion-page .notion-code .se,
+/* literal/string/regex */
+.notion-page .notion-code .sr {
+  color: var(--code-literal_string_special);
+  font-style: italic;
+}
+
+/* name */
+.notion-page .notion-code .n,
+/* name/class */
+.notion-page .notion-code .nc 
+/* name/decorator */
+.notion-page .notion-code .nd,
+/* name/exception */
+.notion-page .notion-code .ne,
+/* name/label */
+.notion-page .notion-code .nl,
+/* name/namespace */
+.notion-page .notion-code .nn,
+/* name/property */
+.notion-page .notion-code .py,
+/* name/other */
+.notion-page .notion-code .nx {
+  color: var(--code-name);
+}
+/* name/builtin */
+.notion-page .notion-code .nb,
+/* name/builtin/pseudo */
+.notion-page .notion-code .bp {
+  color: var(--code-name_builtin);
+}
+/* name/attribute */
+.notion-page .notion-code .na {
+  color: var(--code-name_attribute);
+}
+/* name/constant */
+.notion-page .notion-code .no {
+  color: var(--code-name_constant);
+}
+/* name/entity */
+.notion-page .notion-code .ni {
+  color: var(--code-name_entity);
+  font-weight: bold;
+}
+.notion-page .notion-code .nf {
+  color: var(--code-name_function);
+  font-weight: bold;
+}
+/* name/label */
+.notion-page .notion-code .nl {
+  font-weight: bold;
+}
+/* name/tag */
+.notion-page .notion-code .nt {
+  color: var(--code-name_tag);
+  font-weight: bold;
+}
+/* name/variable */
+.notion-page .notion-code .nv,
+/* name/variable.class */
+.notion-page .notion-code .vc,
+/* name/variable.global */
+.notion-page .notion-code .vg,
+/* name/variable/instance */
+.notion-page .notion-code .vi {
+  color: var(--code-name_variable);
+}
+
+/* operator */
+.notion-page .notion-code .o,
+/* operator/word */
+.notion-page .notion-code .ow {
+  color: var(--code-operator);
+}
+
+/* other */
+.notion-page .notion-code .x {
+  color: var(--code-generic);
+}
+/* punctuation */
+.notion-page .notion-code .p {
+  color: var(--code-punctuation);
+}
+/* whitespace */
+.notion-page .notion-code .w {
+  color: var(--code-whitespace);
+}

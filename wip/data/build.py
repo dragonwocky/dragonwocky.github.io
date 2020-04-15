@@ -2,8 +2,7 @@
 
 import json
 import os
-import markdown
-from mdx_gfm import GithubFlavoredMarkdownExtension
+from markdown import markdown
 
 __folder__ = os.path.dirname(os.path.realpath(
     __file__)).replace('\\', '/') + '/../'
@@ -15,8 +14,7 @@ with open(__folder__ + 'data/contact.json') as contact:
 with open(__folder__ + 'data/portfolio.json') as portfolio:
     data.update(json.load(portfolio))
 with open(__folder__ + 'data/hire-me.md') as hire_me:
-    pages['hire-me'] = markdown.markdown(hire_me.read(),
-                                         extensions=[GithubFlavoredMarkdownExtension()], output_format='html5')
+    pages['hire-me'] = markdown(hire_me.read(), output_format='html5')
 
 with open(__folder__ + 'templates/sidebar.html') as sidebar:
     sidebar = sidebar.read() \

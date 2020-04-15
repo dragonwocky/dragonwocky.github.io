@@ -215,7 +215,7 @@ var VanillaTilt = (function () {
 
       this.event = {
         clientX: posX + this.left,
-        clientY: posY + this.top
+        clientY: posY + this.top,
       };
 
       this.updateCall = requestAnimationFrame(this.updateBind);
@@ -247,7 +247,7 @@ var VanillaTilt = (function () {
     reset() {
       this.event = {
         clientX: this.left + this.width / 2,
-        clientY: this.top + this.height / 2
+        clientY: this.top + this.height / 2,
       };
 
       if (this.element && this.element.style) {
@@ -285,7 +285,7 @@ var VanillaTilt = (function () {
           clientY:
             ((this.settings.startY + this.settings.max) /
               (2 * this.settings.max)) *
-            this.clientHeight
+            this.clientHeight,
         };
       } else {
         this.event = {
@@ -298,7 +298,7 @@ var VanillaTilt = (function () {
             this.top +
             ((this.settings.startY + this.settings.max) /
               (2 * this.settings.max)) *
-              this.height
+              this.height,
         };
       }
 
@@ -343,7 +343,7 @@ var VanillaTilt = (function () {
         tiltY: tiltY,
         percentageX: x * 100,
         percentageY: y * 100,
-        angle: angle
+        angle: angle,
       };
     }
 
@@ -380,7 +380,7 @@ var VanillaTilt = (function () {
 
       this.element.dispatchEvent(
         new CustomEvent('tiltChange', {
-          'detail': values
+          'detail': values,
         })
       );
 
@@ -419,7 +419,7 @@ var VanillaTilt = (function () {
         'width': '100%',
         'height': '100%',
         'overflow': 'hidden',
-        'pointer-events': 'none'
+        'pointer-events': 'none',
       });
 
       Object.assign(this.glareElement.style, {
@@ -432,7 +432,7 @@ var VanillaTilt = (function () {
         'height': `${this.element.offsetWidth * 2}px`,
         'transform': 'rotate(180deg) translate(-50%, -50%)',
         'transform-origin': '0% 0%',
-        'opacity': '0'
+        'opacity': '0',
       });
     }
 
@@ -440,7 +440,7 @@ var VanillaTilt = (function () {
       if (this.glare) {
         Object.assign(this.glareElement.style, {
           'width': `${this.element.offsetWidth * 2}`,
-          'height': `${this.element.offsetWidth * 2}`
+          'height': `${this.element.offsetWidth * 2}`,
         });
       }
     }
@@ -522,7 +522,7 @@ var VanillaTilt = (function () {
         gyroscopeMaxAngleX: 45,
         gyroscopeMinAngleY: -45,
         gyroscopeMaxAngleY: 45,
-        gyroscopeSamples: 10
+        gyroscopeSamples: 10,
       };
 
       let newSettings = {};
@@ -557,7 +557,7 @@ var VanillaTilt = (function () {
         return;
       }
 
-      elements.forEach(element => {
+      elements.forEach((element) => {
         if (!('vanillaTilt' in element)) {
           element.vanillaTilt = new VanillaTilt(element, settings);
         }

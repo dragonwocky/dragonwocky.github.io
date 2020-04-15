@@ -1,3 +1,6 @@
+# rope - python refactoring
+.ropeproject
+
 # Logs
 logs
 *.log

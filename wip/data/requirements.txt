@@ -1,3 +1,8 @@
 notion
 python-dotenv
-py-gfm
+commonmark
+requests
+re
+os
+urllib
+mimetypes

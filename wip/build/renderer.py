@@ -353,7 +353,7 @@ class HTMLRenderer(Renderer):
               <h4>{block.title}</h4>
               {f'<p>{block.description}</p>' if block.description else ''}
               <div class="notion-bookmark_url">
-                <img src="{self.signed_url(block.bookmark_icon)}"/> <span>{link}</span>
+                {f'<img src="{self.signed_url(block.bookmark_icon)}"/>' if block.bookmark_icon else ''} <span>{link}</span>
               </div>
             </div>
             {f'<img class="notion-bookmark_cover" src="{self.signed_url(block.bookmark_cover)}"/>' if block.bookmark_cover else ''}

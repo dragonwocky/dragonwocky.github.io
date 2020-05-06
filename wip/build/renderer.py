@@ -12,61 +12,32 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
+_slugs = []
+
+
+def slugify(title):
+    title = ''.join(re.findall(
+        # should match all emojis + alphanumerical
+        r'([\-|_|\d|\w|\U00002600-\U000027BF\U0001F300-\U0001F64F\U0001F680-\U0001F6FF])',
+        re.sub(r'\s', '-', title.lower())))
+    slug = title
+    occurrences = 0
+    while slug in _slugs:
+        occurrences += 1
+        slug = f'{title}-{occurrences}'
+    _slugs.append(slug)
+    return slug
+
 
 class Renderer(object):
 
     def __init__(self, root, token_v2=os.getenv('NOTION_TOKEN')):
-        client = NotionClient(token_v2=token_v2)
         self.root = root
         if not isinstance(self.root, Block):
+            if not isinstance(token_v2, NotionClient):
+                client = NotionClient(token_v2=token_v2)
             self.root = client.get_block(self.root)
         self._slugs = []
-
-    def slugify(self, title):
-        title = ''.join(re.findall(
-            # should match all emojis + alphanumerical
-            r'([\-|_|\d|\w|\U00002600-\U000027BF\U0001F300-\U0001F64F\U0001F680-\U0001F6FF])',
-            re.sub(r'\s', '-', title.lower())))
-        slug = title
-        occurrences = 0
-        while title in self._slugs:
-            occurrences += 1
-            slug = f'{title}-{occurrences}'
-        self._slugs.append(slug)
-        return slug
-
-    def render_pages(self):
-        pages = {self.root.id.replace('-', ''): self.root}
-
-        def get_pages(block):
-            for child in block.children:
-                if child.type == 'page':
-                    pages[child.id.replace('-', '')] = child
-                get_pages(child)
-        get_pages(self.root)
-
-        for ID, pageBlock in pages.items():
-            # replace is cos of some weird bug i've been having with notion
-            # copy/pasting code blocks from it etc. is always weird
-            # because the spaces aren't spaces???
-            pages[ID] = {
-                'title': pageBlock.title,
-                'slug': self.slugify(pageBlock.title),
-                'content': f'''
-                  <article class="notion-page">
-                    {self.render_page(pageBlock).replace(' ', ' ')}
-                  </article>
-                '''
-            }
-
-        for targetID in pages:
-            for pageID in pages:
-                pages[targetID]['content'] = re.sub(
-                    r'href="https:\/\/w*\.*notion\.so\/[^"\']*' +
-                    pageID + '"',
-                    f'href="{pages[pageID]["slug"]}.html"', pages[targetID]['content'])
-
-        return pages
 
     def get_handler(self, block):
         type_renderer = getattr(self, 'handle_' + block.type, None)
@@ -86,18 +57,27 @@ class Renderer(object):
         'toggle': 1
     }
 
+    def render(self):
+        return self.render_page(self.root)
+
     def render_page(self, block, level=0, prev=None, post=None):
         assert isinstance(block, Block)
         if block.type == 'factory':
             return ''
-        if block.type == 'page':
-            type_renderer = self.handle_header
-        else:
-            type_renderer = self.get_handler(block)
+        type_renderer = self.handle_title if block.type == 'page' else self.get_handler(
+            block)
         text, closing = type_renderer(block, level, prev=prev, post=post), ''
         if isinstance(text, tuple):
             text, closing = text
-        return text + self.render_children(block, self.type_levels.get(block.type, level + 1)) + closing
+        # replace is cos of some weird bug i've been having with notion
+        # copy/pasting code blocks from it etc. is always weird
+        # because the spaces aren't spaces???
+
+        return f'''
+          <article class="notion-page">
+            {text}{self.render_children(block, self.type_levels.get(block.type, level + 1))}{closing}
+          </article>
+        '''.replace(' ', ' ')
 
     def render_block(self, block, level=0, prev=None, post=None):
         assert isinstance(block, Block)
@@ -121,17 +101,25 @@ class Renderer(object):
                                       level, prev=prev, post=post)
         return text
 
-    def opening_tag(self, tag, attrs={}):
-        attrs = ''.join(f' {key}="{val}"' for key, val in attrs.items())
-        return f'<{tag}{attrs}>'
-
     def signed_url(self, url=''):
         if url and 'amazonaws.com/secure.notion-static' in url:
             return f'https://www.notion.so/signed/{urllib.parse.quote(url.split("?")[0], safe="")}'
         return url
 
+    def handle_default(self, block, level=0, prev=None, post=None):
+        return getattr(block, 'title', '')
+
+    handle_title = handle_default
+
+
+class HTMLRenderer(Renderer):
+
     def parse_attrs(self, attrs):
         return ''.join(f' {key}' if key == True else f' {key}="{val}"' for key, val in attrs.items())
+
+    def opening_tag(self, tag, attrs={}):
+        attrs = ''.join(f' {key}="{val}"' for key, val in attrs.items())
+        return f'<{tag}{attrs}>'
 
     def set_tag(self, string, tag):
         match = re.search(r'<\/([^>]+)>$', string)
@@ -158,6 +146,9 @@ class Renderer(object):
             ''', attrs)
         return self.set_attrs(self.set_tag(''.join(lines), tag), attrs)
 
+    def handle_title(self, block, level=0, prev=None, post=None):
+        return self.md(f'# {block.title}', attrs={'style': f'--level: {level}'})
+
     def handle_default(self, block, level=0, prev=None, post=None):
         if hasattr(block, 'title'):
             if not block.title:
@@ -180,13 +171,13 @@ class Renderer(object):
         return self.set_attrs(innerhtml, {'style': f'--level: {level}; --code-lang: \'{block.language}\''})
 
     def handle_header(self, block, level=0, prev=None, post=None):
-        return self.md(f'# {block.title}', attrs={'style': f'--level: {level}'})
-
-    def handle_sub_header(self, block, level=0, prev=None, post=None):
         return self.md(f'## {block.title}', attrs={'style': f'--level: {level}'})
 
-    def handle_sub_sub_header(self, block, level=0, prev=None, post=None):
+    def handle_sub_header(self, block, level=0, prev=None, post=None):
         return self.md(f'### {block.title}', attrs={'style': f'--level: {level}'})
+
+    def handle_sub_sub_header(self, block, level=0, prev=None, post=None):
+        return self.md(f'#### {block.title}', attrs={'style': f'--level: {level}'})
 
     def handle_quote(self, block, level=0, prev=None, post=None):
         return self.inline_md(block.title, 'blockquote', attrs={'style': f'--level: {level}'})
@@ -304,7 +295,7 @@ class Renderer(object):
     def handle_tweet(self, block, level=0, prev=None, post=None):
         return f'''
           <div class="notion-generated-embed notion-embed_twitter-com" style="--level: {level}">
-            {requests.get('https://publish.twitter.com/oembed?url=' + block.source).json()['html']}
+            {requests.get(f'https://publish.twitter.com/oembed?url={block.source}').json()['html']}
           </div>
         '''
 
@@ -381,3 +372,64 @@ class Renderer(object):
                             "class": "notion-callout_text"})}
           </div>
         '''
+
+
+class NotebookRenderer(object):
+
+    def __init__(self, root, token_v2=os.getenv('NOTION_TOKEN')):
+        self.root = root
+        if not isinstance(self.root, Block):
+            if not isinstance(token_v2, NotionClient):
+                client = NotionClient(token_v2=token_v2)
+            self.root = client.get_block(self.root)
+        self._slugs = []
+
+    def collect_pages(self):
+        notebook = {}
+        for page in self.root.collection.get_rows():
+            # property exists + property is true
+            if page.collection.get_schema_property('published') and page.get_property('published'):
+                notebook[page.id.replace('-', '')] = page
+
+        # pages = {}
+
+        # def get_child_pages(block, subpages=False):
+        #     for child in block.children:
+        #         if child.type == 'page':
+        #             if child not in pages:
+        #                 pages[page.id.replace('-', '')] = child
+        #                 subpages = True
+        #         if get_child_pages(child, subpages):
+        #             subpages = True
+        #     return subpages
+        # for page in notebook:
+        #     pages[page.id.replace('-', '')] = page
+        #     while get_child_pages(page):
+        #         pass
+
+        return notebook
+
+    def replace_links(self, pages):
+        for ID in pages:
+            for potentialLink in pages:
+                pages[ID]['content'] = re.sub(
+                    r'href="https:\/\/w*\.*notion\.so\/[^"\']*' +
+                    potentialLink + '"',
+                    f'href="{pages[ID]["slug"]}.html"', pages[ID]['content'])
+
+        return pages
+
+
+class HTMLNotebookRenderer(NotebookRenderer):
+
+    def render(self):
+        pages = self.collect_pages()
+        for ID, page in pages.items():
+            pages[ID] = {
+                'title': page.title,
+                'slug': slugify(page.title),
+                'time': page.get_property('last edited'),
+                'tags': [self.root.title] + sorted(page.get_property('tags')),
+                'content': HTMLRenderer(page).render()
+            }
+        return self.replace_links(pages)

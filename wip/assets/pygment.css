@@ -7,11 +7,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 
 :root {
+  --code-font: 'Source Code Pro', 'SFMono-Regular', Consolas, 'Liberation Mono',
+    Menlo, Courier, monospace;
   --code-inline: #1e4821;
+  --code-colour: currentColor;
   --code-background: rgb(243, 243, 243);
   --code-details: rgb(80, 80, 80);
   --code-details_bg: rgb(233, 233, 233);
-  --code-generic: #000;
+  --code-generic: var(--code-colour);
   --code-generic_deleted: #461a25;
   --code-generic_deleted_bg: #fdb8c0;
   --code-generic_inserted: #24292e;
@@ -19,10 +22,11 @@
   --code-generic_output: #808080;
   --code-generic_output_bg: #ececec;
   --code-generic_heading: #ef5939;
-  --code-error: #bd1147; /* potentially some kind of string? */
+  --code-error: #bd1147;
   --code-comment: #707070;
   --code-comment_preproc: #4c2879;
   --code-keyword: rgba(22, 77, 114, 0.84);
+  --code-keyword_namespace: rgba(22, 77, 114, 0.84);
   --code-keyword_constant: #4c2879;
   --code-keyword_type: #4c2879;
   --code-literal: rgba(0, 0, 0, 0.84);
@@ -30,22 +34,62 @@
   --code-literal_string: #d03869;
   --code-literal_string_special: #960a36;
   --code-name: rgb(44, 113, 65);
-  --code-name_builtin: #000;
+  --code-name_builtin: var(--code-colour);
   --code-name_attribute: #07a;
   --code-name_constant: #177f80;
   --code-name_entity: #159828;
   --code-name_function: #990000;
   --code-name_tag: #151552;
   --code-name_variable: #0086b3;
-  --code-operator: rgba(0, 0, 0, 0.84);
+  --code-operator: #458;
   --code-punctuation: #458;
-  --code-whitespace: rgba(0, 0, 0, 0.05);
+  --code-whitespace: var(--code-colour);
   --code-highlight: #ffffcc;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --code-inline: #7dc582;
+    --code-colour: #eaeaea;
+    --code-background: rgb(8, 8, 8);
+    --code-details: rgb(138, 138, 138);
+    --code-details_bg: #000;
+    --code-generic_deleted: #fdb8c0;
+    --code-generic_deleted_bg: #461a25;
+    --code-generic_inserted: #acf2bd;
+    --code-generic_inserted_bg: #24292e;
+    --code-generic_output: #888888;
+    --code-generic_output_bg: #c5c5c5;
+    --code-generic_heading: #eaeaea;
+    --code-error: #d54e53;
+    --code-comment: #a0a0a0;
+    --code-comment_preproc: #a0a0a0;
+    --code-keyword: #c397d8;
+    --code-keyword_constant: #c397d8;
+    --code-keyword_namespace: #31a791;
+    --code-keyword_type: #e7c547;
+    --code-literal: #b9ca4a;
+    --code-literal_number: #ff9100;
+    --code-literal_string: #ff6294;
+    --code-literal_string_special: #da265f;
+    --code-name: #7dc582;
+    --code-name_attribute: #56a7b6;
+    --code-name_constant: #e4363c;
+    --code-name_entity: #eaeaea;
+    --code-name_function: #5792db;
+    --code-name_tag: #56a7b6;
+    --code-name_variable: #56a7b6;
+    --code-operator: rgb(166, 175, 201);
+    --code-punctuation: rgb(166, 175, 201);
+    --code-highlight: 424242;
+  }
+}
+
+[style*='JSON'] {
+  --code-error: var(--code-punctuation);
 }
 
 .notion-page code {
-  font: 0.85em 'Source Code Pro', 'SFMono-Regular', Consolas, 'Liberation Mono',
-    Menlo, Courier, monospace;
+  font: 0.85em var(--code-font);
   background: var(--code-background);
   color: var(--code-inline);
   border-radius: 0.1em;
@@ -54,10 +98,8 @@
 
 .notion-page .notion-code {
   position: relative;
-  font: 1.03225806em 'Source Code Pro', 'SFMono-Regular', Consolas,
-    'Liberation Mono', Menlo, Courier, monospace;
-  margin: 0.5em 0 0.5em calc(var(--level, 0) * 1.25rem);
-  padding: 0;
+  font: 1.03225806em var(--code-font);
+  margin: 0.5em 0 0.5em 0;
 }
 .notion-page .notion-code pre {
   background: var(--code-background);
@@ -70,8 +112,7 @@
 .notion-page .notion-code::before {
   content: var(--code-lang, none);
   color: var(--code-details);
-  font: 0.7em 'Source Code Pro', 'SFMono-Regular', Consolas, 'Liberation Mono',
-    Menlo, Courier, monospace;
+  font: 0.7em var(--code-font);
   font-weight: bold;
   background: var(--code-details_bg);
   border-bottom-left-radius: 0.05em;
@@ -174,13 +215,17 @@
 .notion-page .notion-code .k,
 /* keyword/declaration */
 .notion-page .notion-code .kd,
-/* keyword/namespace */
-.notion-page .notion-code .kn,
 /* keyword/pseudo */
 .notion-page .notion-code .kp,
 /* keyword/reserved */
 .notion-page .notion-code .kr {
   color: var(--code-keyword);
+  font-weight: bold;
+}
+
+/* keyword/namespace */
+.notion-page .notion-code .kn {
+  color: var(--code-keyword_namespace);
   font-weight: bold;
 }
 /* keyword/constant */
@@ -197,7 +242,7 @@
 .notion-page .notion-code .l,
 /* literal/date */
 .notion-page .notion-code .ld {
-  color: #000000;
+  color: var(--code-literal);
 }
 /* literal/number */
 .notion-page .notion-code .m,
@@ -247,8 +292,6 @@
 .notion-page .notion-code .n,
 /* name/class */
 .notion-page .notion-code .nc 
-/* name/decorator */
-.notion-page .notion-code .nd,
 /* name/exception */
 .notion-page .notion-code .ne,
 /* name/label */
@@ -288,6 +331,8 @@
 .notion-page .notion-code .nl {
   font-weight: bold;
 }
+/* name/decorator */
+.notion-page .notion-code .nd,
 /* name/tag */
 .notion-page .notion-code .nt {
   color: var(--code-name_tag);

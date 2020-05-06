@@ -1,8 +1,5 @@
 notion
+requests
 python-dotenv
 commonmark
-requests
-re
-os
-urllib
-mimetypes
+pygments

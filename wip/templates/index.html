@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 
 <!-- dragonwocky.me -->
-<!-- (c) 2020 dragonwocky <thedragonring.bod@gmail.com>-->
-<!-- (https://dragonwocky.me/) under the MIT license-->
+<!-- (c) 2020 dragonwocky <thedragonring.bod@gmail.com> -->
+<!-- (https://dragonwocky.me/) under the MIT license -->
 
 <html lang="en" prefix="og: http://ogp.me/ns#">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="assets/index.css" />
+    <link rel="stylesheet" href="__depth__assets/index.css" />
     <noscript>
       <style type="text/css">
-        .card-container > h1 {
-          display: block;
-          padding: 0 0.5em 0.5em 0.5em;
-          width: 100%;
-        }
         article {
           display: block !important;
           animation: none !important;
         }
         .card-container {
           display: flex !important;
+        }
+        .card-container > h1 {
+          display: block;
+          padding: 0 0.5em 0.5em 0.5em;
+          width: 100%;
         }
       </style>
     </noscript>
@@ -41,7 +41,7 @@
       content="https://dragonwocky.me/assets/avatar.jpg"
     />
     <meta property="twitter:card" content="summary" />
-    <link rel="icon" href="assets/avatar.jpg" />
+    <link rel="icon" href="__depth__assets/avatar.jpg" />
   </head>
 
   <body>
@@ -54,38 +54,27 @@
       <hr />
       <article id="portfolio" class="card-container">
         <h1>portfolio</h1>
+        <input
+          type="text"
+          class="card-search"
+          placeholder="Search by title or description..."
+        />
         __portfolio__
       </article>
       <hr />
       <article id="posts" class="card-container">
         <h1>posts</h1>
+        <input
+          type="text"
+          class="card-search"
+          placeholder="Search by title or tags..."
+        />
         __posts__
       </article>
-      <footer>
-        © 2020 dragonwocky, under the
-        <a href="https://choosealicense.com/licenses/mit/">MIT license</a>.
-        <br /><br />
-        <svg
-          width="20"
-          height="20"
-          tabindex="0"
-          class="scrollTop"
-          viewBox="0 0 320 512"
-        >
-          <path
-            fill="currentColor"
-            d="
-              M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6
-              22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4
-              9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6
-              0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"
-            class=""
-          ></path>
-        </svg>
-      </footer>
+      __footer__
     </main>
-    <script src="assets/vanilla-tilt.js"></script>
-    <script src="assets/main.js"></script>
-    <script src="assets/index.js"></script>
+    <script src="__depth__assets/vanilla-tilt.js"></script>
+    <script src="__depth__assets/main.js"></script>
+    <script src="__depth__assets/index.js"></script>
   </body>
 </html>

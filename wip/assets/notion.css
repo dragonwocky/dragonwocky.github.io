@@ -6,30 +6,77 @@
 
 @import './pygment.css';
 
-* {
-  box-sizing: border-box;
-  word-break: break-word;
-}
-html,
-body {
-  width: 100%;
-  margin: 0;
-}
-
 /* 0.0625rem ~= 1px */
 
-.notion-page {
-  width: 80%;
-  padding: 1em;
-  margin: 5em auto;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
+:root {
+  --notion-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
     'Apple Color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';
-  color: black;
+  --notion-level_margin: 1.25rem;
+  --notion-checkbox_fill: rgb(46, 170, 220);
+  --notion-checkbox_focus: rgb(59, 153, 252);
+  --notion-checkbox_tick: white;
+  --notion-bookmark_hover: rgba(55, 53, 47, 0.08);
+  --notion-bookmark_border: rgba(55, 53, 47, 0.16);
+  --notion-bookmark_desc: rgba(55, 53, 47, 0.6);
+  --notion-grey: rgb(55, 53, 47);
+  --notion-text: currentColor;
+  --notion-text_shadow: currentColor;
+  --notion-hr: rgb(228, 227, 226);
+  --notion-callout_bg: rgb(238, 238, 238);
+  --notion-callout_type: rgba(55, 53, 47, 0.6);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --notion-bookmark_hover: rgba(255, 255, 255, 0.08);
+    --notion-bookmark_border: rgba(255, 255, 255, 0.16);
+    --notion-bookmark_desc: rgba(255, 255, 255, 0.6);
+    --notion-grey: rgba(255, 255, 255, 0.9);
+    --notion-hr: rgba(255, 255, 255, 0.1);
+    --notion-callout_bg: #202121;
+    --notion-callout_type: rgba(195, 195, 195, 0.6);
+  }
+}
+
+.notion-page {
+  padding: 1em;
+  margin: 0 auto;
+  font-family: var(--notion-font);
+  color: var(--notion-text);
 }
 .notion-page * {
   --level: 0;
   max-width: 100%;
-  padding-left: calc(var(--level, 0) * 1.25rem); /* 20px */
+  padding-left: calc(var(--level, 0) * var(--notion-level_margin)); /* 20px */
+}
+
+@media (min-width: 769px) {
+  .notion-page {
+    width: 80%;
+    padding-top: 2em;
+  }
+}
+@media (max-width: 768px) {
+  :root {
+    --notion-level_margin: 0.5rem;
+  }
+  .notion-page {
+    margin-right: var(--notion-level_margin);
+  }
+  .notion-page * {
+    padding-left: calc(var(--level, 0) * var(--notion-level_margin)); /* 20px */
+  }
+  .notion-page > :first-child {
+    margin-top: 0.5rem;
+  }
+  .notion-page > :first-child,
+  .notion-page > hr {
+    margin-left: var(--notion-level_margin);
+  }
+}
+
+.notion-page h1 {
+  font-size: 2em;
 }
 
 .notion-page p,
@@ -53,15 +100,19 @@ body {
   transition: 120ms ease-in 0s;
 }
 .notion-page p a:hover {
-  text-shadow: 0 0 0.025em #000;
+  text-shadow: 0 0 0.025em var(--notion-text_shadow);
   text-decoration: none;
+}
+
+.notion-page figure img {
+  filter: invert(100%) contrast(88%);
 }
 
 .notion-page blockquote {
   font-size: 1.1em;
-  color: rgb(55, 53, 47);
+  color: var(--notion-grey);
   padding-left: 1em;
-  margin-left: calc((var(--level, 0) * 1.25rem) + 0.5em);
+  margin-left: calc((var(--level, 0) * var(--notion-level_margin)) + 0.5em);
   border-left: 0.175em solid currentColor;
 }
 .notion-page blockquote p {
@@ -70,7 +121,7 @@ body {
 }
 
 .notion-page hr {
-  border: 0.03125rem solid rgb(228, 227, 226); /* 0.5px */
+  border: 0.03125rem solid var(--notion-hr); /* 0.5px */
   height: 0;
   margin: 2.5em 0;
 }
@@ -149,7 +200,7 @@ body {
 .notion-embed {
   position: relative;
   overflow: hidden;
-  margin: 1em 0 1em calc(var(--level, 0) * 1.25rem); /* 20px */
+  margin: 1em 0 1em calc(var(--level, 0) * var(--notion-level_margin)); /* 20px */
   padding-top: 56.25%;
 }
 .notion-embed:first-child {
@@ -171,7 +222,7 @@ body {
 }
 
 .notion-callout {
-  background: rgb(238, 238, 238);
+  background: var(--notion-callout_bg);
   padding: 1em;
 }
 .notion-file,
@@ -188,12 +239,12 @@ body {
 .notion-database {
   display: flex;
   border-radius: 0.3em;
-  margin: 0.25em 0 0.25em calc(var(--level, 0) * 1.25rem); /* 20px */
+  margin: 0.25em 0 0.25em calc(var(--level, 0) * var(--notion-level_margin)); /* 20px */
 }
 .notion-file:hover,
 .notion-page-link:hover,
 .notion-database:hover {
-  background: rgba(55, 53, 47, 0.08);
+  background: var(--notion-callout_bg);
 }
 .notion-callout .notion-callout_icon {
   padding-right: 0.75em;
@@ -217,20 +268,20 @@ body {
 .notion-page-link .notion-page-link_what,
 .notion-database .notion-database_what {
   font-size: 0.75em;
-  color: rgba(55, 53, 47, 0.6);
+  color: var(--notion-callout_type);
 }
 
 .notion-bookmark {
-  margin: 1em 0 1em calc(var(--level, 0) * 1.25rem);
+  margin: 1em 0 1em calc(var(--level, 0) * var(--notion-level_margin));
   padding-left: 0;
   display: flex;
   border-radius: 0.3em;
   text-decoration: none;
-  border: 0.0625rem solid rgba(55, 53, 47, 0.16); /* 1px */
+  border: 0.0625rem solid var(--notion-bookmark_border); /* 1px */
   transition: background 120ms ease-in 0s;
 }
 .notion-bookmark:hover {
-  background: rgba(55, 53, 47, 0.08);
+  background: var(--notion-bookmark_hover);
 }
 .notion-bookmark .notion-bookmark_content {
   width: 65%;
@@ -240,7 +291,7 @@ body {
   padding-right: 1.5em;
 }
 .notion-bookmark .notion-bookmark_content h4 {
-  color: rgb(55, 53, 47);
+  color: var(--notion-grey);
   font-weight: normal;
   font-size: 0.875em;
   overflow: hidden;
@@ -248,7 +299,7 @@ body {
   margin: 0 0 0.31em 0;
 }
 .notion-bookmark .notion-bookmark_content p {
-  color: rgba(55, 53, 47, 0.6);
+  color: var(--notion-bookmark_desc);
   font-size: 0.75em;
   overflow: hidden;
   height: 3em;
@@ -267,7 +318,7 @@ body {
   border-radius: 0.1em;
 }
 .notion-bookmark .notion-bookmark_url span {
-  color: rgb(55, 53, 47);
+  color: var(--notion-grey);
   font-size: 0.75em;
   height: 1.5em;
   word-break: break-all;
@@ -308,7 +359,7 @@ body {
   width: 0.5625rem; /* 9x */
   border-left: 0.125rem solid; /* 2px */
   border-bottom: 0.125rem solid; /* 2px */
-  border-color: white;
+  border-color: var(--notion-checkbox_tick);
   transform: rotate(-45deg);
   left: 0.25rem; /* 4px */
   top: 0.4375rem; /* 7px */
@@ -317,12 +368,12 @@ body {
   content: none;
 }
 .notion-checkbox input[type='checkbox']:checked + label::before {
-  background: rgb(46, 170, 220);
-  border-color: rgb(46, 170, 220);
+  background: var(--notion-checkbox_fill);
+  border-color: var(--notion-checkbox_fill);
 }
 .notion-checkbox input[type='checkbox']:checked + label::after {
   content: '';
 }
 .notion-checkbox input[type='checkbox']:focus + label::before {
-  outline: rgb(59, 153, 252) auto 0.3125rem; /* 5px */
+  outline: var(--notion-checkbox_focus) auto 0.3125rem; /* 5px */
 }

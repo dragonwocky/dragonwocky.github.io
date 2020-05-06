@@ -79,6 +79,9 @@ article > h3 {
   left: 0;
   z-index: 0;
 }
+.card h3 a {
+  color: currentColor;
+}
 .card .card-content h3 {
   margin-top: 0.4em;
 }

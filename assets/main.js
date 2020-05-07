@@ -26,7 +26,11 @@ function main() {
     );
   });
 
-  fetch('./assets/timezones.json')
+  fetch(
+    `${
+      window.location.pathname.includes('posts') ? '.' : ''
+    }./assets/timezones.json`
+  )
     .then((res) => res.json())
     .then((data) => {
       const timezone =

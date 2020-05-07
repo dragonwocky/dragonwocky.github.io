@@ -130,8 +130,8 @@ posts = sorted({
 }.values(), key=lambda post: post['time'], reverse=True)
 
 for i, post in enumerate(posts):
-    posts[i]['time'] = f'''last updated on {datetime.strftime(post["time"], r"%b %d, %Y %I:%M %p")
-                                          } {time.tzname[time.localtime().tm_isdst]}'''
+    posts[i]['time'] = f'''last updated on <span class="utc-timestamp">{
+        datetime.strftime(post["time"], r"%b %d, %Y %I:%M %p")} UTC</span>'''
     tags = ' #'.join(post['tags'])
     tags = '#' + tags if tags else ''
     post_html = templates['post'] \

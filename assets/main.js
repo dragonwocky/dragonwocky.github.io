@@ -25,6 +25,37 @@ function main() {
       ev.key === 'Enter' ? scrollTop() : true
     );
   });
+
+  fetch('./assets/timezones.json')
+    .then((res) => res.json())
+    .then((data) => {
+      const timezone =
+        data[
+          new Date()
+            .toLocaleTimeString(false, { timeZoneName: 'long' })
+            .replace(/^[^\s]*\s/g, '')
+        ];
+      document.querySelectorAll('.utc-timestamp').forEach((time) => {
+        time.innerHTML =
+          new Intl.DateTimeFormat('en', {
+            year: 'numeric',
+            month: 'short',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+          })
+            .formatToParts(new Date(time.innerHTML))
+            .map(({ type, value }) => value)
+            .reduce((string, part) =>
+              part === ', ' && string.includes(',')
+                ? string + ' '
+                : string + part
+            ) +
+          ' ' +
+          timezone;
+      });
+    })
+    .catch((err) => console.error(err));
 }
 main();
 document.addEventListener('readystatechange', main);

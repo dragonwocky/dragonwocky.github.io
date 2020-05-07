@@ -129,6 +129,11 @@ posts = sorted({
     **HTMLNotebookRenderer('80d09a8e462243da8a90a3e7282f0904').render()
 }.values(), key=lambda post: post['time'], reverse=True)
 
+# remove old posts
+for file in os.listdir(f'{__folder__}posts'):
+    if file.endswith('.html'):
+        os.remove(f'{__folder__}posts/{file}')
+
 for i, post in enumerate(posts):
     posts[i]['time'] = f'''last updated on <span class="utc-timestamp">{
         datetime.strftime(post["time"], r"%b %d, %Y %I:%M %p")} UTC</span>'''

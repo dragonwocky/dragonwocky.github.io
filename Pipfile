@@ -4,16 +4,14 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-rope = "*"
 pylint = "*"
-autopep8 = "*"
 
 [packages]
 notion = "*"
 requests = "*"
 python-dotenv = "*"
 commonmark = "*"
-Pygments = "*"
+pygments = "*"
 
 [requires]
 python_version = "3.6"

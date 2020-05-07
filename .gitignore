@@ -1,5 +1,6 @@
-# rope - python refactoring
+# pycaches
 .ropeproject
+__pycache__
 
 # Logs
 logs

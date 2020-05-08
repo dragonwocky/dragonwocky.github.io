@@ -36,8 +36,8 @@ function main() {
       const timezone =
         data[
           new Date()
-            .toLocaleTimeString(false, { timeZoneName: 'long' })
-            .replace(/^[^\s]*\s/g, '')
+            .toLocaleTimeString('en-AU', { timeZoneName: 'long' })
+            .replace(/^[\d:]*\s*(am|pm)\s*/gi, '')
         ];
       document.querySelectorAll('.utc-timestamp').forEach((time) => {
         time.innerHTML =

@@ -12,6 +12,7 @@
   --notion-primary: var(--primary);
   --notion-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
     'Apple Color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';
+  --notion-bg: var(--bg);
   --notion-level_margin: 1.25rem;
   --notion-checkbox_fill: rgb(46, 170, 220);
   --notion-checkbox_focus: rgb(59, 153, 252);
@@ -20,8 +21,8 @@
   --notion-bookmark_border: rgba(55, 53, 47, 0.16);
   --notion-bookmark_desc: rgba(55, 53, 47, 0.6);
   --notion-grey: rgb(55, 53, 47);
-  --notion-text: currentColor;
-  --notion-text_shadow: currentColor;
+  --notion-text: var(--text);
+  --notion-text_shadow: var(--text);
   --notion-hr: rgb(228, 227, 226);
   --notion-callout_bg: rgb(238, 238, 238);
   --notion-callout_type: rgba(55, 53, 47, 0.6);
@@ -44,6 +45,7 @@
   margin: 0 auto;
   font-family: var(--notion-font);
   color: var(--notion-text);
+  background-color: var(--notion-bg);
 }
 .notion-page * {
   --level: 0;
@@ -95,11 +97,12 @@
   margin-left: 0.5em;
 }
 .notion-page a {
-  color: currentColor;
+  color: var(--text);
 }
 .notion-page a:not([class]) {
   transition: 120ms ease-in 0s;
   text-decoration: underline var(--notion-primary);
+  -webkit-text-decoration: underline var(--notion-primary);
 }
 .notion-page a:not([class]):hover {
   text-shadow: 0 0 0.025em var(--notion-text_shadow);
@@ -114,7 +117,7 @@
   color: var(--notion-grey);
   padding-left: 1em;
   margin-left: calc((var(--level, 0) * var(--notion-level_margin)) + 0.5em);
-  border-left: 0.175em solid currentColor;
+  border-left: 0.175em solid var(--text);
 }
 .notion-page blockquote p {
   padding-top: 0;
@@ -231,7 +234,6 @@
 .notion-database {
   padding: 0.5em;
   border-radius: 0.3em;
-  text-decoration: none;
   transition: 120ms ease-in 0s;
 }
 .notion-callout,
@@ -277,7 +279,6 @@
   padding-left: 0;
   display: flex;
   border-radius: 0.3em;
-  text-decoration: none;
   border: 0.0625rem solid var(--notion-bookmark_border); /* 1px */
   transition: background 120ms ease-in 0s;
 }
@@ -351,7 +352,7 @@
 .notion-checkbox label::before {
   height: 1em;
   width: 1em;
-  border: 0.09375rem solid currentColor; /* 1.5px */
+  border: 0.09375rem solid var(--text); /* 1.5px */
   left: 0;
   top: 0.15625rem; /* (24px line-height - 16px height)/2 - 1.5px border = 2.5px vertical center */
 }

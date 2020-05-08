@@ -59,6 +59,7 @@ article:not(.visible) {
 
 article > h3 {
   text-decoration: underline;
+  -webkit-text-decoration: underline;
 }
 .card {
   flex: 1 1 100%;
@@ -106,6 +107,7 @@ article > h3 {
 .card .card-content p a {
   color: var(--text);
   text-decoration: dotted underline;
+  -webkit-text-decoration: dotted underline;
 }
 
 .card ul {

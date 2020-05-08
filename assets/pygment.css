@@ -176,6 +176,7 @@
 /* generic/emphasis */
 .notion-page .notion-code .ge {
   text-decoration: underline;
+  -webkit-text-decoration: underline;
 }
 /* generic/heading */
 .notion-page .notion-code .gh {

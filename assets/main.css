@@ -62,6 +62,7 @@
   box-sizing: border-box;
   word-break: break-word;
   text-decoration: none;
+  -webkit-text-decoration: none;
   text-size-adjust: 100%;
 }
 html,
@@ -215,6 +216,7 @@ footer .scroll-top {
 }
 footer a {
   text-decoration: dotted underline;
+  -webkit-text-decoration: dotted underline;
   color: var(--grey-dark);
 }
 

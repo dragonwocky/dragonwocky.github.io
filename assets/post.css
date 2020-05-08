@@ -18,8 +18,13 @@
 .post .post-meta {
   font-size: 0.8em;
   color: var(--grey-dark);
-  margin-top: 3.5em;
+  margin: 0;
 }
 .post article > h1:nth-child(2) {
   margin-top: 0;
+}
+@media (min-width: 769px) {
+  .post .post-meta {
+    margin-top: 3.5em;
+  }
 }

@@ -154,7 +154,7 @@ function index() {
 
   document.querySelectorAll('.card-search').forEach((search) => {
     search.addEventListener('keyup', (ev) => {
-      const filter = search.value.toLowerCase();
+      const filter = search.value.toLowerCase().trim();
       search.parentElement.querySelectorAll('.card').forEach((card) => {
         card.style.display =
           filter &&

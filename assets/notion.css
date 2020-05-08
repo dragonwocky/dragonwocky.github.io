@@ -41,7 +41,7 @@
 }
 
 .notion-page {
-  padding: 1em;
+  padding: 2em;
   margin: 0 auto;
   font-family: var(--notion-font);
   color: var(--notion-text);

@@ -1,4 +1,4 @@
-from renderer import HTMLNotebookRenderer
+from renderer import HTMLNotebookRenderer, HTMLRenderer
 import json
 import os
 import time
@@ -150,11 +150,13 @@ for i, post in enumerate(posts):
     with open(f'{__folder__}posts/{post["slug"]}.html', 'w') as post_output:
         post_output.write(post_html)
 
-# .replace('__hire-me__', pages['hire-me']) \
+hire_me = HTMLRenderer('6becc6d78aac4f709ff82229f156c7fa').render()
+
 index = templates['index'] \
     .replace('__sidebar__', sidebar) \
     .replace('__portfolio__', ''.join(map(gen_portfolio_card, data['portfolio']))) \
     .replace('__posts__', ''.join(map(gen_post_card, posts))) \
+    .replace('__hire-me__', hire_me) \
     .replace('__footer__', templates['footer']) \
     .replace('__depth__', '')
 

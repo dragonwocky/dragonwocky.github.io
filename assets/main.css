@@ -194,13 +194,12 @@ aside nav li a.active {
 }
 
 article {
-  padding: 2em;
   animation: fade 500ms ease reverse;
 }
 
 footer {
   margin-top: auto;
-  padding-bottom: 3em;
+  padding: 0.5em 2.5em 2.5em 2.5em;
   font-size: 0.8em;
   color: var(--grey-dark);
   width: 100%;
@@ -243,7 +242,6 @@ footer a {
   }
   footer {
     text-align: right;
-    padding: 2.5em;
   }
   footer br {
     display: none;

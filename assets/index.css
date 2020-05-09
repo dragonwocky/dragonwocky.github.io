@@ -90,12 +90,7 @@ article:not(.visible) {
   font-size: 1em;
   margin: 0 0 1em 0;
 }
-.card .card-content .card-tags:not(:empty) {
-  font-size: 0.95em;
-  font-style: italic;
-  margin: 0 0 1em 0;
-}
-.card .card-content .card-timestamp {
+.card .card-content .card-meta {
   font-size: 0.8em;
   color: var(--grey-dark);
   margin: 0 0 1em 0;

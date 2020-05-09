@@ -4,6 +4,7 @@ import requests
 import re
 import urllib.parse
 import mimetypes
+from datetime import datetime
 from commonmark import commonmark
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
@@ -428,8 +429,12 @@ class HTMLNotebookRenderer(NotebookRenderer):
             pages[ID] = {
                 'title': page.title,
                 'slug': slugify(page.title),
-                'time': page.get_property('last edited'),
-                'tags': [self.root.title] + sorted(page.get_property('tags')),
+                'time': page.get_property('last edited') if
+                page.collection.get_schema_property('last_edited') else datetime.utcnow(),
+                'description': page.get_property('description') if
+                page.collection.get_schema_property('description') else '',
+                'tags': [self.root.title] + (sorted(page.get_property('tags'))
+                                             if page.collection.get_schema_property('tags') else ''),
                 'content': HTMLRenderer(page).render()
             }
         return self.replace_links(pages)

@@ -107,16 +107,12 @@ sidebar = templates['sidebar'].replace('__contact__', ''.join(map(lambda project
 
 
 def gen_post_card(post):
-    # 'title': page.title,
-    # 'slug': slugify(page.title),
-    # 'time': page.get_property('last edited'),
-    # 'tags': [self.root.title] + sorted(page.get_property('tags')),
-    # 'content': HTMLRenderer(page).render()
     return gen_card(
         name=post.get('title'),
         url=f'./posts/{post["slug"]}.html',
         colour='',
-        time=post["time"],
+        desc=post['description'],
+        time=post['time'],
         badges=[],
         tags=post['tags']
     )
@@ -135,15 +131,19 @@ for file in os.listdir(f'{__folder__}posts'):
         os.remove(f'{__folder__}posts/{file}')
 
 for i, post in enumerate(posts):
-    posts[i]['time'] = f'''last updated on <span class="utc-timestamp">{
-        datetime.strftime(post["time"], r"%b %d, %Y %I:%M %p")} UTC</span>'''
+    posts[i]['time'] = datetime.strftime(post['time'], r'%b %d, %Y %I:%M %p')
+    posts[i]['formatted-time'] = f'''last updated on <span class="utc-timestamp">{post["time"]} UTC</span>'''
     tags = ' #'.join(post['tags'])
     tags = '#' + tags if tags else ''
     post_html = templates['post'] \
         .replace('__sidebar__', sidebar) \
         .replace('__title__', post['title']) \
+        .replace('__slug__', post['slug']) \
+        .replace('__last-modified__', post['time']) \
+        .replace('__tags__', ' '.join(post['tags'])) \
+        .replace('__description', post['description']) \
         .replace('__content__', post['content'].replace('>', f'''>
-            <p class="post-meta">{post["time"]} <b>{tags}</b></p>
+            <p class="post-meta">{post["formatted-time"]} <b class="tags">{tags}</b></p>
         ''', 1)) \
         .replace('__footer__', templates['footer']) \
         .replace('__depth__', '../')

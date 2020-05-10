@@ -192,6 +192,14 @@ aside nav li a.active {
 [data-useragent*='Chrome'] aside nav li a:hover {
   font-weight: lighter;
 }
+@media (max-width: 1030px) and (min-width: 769px) {
+  aside {
+    font-size: 0.8em;
+  }
+  aside h1 img {
+    width: 8rem;
+  }
+}
 
 article {
   animation: fade 500ms ease reverse;
@@ -219,14 +227,6 @@ footer a {
   color: var(--grey-dark);
 }
 
-@media (max-width: 1030px) and (min-width: 769px) {
-  aside {
-    font-size: 0.8em;
-  }
-  aside h1 img {
-    width: 8rem;
-  }
-}
 @media (min-width: 769px) {
   body {
     display: grid;

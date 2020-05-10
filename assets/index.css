@@ -38,6 +38,27 @@ article:not(.visible) {
   display: none;
   animation: fade 500ms ease;
 }
+@media (max-width: 768px) {
+  .card-container {
+    text-align: center;
+  }
+  article:not(.card-container) {
+    padding-top: 0;
+  }
+  article:not(.card-container).visible h1 {
+    display: none;
+  }
+}
+@media (min-width: 769px) {
+  .card-container {
+    font-size: 1em;
+  }
+  article:not(.card-container) {
+    width: 80%;
+    padding-top: 2em;
+    margin: auto;
+  }
+}
 
 .card-container > .card-search {
   flex-basis: 100%;
@@ -50,7 +71,6 @@ article:not(.visible) {
   border: none;
   color: var(--text);
 }
-
 .card-container > .card-search:focus {
   outline: none;
   box-shadow: var(--shadow) 0.5em 0.875em 2.375em,
@@ -76,29 +96,54 @@ article:not(.visible) {
   left: 0;
   z-index: 0;
 }
-.card h3 a {
-  color: currentColor;
+.with-images .card .card-image {
+  max-width: 100%;
+  border-radius: 0.2em;
+  margin-bottom: 0.6em;
 }
 .card .card-content h3 {
   margin-top: 0.4em;
 }
-.card .card-content a {
-  position: relative;
-  z-index: 1;
+.card .card-content h3 a {
+  color: currentColor;
 }
 .card .card-content .card-description {
   font-size: 1em;
   margin: 0 0 1em 0;
+}
+.card .card-content .card-description a {
+  color: var(--text);
+  text-decoration: dotted underline;
+  -webkit-text-decoration: dotted underline;
 }
 .card .card-content .card-meta {
   font-size: 0.8em;
   color: var(--grey-dark);
   margin: 0 0 1em 0;
 }
-.card .card-content p a {
-  color: var(--text);
-  text-decoration: dotted underline;
-  -webkit-text-decoration: dotted underline;
+@media (min-width: 769px) {
+  .card-container:not(.with-images) .card {
+    flex-basis: calc(33% - 2em);
+  }
+  .card-container:not(.with-images) .card:nth-of-type(3n) {
+    max-width: 38em;
+    flex-basis: calc(55% - 2em);
+  }
+  .with-images .card .card-image + .card-content {
+    float: left;
+    width: 67.5%;
+  }
+  .with-images .card .card-image {
+    float: right;
+    max-width: 30%;
+    margin: 0;
+  }
+  /* .with-images .card:nth-of-type(2n) .card-image {
+    float: left;
+  }
+  .with-images .card:nth-of-type(2n) .card-content {
+    float: right;
+  } */
 }
 
 .card ul {
@@ -126,38 +171,4 @@ article:not(.visible) {
 .card .slide {
   position: relative;
   animation: slide 150ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-@media (min-width: 769px) {
-  .card-container {
-    font-size: 1em;
-  }
-  .card {
-    flex-basis: calc(33% - 2em);
-  }
-  .card:nth-of-type(3n) {
-    max-width: 38em;
-    flex-basis: calc(55% - 2em);
-  }
-  article:not(.card-container) {
-    width: 80%;
-    padding-top: 2em;
-    margin: auto;
-  }
-}
-@media (max-width: 1030px) and (min-width: 769px) {
-  aside {
-    font-size: 0.8em;
-  }
-}
-@media (max-width: 768px) {
-  .card-container {
-    text-align: center;
-  }
-  article:not(.card-container) {
-    padding-top: 0;
-  }
-  article.visible:not(.card-container) h1 {
-    display: none;
-  }
 }

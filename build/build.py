@@ -47,7 +47,7 @@ def gen_badge(colour, url, img, name, value):
         .replace('__value__', value or '')
 
 
-def gen_card(name, url='', colour='',  desc='', time='', badges=[], tags=[]):
+def gen_card(name, url='', colour='',  desc='', image='', time='', badges=[], tags=[]):
     tags = ' #'.join(tags)
     tags = '#' + tags if tags else ''
     search = f'{name or ""} {desc or ""} {tags}'
@@ -56,6 +56,7 @@ def gen_card(name, url='', colour='',  desc='', time='', badges=[], tags=[]):
         .replace('__url__', url or '') \
         .replace('__colour__', colour or 'var(--primary)') \
         .replace('__desc__', desc or '') \
+        .replace('__image__', f'<img class="card-image" src="{image}">' if image else '') \
         .replace('__timestamp__', time or '') \
         .replace('__badges__', ''.join(badges) or '') \
         .replace('__tags__', tags) \
@@ -113,6 +114,7 @@ def gen_post_card(post):
         url=f'./posts/{post["slug"]}.html',
         colour='',
         desc=post['description'],
+        image=post['image'].group(1) if post['image'] else '',
         time=post['time'],
         badges=[],
         tags=post['tags']
@@ -143,7 +145,7 @@ for i, post in enumerate(posts):
         .replace('__footer__', templates['footer']) \
         .replace('__depth__', '../') \
         .replace('__title__', post['title']) \
-        .replace('__img__', post['image'].group(1) if post['image'] else 'https://dragonwocky.me/assets/avatar.jpg') \
+        .replace('__image__', post['image'].group(1) if post['image'] else 'https://dragonwocky.me/assets/avatar.jpg') \
         .replace('__slug__', post['slug']) \
         .replace('__last-modified__', post['time']) \
         .replace('__tags__', ' '.join(post['tags'])) \

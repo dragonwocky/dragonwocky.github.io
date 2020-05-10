@@ -11,16 +11,16 @@
     <title>wsl: setup - dragonwocky</title>
     <link rel="stylesheet" href="../assets/post.css" />
     <meta name="title" content="wsl: setup - dragonwocky" />
-    <meta name="description" content="a documentation of how to use the windows subsystem for linux (v1) as a development environment.__" />
+    <meta name="description" content="a documentation of how to use the windows subsystem for linux (v1) as a development environment." />
     <meta name="theme-color" content="#b20000" />
     <meta property="og:type" content="article" />
     <meta
       property="og:url"
       content="https://dragonwocky.me/posts/wsl-setup.html"
     />
-    <meta property="og:title" content="wsl: setup" />
+    <meta property="og:title" content="wsl: setup - dragonwocky" />
     <meta property="og:site_name" content="dragonwocky" />
-    <meta property="og:description" content="a documentation of how to use the windows subsystem for linux (v1) as a development environment.__" />
+    <meta property="og:description" content="a documentation of how to use the windows subsystem for linux (v1) as a development environment." />
     <meta property="article:modified_time" content="May 10, 2020 05:18 AM" />
     <meta property="article:author:username" content="dragonwocky" />
     <meta property="article:tag" content="dev server/os" />
@@ -87,17 +87,17 @@
           <article class="notion-page">
             <p class="post-meta">last updated on <span class="utc-timestamp">May 10, 2020 05:18 AM UTC</span> <b class="tags">#dev #server/os</b></p>
         
-            <h1 style="--level: 0">wsl: setup</h1>
+            <h1 style="--level: 0" id="4f75134e465a48f6ab3446f62ade914b">wsl: setup</h1>
 <p style="--level: 1">a documentation of how to get a similar or better setup than me using the windows subsystem for linux (v1) as a development environment.</p>
-<p style="--level: 1">i run this off my surface pro 7, and <a href="#be6f98b1316c46369b5103a8a019c4ee">so long as I keep the majority of my files located in the win10 filesystem</a> then i've <a href="https://www.notion.so/dragonwocky/wsl-setup-4f75134e465a48f6ab3446f62ade914b#be6f98b1316c46369b5103a8a019c4ee">never had</a> any major problems or performance issues.</p>
-<h4 style="--level: 1">understanding this tutorial</h4>
+<p style="--level: 1">i run this off my surface pro 7, and <a href="#be6f98b1316c46369b5103a8a019c4ee">so long as I keep the majority of my files located in the win10 filesystem</a> then i've <a href="wsl-setup.html#be6f98b1316c46369b5103a8a019c4ee">never had</a> any major problems or performance issues.</p>
+<h4 style="--level: 1" id="8bd79fac938e404ba5fb77d35dfac252">understanding this tutorial</h4>
 <ul style="--level: 1"><li>it is assumed you have a basic understanding of how to use the command line (e.g. knowing what <code>sudo</code> is). unless otherwise specified, <code>bash</code> code blocks are terminal commands.</li><li>when you see text like <code>&lt;this&gt;</code> (between a <code>&lt;</code> and <code>&gt;</code>), it means you need to replace it with your own input. e.g. <code>&lt;font&gt;</code> might need to become <code>Ubuntu Mono</code>.</li><li>if a step is just titled <code>~/file</code>, you need to edit the file and then re-source it. accompanying code blocks contain the insert and if necessary detail where to add it. the recommended way of doing this with a <code>.sh</code> or <code>.fish</code> file is via <code>nano &lt;filename&gt;</code> (edits) <code>source &lt;filename&gt;</code>.</li></ul><br/>
           <div class="notion-callout" style="--level: 1">
             <span class="notion-callout_icon">💡</span>
             <span class="notion-callout_text">if you have a suggestion for additions/improvements, just lemme know. i'm always looking to further my setup.</span>
           </div>
-        <br/><h2 style="--level: 1">wsl</h2>
-<h4 style="--level: 1">install wsl v1</h4>
+        <br/><h2 style="--level: 1" id="0bfafc3b94af470a89ed9789b5814085">wsl</h2>
+<h4 style="--level: 1" id="1b263ad3c48d4f2bbad9538545b3eb2e">install wsl v1</h4>
 
           <div class="notion-callout" style="--level: 1">
             <span class="notion-callout_icon">💡</span>
@@ -120,7 +120,7 @@
 </span></pre></div>
 <li>install missing packages commonly used by build tools:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="a4b93a78-99d0-4dcd-ba55-6f394f9302dd-1"><span class="lineno">1 </span>sudo apt install -y build-essential
 </span></pre></div>
-</ol><h4 style="--level: 1">configure windows terminal</h4>
+</ol><h4 style="--level: 1" id="2af0af7caf154d428d3f3e123c4ec1e3">configure windows terminal</h4>
 <ol style="--level: 1"><li>download and install a nerd font to win10 (this is necessary for support of non-ascii glyphs/symbols, e.g. powerline). I personally use CaskaydiaCove Nerd Font (the patched version of Cascadia Code).</li>
           <a class="notion-bookmark" target="_blank" rel="noopener noreferrer" href="https://www.nerdfonts.com/" style="--level: 0">
             <div class="notion-bookmark_content">
@@ -184,7 +184,7 @@
 </span><span id="38b4ac61-fa7c-47d6-a5e2-ab94d4e76958-17"><span class="lineno">17 </span>     <span class="p">}</span>
 </span><span id="38b4ac61-fa7c-47d6-a5e2-ab94d4e76958-18"><span class="lineno">18 </span>   <span class="p">]</span>
 </span></pre></div>
-</ol><h4 style="--level: 1">integration with win10</h4>
+</ol><h4 style="--level: 1" id="be6f98b1316c46369b5103a8a019c4ee">integration with win10</h4>
 <ol style="--level: 1"><li>win10 files can be found in <code>/mnt/c</code>. soft link to your regularly used folders. e.g.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="d8942091-80cd-4eb4-8cd5-38db2b05cc69-1"><span class="lineno">1 </span>ln -s <span class="s2">&quot;/mnt/c/Users/&lt;win10-username&gt;/OneDrive&quot;</span> ~/onedrive
 </span></pre></div>
 <li>if you use vs code, it works very nicely with wsl. download the extension <code>Remote - WSL</code> on the win10 side, and that's it: to open something from ubuntu, just run <code>code &lt;folder/file&gt;</code>. (every now and then running the <code>code</code> command may cause a download/update).</li>
@@ -192,7 +192,7 @@
             <span class="notion-callout_icon">💡</span>
             <span class="notion-callout_text">as tools like git and runtime environments (python, node.js, etc.) are installed on ubuntu opening vs code in this way will become preferably for most development</span>
           </div>
-        </ol><h4 style="--level: 1">mounting drives</h4>
+        </ol><h4 style="--level: 1" id="dbfa02fd87fc4d57abfd6bb3d7ca7682">mounting drives</h4>
 <ol style="--level: 1"><li>to auto-mount external drives, add the following to <code>/etc/fstab</code> (ensuring folders are created).</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="2b3b9051-3716-4174-9f6e-d6d52101ef67-1"><span class="lineno">1 </span>&lt;drive-letter&gt;: /mnt/&lt;drive-letter&gt; drvfs defaults <span class="m">0</span> <span class="m">0</span>
 </span><span id="2b3b9051-3716-4174-9f6e-d6d52101ef67-2"><span class="lineno">2 </span><span class="c1"># e.g. for the drive D</span>
 </span><span id="2b3b9051-3716-4174-9f6e-d6d52101ef67-3"><span class="lineno">3 </span>sudo mkdir /mnt/d
@@ -203,7 +203,7 @@
 </span><span id="42da5f20-35e4-4928-8135-48ea2b953e64-3"><span class="lineno">3 </span>sudo mkdir /mnt/d
 </span><span id="42da5f20-35e4-4928-8135-48ea2b953e64-4"><span class="lineno">4 </span>sudo mount -t drvfs D: /mnt/d
 </span></pre></div>
-</ol><br/><hr/><h2 style="--level: 1">fish</h2>
+</ol><br/><hr/><h2 style="--level: 1" id="2e55953fc7804b91809f966754eb64ad">fish</h2>
 
           <div class="notion-callout" style="--level: 1">
             <span class="notion-callout_icon">❔</span>
@@ -244,7 +244,7 @@
 </span><span id="ab4e335d-4d68-408e-8286-0c11628a2ba2-17"><span class="lineno">17 </span>  <span class="nb">echo</span> <span class="s2">&quot;&quot;</span>
 </span><span id="ab4e335d-4d68-408e-8286-0c11628a2ba2-18"><span class="lineno">18 </span>end
 </span></pre></div>
-</ol><h4 style="--level: 1">theme installation: starship</h4>
+</ol><h4 style="--level: 1" id="921ca22c518848bbaf86d8552b735613">theme installation: starship</h4>
 
           <div class="notion-callout" style="--level: 1">
             <span class="notion-callout_icon">❔</span>
@@ -273,7 +273,7 @@
             </div>
             <img class="notion-bookmark_cover" src="https://starship.rs/presets/nerd-font-symbols.png"/>
           </a>
-        </ol><br/><hr/><h2 style="--level: 1">keys</h2>
+        </ol><br/><hr/><h2 style="--level: 1" id="8e5f55a4be30462ca0a3e8b5826d529d">keys</h2>
 
           <div class="notion-callout" style="--level: 1">
             <span class="notion-callout_icon">❔</span>
@@ -314,7 +314,7 @@
 </span><span id="c0ef4a90-d4ec-4298-8eac-1a168ad34e8d-6"><span class="lineno">6 </span><span class="c1"># exporting public key - will copy the output to your clipboard</span>
 </span><span id="c0ef4a90-d4ec-4298-8eac-1a168ad34e8d-7"><span class="lineno">7 </span>gpg --armor --export &lt;ID&gt; <span class="p">|</span> clip.exe
 </span></pre></div>
-</ol><br/><hr/><h2 style="--level: 1">n (node.js)</h2>
+</ol><br/><hr/><h2 style="--level: 1" id="9c525fc59ea74730a13e88f8a5bc05a0">n (node.js)</h2>
 
           <div class="notion-callout" style="--level: 1">
             <span class="notion-callout_icon">❔</span>
@@ -333,7 +333,7 @@
 </span><span id="cf45a9dd-d44b-4ada-9fa4-35f961d45a8c-3"><span class="lineno">3 </span><span class="c1"># for downloading git repositories without git history</span>
 </span><span id="cf45a9dd-d44b-4ada-9fa4-35f961d45a8c-4"><span class="lineno">4 </span>npm i -g degit
 </span></pre></div>
-</ol><br/><hr/><h2 style="--level: 1">python</h2>
+</ol><br/><hr/><h2 style="--level: 1" id="0d9b991cd9de4b1286fc3a32fdace7d0">python</h2>
 
           <div class="notion-callout" style="--level: 1">
             <span class="notion-callout_icon">❔</span>
@@ -349,7 +349,7 @@
 </span><span id="66556df5-3f72-4455-b1d6-55c8351c033a-6"><span class="lineno">6 </span><span class="nb">alias</span> <span class="nv">python</span><span class="o">=</span>python3
 </span><span id="66556df5-3f72-4455-b1d6-55c8351c033a-7"><span class="lineno">7 </span><span class="nb">alias</span> <span class="nv">pip</span><span class="o">=</span>pip3
 </span></pre></div>
-</ol><h4 style="--level: 1">using pipenv for project environments</h4>
+</ol><h4 style="--level: 1" id="59e2aa1882bf47d88a94148c307ee5e1">using pipenv for project environments</h4>
 <ol style="--level: 1"><li>install:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="61a847a5-22c0-4015-8229-0419f013d728-1"><span class="lineno">1 </span>pip install --user pipenv
 </span></pre></div>
 <li><strong>usage:</strong> to install a pip package in the directory environment:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="12ec90f4-eeaa-4534-9990-b964890883f0-1"><span class="lineno">1 </span>pipenv install &lt;pkg&gt;
@@ -361,7 +361,7 @@
 </span></pre></div>
 <li><strong>usage:</strong> to launch a shell with the environment added to path, so all commands have access to packages.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="82cc7da4-e331-42ad-9829-d89203bee618-1"><span class="lineno">1 </span>pipenv shell
 </span></pre></div>
-</ol><br/><hr/><h2 style="--level: 1">php</h2>
+</ol><br/><hr/><h2 style="--level: 1" id="396b3e95fee6418a9b64c3326bb9a6b0">php</h2>
 
           <div class="notion-callout" style="--level: 1">
             <span class="notion-callout_icon">❔</span>
@@ -386,7 +386,7 @@
 </span></pre></div>
 </ul><li>start apache. defaults to document root being in <code>/var/www/html</code>, accessible via <a href="http://localhost/">http://localhost/</a>.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="90150183-af84-4817-b587-2b753974329d-1"><span class="lineno">1 </span>sudo service apache2 start
 </span></pre></div>
-</ol><br/><br/><hr/><h2 style="--level: 1">docker</h2>
+</ol><br/><br/><hr/><h2 style="--level: 1" id="6f77ef0aec8a48e7bc7f221e6c48bfc8">docker</h2>
 
           <div class="notion-callout" style="--level: 1">
             <span class="notion-callout_icon">❔</span>
@@ -429,7 +429,7 @@
 <li>check it works (win10 docker desktop must be running).</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="51a94fcc-e504-476b-834a-1a4d0d57af29-1"><span class="lineno">1 </span>docker info
 </span><span id="51a94fcc-e504-476b-834a-1a4d0d57af29-2"><span class="lineno">2 </span>docker-compose --version
 </span></pre></div>
-</ol><br/><br/><hr/><h2 style="--level: 1">gui</h2>
+</ol><br/><br/><hr/><h2 style="--level: 1" id="8c7125673d924613b35d5fb3cdd0e533">gui</h2>
 
           <div class="notion-callout" style="--level: 1">
             <span class="notion-callout_icon">❔</span>
@@ -454,14 +454,14 @@
 </span><span id="eec09275-7fdd-4bda-8f1d-7fe888ab98ec-2"><span class="lineno">2 </span>sudo systemd-machine-id-setup
 </span><span id="eec09275-7fdd-4bda-8f1d-7fe888ab98ec-3"><span class="lineno">3 </span>sudo service dbus start
 </span></pre></div>
-</ol><h4 style="--level: 1">example app: webstorm</h4>
+</ol><h4 style="--level: 1" id="d6c05bf7bd874cf1b8debd1465c369ba">example app: webstorm</h4>
 <ol style="--level: 1"><li>download and install.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="3f4d9c49-fdc3-4fb8-b107-b06d17d93861-1"><span class="lineno">1 </span>wget <span class="o">[</span>https://download.jetbrains.com/webstorm/WebStorm-2019.3.3.tar.gz<span class="o">](</span>https://download.jetbrains.com/webstorm/WebStorm-2019.3.3.tar.gz<span class="o">)</span>
 </span><span id="3f4d9c49-fdc3-4fb8-b107-b06d17d93861-2"><span class="lineno">2 </span>sudo tar xfz WebStorm-*.tar.gz -C /opt/
 </span></pre></div>
 <li>add shortcut - <code>~/.oh-my-zsh/custom/init.zsh</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="ea5ff601-516a-44f0-9c3c-36da40162a61-1"><span class="lineno">1 </span><span class="c1"># webstorm</span>
 </span><span id="ea5ff601-516a-44f0-9c3c-36da40162a61-2"><span class="lineno">2 </span><span class="nb">alias</span> <span class="nv">webstorm</span><span class="o">=</span><span class="s2">&quot;/opt/WebStorm-193.6494.34/bin/webstorm.sh&quot;</span>
 </span></pre></div>
-<li>have the xserver running. if it isn't already, run <code>XLaunch</code> (on win10) with the default configuration (just keep hitting <code>Enter</code>).</li><li>launch by running the command <code>webstorm</code>.</li></ol><h4 style="--level: 1">xfce4 desktop</h4>
+<li>have the xserver running. if it isn't already, run <code>XLaunch</code> (on win10) with the default configuration (just keep hitting <code>Enter</code>).</li><li>launch by running the command <code>webstorm</code>.</li></ol><h4 style="--level: 1" id="8949ce2561364a87b2384065443e9c17">xfce4 desktop</h4>
 
           <div class="notion-callout" style="--level: 1">
             <span class="notion-callout_icon">❔</span>

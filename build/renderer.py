@@ -148,7 +148,7 @@ class HTMLRenderer(Renderer):
         return self.set_attrs(self.set_tag(''.join(lines), tag), attrs)
 
     def handle_title(self, block, level=0, prev=None, post=None):
-        return self.md(f'# {block.title}', attrs={'style': f'--level: {level}'})
+        return self.md(f'# {block.title}', attrs={'style': f'--level: {level}', 'id': block.id.replace('-', '')})
 
     def handle_default(self, block, level=0, prev=None, post=None):
         if hasattr(block, 'title'):
@@ -172,13 +172,13 @@ class HTMLRenderer(Renderer):
         return self.set_attrs(innerhtml, {'style': f'--level: {level}; --code-lang: \'{block.language}\''})
 
     def handle_header(self, block, level=0, prev=None, post=None):
-        return self.md(f'## {block.title}', attrs={'style': f'--level: {level}'})
+        return self.md(f'## {block.title}', attrs={'style': f'--level: {level}', 'id': block.id.replace('-', '')})
 
     def handle_sub_header(self, block, level=0, prev=None, post=None):
-        return self.md(f'### {block.title}', attrs={'style': f'--level: {level}'})
+        return self.md(f'### {block.title}', attrs={'style': f'--level: {level}', 'id': block.id.replace('-', '')})
 
     def handle_sub_sub_header(self, block, level=0, prev=None, post=None):
-        return self.md(f'#### {block.title}', attrs={'style': f'--level: {level}'})
+        return self.md(f'#### {block.title}', attrs={'style': f'--level: {level}', 'id': block.id.replace('-', '')})
 
     def handle_quote(self, block, level=0, prev=None, post=None):
         return self.inline_md(block.title, 'blockquote', attrs={'style': f'--level: {level}'})
@@ -415,8 +415,8 @@ class NotebookRenderer(object):
             for potentialLink in pages:
                 pages[ID]['content'] = re.sub(
                     r'href="https:\/\/w*\.*notion\.so\/[^"\']*' +
-                    potentialLink + '"',
-                    f'href="{pages[ID]["slug"]}.html"', pages[ID]['content'])
+                    potentialLink,
+                    f'href="{pages[ID]["slug"]}.html', pages[ID]['content'])
 
         return pages
 

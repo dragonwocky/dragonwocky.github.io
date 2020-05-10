@@ -141,7 +141,7 @@ for i, post in enumerate(posts):
         .replace('__slug__', post['slug']) \
         .replace('__last-modified__', post['time']) \
         .replace('__tags__', ' '.join(post['tags'])) \
-        .replace('__description', post['description']) \
+        .replace('__description__', post['description']) \
         .replace('__content__', post['content'].replace('>', f'''>
             <p class="post-meta">{post["formatted-time"]} <b class="tags">{tags}</b></p>
         ''', 1)) \

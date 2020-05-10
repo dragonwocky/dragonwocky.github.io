@@ -1,6 +1,7 @@
 from renderer import HTMLNotebookRenderer, HTMLRenderer
 import json
 import os
+import re
 import time
 from datetime import datetime
 from dotenv import load_dotenv
@@ -135,30 +136,35 @@ for i, post in enumerate(posts):
     posts[i]['formatted-time'] = f'''last updated on <span class="utc-timestamp">{post["time"]} UTC</span>'''
     tags = ' #'.join(post['tags'])
     tags = '#' + tags if tags else ''
+    posts[i]['image'] = re.search(
+        r'img alt="[^"]*" src="([^"]*)"', post['content'])
     post_html = templates['post'] \
+        .replace('__depth__', '../') \
         .replace('__sidebar__', sidebar) \
+        .replace('__footer__', templates['footer']) \
         .replace('__title__', post['title']) \
+        .replace('__img__', post['image'].group(1) if post['image'] else 'https://dragonwocky.me/assets/avatar.jpg') \
         .replace('__slug__', post['slug']) \
         .replace('__last-modified__', post['time']) \
         .replace('__tags__', ' '.join(post['tags'])) \
         .replace('__description__', post['description']) \
         .replace('__content__', post['content'].replace('>', f'''>
             <p class="post-meta">{post["formatted-time"]} <b class="tags">{tags}</b></p>
-        ''', 1)) \
-        .replace('__footer__', templates['footer']) \
-        .replace('__depth__', '../')
+        ''', 1))
+    print(re.search(r'img alt="[^"]*" src="([^"]*)"',
+                    post['content']).group(1))
     with open(f'{__folder__}posts/{post["slug"]}.html', 'w') as post_output:
         post_output.write(post_html)
 
 hire_me = HTMLRenderer('6becc6d78aac4f709ff82229f156c7fa').render()
 
 index = templates['index'] \
+    .replace('__depth__', '') \
     .replace('__sidebar__', sidebar) \
+    .replace('__footer__', templates['footer']) \
     .replace('__portfolio__', ''.join(map(gen_portfolio_card, data['portfolio']))) \
     .replace('__posts__', ''.join(map(gen_post_card, posts))) \
-    .replace('__hire-me__', hire_me) \
-    .replace('__footer__', templates['footer']) \
-    .replace('__depth__', '')
+    .replace('__hire-me__', hire_me)
 
 with open(f'{__folder__}index.html', 'w') as index_output:
     index_output.write(index)

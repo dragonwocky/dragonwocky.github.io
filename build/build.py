@@ -139,9 +139,9 @@ for i, post in enumerate(posts):
     posts[i]['image'] = re.search(
         r'img alt="[^"]*" src="([^"]*)"', post['content'])
     post_html = templates['post'] \
-        .replace('__depth__', '../') \
         .replace('__sidebar__', sidebar) \
         .replace('__footer__', templates['footer']) \
+        .replace('__depth__', '../') \
         .replace('__title__', post['title']) \
         .replace('__img__', post['image'].group(1) if post['image'] else 'https://dragonwocky.me/assets/avatar.jpg') \
         .replace('__slug__', post['slug']) \
@@ -159,9 +159,9 @@ for i, post in enumerate(posts):
 hire_me = HTMLRenderer('6becc6d78aac4f709ff82229f156c7fa').render()
 
 index = templates['index'] \
-    .replace('__depth__', '') \
     .replace('__sidebar__', sidebar) \
     .replace('__footer__', templates['footer']) \
+    .replace('__depth__', '') \
     .replace('__portfolio__', ''.join(map(gen_portfolio_card, data['portfolio']))) \
     .replace('__posts__', ''.join(map(gen_post_card, posts))) \
     .replace('__hire-me__', hire_me)

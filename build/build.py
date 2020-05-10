@@ -145,7 +145,9 @@ for i, post in enumerate(posts):
         .replace('__footer__', templates['footer']) \
         .replace('__depth__', '../') \
         .replace('__title__', post['title']) \
-        .replace('__image__', post['image'].group(1) if post['image'] else 'https://dragonwocky.me/assets/avatar.jpg') \
+        .replace('__image_http__', post['image'].group(1).replace('https://', 'http://', 1)
+                 if post['image'] else 'http://dragonwocky.me/assets/avatar.jpg') \
+        .replace('__image_https__', post['image'].group(1) if post['image'] else 'https://dragonwocky.me/assets/avatar.jpg') \
         .replace('__slug__', post['slug']) \
         .replace('__last-modified__', post['time']) \
         .replace('__tags__', ' '.join(post['tags'])) \
@@ -153,8 +155,6 @@ for i, post in enumerate(posts):
         .replace('__content__', post['content'].replace('>', f'''>
             <p class="post-meta">{post["formatted-time"]} <b class="tags">{tags}</b></p>
         ''', 1))
-    print(re.search(r'img alt="[^"]*" src="([^"]*)"',
-                    post['content']).group(1))
     with open(f'{__folder__}posts/{post["slug"]}.html', 'w') as post_output:
         post_output.write(post_html)
 

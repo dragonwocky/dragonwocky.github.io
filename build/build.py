@@ -111,7 +111,7 @@ sidebar = templates['sidebar'].replace('__contact__', ''.join(map(lambda project
 def gen_post_card(post):
     return gen_card(
         name=post.get('title'),
-        url=f'./posts/{post["slug"]}.html',
+        url=f'./posts/{post["slug"]}',
         colour='',
         desc=post['description'],
         image=post['image'].group(1) if post['image'] else '',

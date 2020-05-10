@@ -419,7 +419,7 @@ class NotebookRenderer(object):
                 pages[ID]['content'] = re.sub(
                     r'href="https:\/\/w*\.*notion\.so\/[^"\']*' +
                     potentialLink,
-                    f'href="{pages[ID]["slug"]}.html', pages[ID]['content'])
+                    f'href="./{pages[ID]["slug"]}', pages[ID]['content'])
 
         return pages
 

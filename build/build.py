@@ -138,8 +138,7 @@ for i, post in enumerate(posts):
     posts[i]['formatted-time'] = f'''last updated on <span class="utc-timestamp">{post["time"]} UTC</span>'''
     tags = ' #'.join(post['tags'])
     tags = '#' + tags if tags else ''
-    posts[i]['image'] = re.search(
-        r'img alt="[^"]*" src="([^"]*)"', post['content'])
+    posts[i]['image'] = ''
     post_html = templates['post'] \
         .replace('__sidebar__', sidebar) \
         .replace('__footer__', templates['footer']) \

@@ -17,3 +17,4 @@
 - databases are linked to instead of embedded
 - pdf embeds are treated as file embeds
 - code blocks have line numbers
+- if exporting a non-public page, media (files + images etc.) will be inaccessible to viewers not signed in to your notion account

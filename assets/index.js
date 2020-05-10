@@ -161,7 +161,7 @@ function index() {
           (!card.getAttribute('data-search') ||
             !card.getAttribute('data-search').toLowerCase().includes(filter))
             ? 'none'
-            : 'flex';
+            : '';
       });
     });
   });

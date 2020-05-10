@@ -138,15 +138,14 @@ for i, post in enumerate(posts):
     posts[i]['formatted-time'] = f'''last updated on <span class="utc-timestamp">{post["time"]} UTC</span>'''
     tags = ' #'.join(post['tags'])
     tags = '#' + tags if tags else ''
-    posts[i]['image'] = ''
+    posts[i]['image'] = re.search(
+        r'img alt="[^"]*" src="([^"]*)"', post['content'])
     post_html = templates['post'] \
         .replace('__sidebar__', sidebar) \
         .replace('__footer__', templates['footer']) \
         .replace('__depth__', '../') \
         .replace('__title__', post['title']) \
-        .replace('__image_http__', post['image'].group(1).replace('https://', 'http://', 1)
-                 if post['image'] else 'http://dragonwocky.me/assets/avatar.jpg') \
-        .replace('__image_https__', post['image'].group(1) if post['image'] else 'https://dragonwocky.me/assets/avatar.jpg') \
+        .replace('__image__', post['image'].group(1) if post['image'] else 'https://dragonwocky.me/assets/avatar.jpg') \
         .replace('__slug__', post['slug']) \
         .replace('__last-modified__', post['time']) \
         .replace('__tags__', ' '.join(post['tags'])) \

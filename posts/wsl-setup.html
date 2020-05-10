@@ -21,7 +21,7 @@
     <meta property="og:title" content="wsl: setup - dragonwocky" />
     <meta property="og:site_name" content="dragonwocky" />
     <meta property="og:description" content="a documentation of how to use the windows subsystem for linux (v1) as a development environment." />
-    <meta property="article:modified_time" content="May 10, 2020 05:18 AM" />
+    <meta property="article:modified_time" content="May 10, 2020 05:42 AM" />
     <meta property="article:author:username" content="dragonwocky" />
     <meta property="article:tag" content="dev server/os" />
     <meta
@@ -34,7 +34,10 @@
 
   <body class="post">
     <aside class="bio">
-  <h1><img src="../assets/avatar.jpg" width="20" /><br />dragonwocky</h1>
+  <h1>
+    <a href="/#"><img src="../assets/avatar.jpg" width="20" /></a
+    ><br />dragonwocky
+  </h1>
   <h2>
     hey! I'm a teenage bookworm programmer from australia. hobbies include
     confusion, warframe and minecraft.
@@ -85,11 +88,11 @@
     <main>
       
           <article class="notion-page">
-            <p class="post-meta">last updated on <span class="utc-timestamp">May 10, 2020 05:18 AM UTC</span> <b class="tags">#dev #server/os</b></p>
+            <p class="post-meta">last updated on <span class="utc-timestamp">May 10, 2020 05:42 AM UTC</span> <b class="tags">#dev #server/os</b></p>
         
             <h1 style="--level: 0" id="4f75134e465a48f6ab3446f62ade914b">wsl: setup</h1>
 <p style="--level: 1">a documentation of how to get a similar or better setup than me using the windows subsystem for linux (v1) as a development environment.</p>
-<p style="--level: 1">i run this off my surface pro 7, and <a href="#be6f98b1316c46369b5103a8a019c4ee">so long as I keep the majority of my files located in the win10 filesystem</a> then i've <a href="wsl-setup.html#be6f98b1316c46369b5103a8a019c4ee">never had</a> any major problems or performance issues.</p>
+<p style="--level: 1">i run this off my surface pro 7, and <a href="#be6f98b1316c46369b5103a8a019c4ee">so long as I keep the majority of my files located in the win10 filesystem</a> then i've never had any major problems or performance issues.</p>
 <h4 style="--level: 1" id="8bd79fac938e404ba5fb77d35dfac252">understanding this tutorial</h4>
 <ul style="--level: 1"><li>it is assumed you have a basic understanding of how to use the command line (e.g. knowing what <code>sudo</code> is). unless otherwise specified, <code>bash</code> code blocks are terminal commands.</li><li>when you see text like <code>&lt;this&gt;</code> (between a <code>&lt;</code> and <code>&gt;</code>), it means you need to replace it with your own input. e.g. <code>&lt;font&gt;</code> might need to become <code>Ubuntu Mono</code>.</li><li>if a step is just titled <code>~/file</code>, you need to edit the file and then re-source it. accompanying code blocks contain the insert and if necessary detail where to add it. the recommended way of doing this with a <code>.sh</code> or <code>.fish</code> file is via <code>nano &lt;filename&gt;</code> (edits) <code>source &lt;filename&gt;</code>.</li></ul><br/>
           <div class="notion-callout" style="--level: 1">

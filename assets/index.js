@@ -33,9 +33,12 @@ class HashRouter {
   }
 
   set(ID) {
-    this.highlightLink(ID);
-    this.setHash(ID);
-    this.showPage(ID);
+    this.ID = this.parseID(ID);
+    this.HASH = this.ID === this._default ? '#' : this.ID;
+    this.highlightLink();
+    this.setHash();
+    this.showPage();
+    document.querySelector('.bio h1 a').href = `/${this.HASH}`;
   }
   parseID(ID) {
     if (!ID || typeof ID !== 'string') ID = location.hash || this._default;
@@ -45,8 +48,7 @@ class HashRouter {
     return ID;
   }
 
-  highlightLink(ID) {
-    this.ID = this.parseID(ID);
+  highlightLink() {
     this._nav.forEach((el) =>
       el.getAttribute('href') === this.ID
         ? el.classList.add('active')
@@ -54,8 +56,7 @@ class HashRouter {
     );
     return true;
   }
-  showPage(ID) {
-    this.ID = this.parseID(ID);
+  showPage() {
     this._pages.forEach((el) =>
       `#${el.id}` === this.ID
         ? el.classList.add('visible')
@@ -68,12 +69,10 @@ class HashRouter {
     ev.preventDefault();
     if (ev.newURL !== ev.oldURL) this.set();
   }
-  setHash(ID) {
-    this.ID = this.parseID(ID);
-    ID = this.ID === this._default ? '#' : this.ID;
+  setHash() {
     if (history.replaceState) {
-      history.replaceState(null, null, ID);
-    } else location.replace(ID);
+      history.replaceState(null, null, this.HASH);
+    } else location.replace(this.HASH);
     return true;
   }
 }

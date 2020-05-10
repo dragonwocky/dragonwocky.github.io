@@ -106,7 +106,9 @@
             <span class="notion-callout_icon">💡</span>
             <span class="notion-callout_text">v2 runs better due to it using a real linux kernel rather than a wrapper, but currently can only be installed on the windows insider program.</span>
           </div>
-        <ol style="--level: 1"><li>open powershell as admin and run:</li><div class="notion-code" style="--level: 0; --code-lang: 'PowerShell'"><pre><span></span><span id="1b54c490-b2d4-445c-8bad-3799d92e3059-1"><span class="lineno">1 </span><span class="nb">Enable-WindowsOptionalFeature</span> <span class="n">-Online</span> <span class="n">-FeatureName</span> <span class="n">Microsoft-Windows-Subsystem-Linux</span>
+        <ol style="--level: 1"><li>open powershell as admin and run:</li><div class="notion-code" style="--level: 0; --code-lang: 'PowerShell'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="1b54c490-b2d4-445c-8bad-3799d92e3059-1"><span class="lineno">1 </span><span class="nb">Enable-WindowsOptionalFeature</span> <span class="n">-Online</span> <span class="n">-FeatureName</span> <span class="n">Microsoft-Windows-Subsystem-Linux</span>
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
 <li>reboot computer.</li><li>download ubuntu from the microsoft store.</li>
           <a class="notion-bookmark" target="_blank" rel="noopener noreferrer" href="https://www.microsoft.com/en-au/p/ubuntu/9nblggh4msv6" style="--level: 0">
@@ -119,9 +121,13 @@
             </div>
             <img class="notion-bookmark_cover" src="https://store-images.s-microsoft.com/image/apps.65004.13510798887446365.018f40a9-2b3c-4ff8-bb22-6247f3e8bb82.45b2d132-b479-4924-98ab-5d78c0b66676?w=96&h=96&q=60"/>
           </a>
-        <li>open the ubuntu app. it will complete installation of itself, and prompt you to create a user &amp; password. (this password is what you will need to put in when running a command with <code>sudo</code>).</li><li>to ensure everything as up-to-date as possible, run:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="ac283eee-6d7a-45ba-96bf-bf65e53c79f9-1"><span class="lineno">1 </span>sudo apt update -y <span class="o">&amp;&amp;</span> sudo apt upgrade -y
+        <li>open the ubuntu app. it will complete installation of itself, and prompt you to create a user &amp; password. (this password is what you will need to put in when running a command with <code>sudo</code>).</li><li>to ensure everything as up-to-date as possible, run:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="ac283eee-6d7a-45ba-96bf-bf65e53c79f9-1"><span class="lineno">1 </span>sudo apt update -y <span class="o">&amp;&amp;</span> sudo apt upgrade -y
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li>install missing packages commonly used by build tools:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="a4b93a78-99d0-4dcd-ba55-6f394f9302dd-1"><span class="lineno">1 </span>sudo apt install -y build-essential
+<li>install missing packages commonly used by build tools:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="a4b93a78-99d0-4dcd-ba55-6f394f9302dd-1"><span class="lineno">1 </span>sudo apt install -y build-essential
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
 </ol><h4 style="--level: 1" id="2af0af7caf154d428d3f3e123c4ec1e3">configure windows terminal</h4>
 <ol style="--level: 1"><li>download and install a nerd font to win10 (this is necessary for support of non-ascii glyphs/symbols, e.g. powerline). I personally use CaskaydiaCove Nerd Font (the patched version of Cascadia Code).</li>
@@ -146,15 +152,21 @@
             </div>
             <img class="notion-bookmark_cover" src="https://store-images.s-microsoft.com/image/apps.26809.13926773940052066.8978812d-6c65-429b-835d-2cecd178e2d7.d3d67a14-fb51-49d8-a4d0-9bea220e8529?w=96&h=96&q=60"/>
           </a>
-        <li>open settings with <code>CTRL + ,</code>. find the profile with a source of <code>Windows.Terminal.Wsl</code> and add the following settings. (<code>&lt;username&gt;</code> refers to the ubuntu user you set up <a href="#630c9a2daf554d359bf6a734ae92bd18">above</a>, <code>&lt;font&gt;</code> should be the font you just installed: e.g. <code>CaskaydiaCove Nerd Font</code>).</li><div class="notion-code" style="--level: 0; --code-lang: 'JSON'"><pre><span></span><span id="9cd5707c-1f9d-4118-805b-88b78f05bdd6-1"><span class="lineno">1 </span><span class="s2">&quot;startingDirectory&quot;</span><span class="err">:</span> <span class="s2">&quot;\\\\wsl$\\Ubuntu\\home\\&lt;username&gt;&quot;</span><span class="err">,</span>
+        <li>open settings with <code>CTRL + ,</code>. find the profile with a source of <code>Windows.Terminal.Wsl</code> and add the following settings. (<code>&lt;username&gt;</code> refers to the ubuntu user you set up <a href="#630c9a2daf554d359bf6a734ae92bd18">above</a>, <code>&lt;font&gt;</code> should be the font you just installed: e.g. <code>CaskaydiaCove Nerd Font</code>).</li><div class="notion-code" style="--level: 0; --code-lang: 'JSON'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="9cd5707c-1f9d-4118-805b-88b78f05bdd6-1"><span class="lineno">1 </span><span class="s2">&quot;startingDirectory&quot;</span><span class="err">:</span> <span class="s2">&quot;\\\\wsl$\\Ubuntu\\home\\&lt;username&gt;&quot;</span><span class="err">,</span>
 </span><span id="9cd5707c-1f9d-4118-805b-88b78f05bdd6-2"><span class="lineno">2 </span><span class="s2">&quot;fontFace&quot;</span><span class="err">:</span> <span class="s2">&quot;&lt;font&gt;&quot;</span><span class="err">,</span>
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li><strong>optional:</strong> to add a custom background image, add the following to the profile. (<code>&lt;image-source&gt;</code> may be a win10 filepath or a url.)</li><div class="notion-code" style="--level: 0; --code-lang: 'JSON'"><pre><span></span><span id="535b4c17-e271-4f30-bd4c-3dd890ac7b6b-1"><span class="lineno">1 </span><span class="s2">&quot;background&quot;</span><span class="err">:</span> <span class="s2">&quot;#000&quot;</span><span class="err">,</span>
+<li><strong>optional:</strong> to add a custom background image, add the following to the profile. (<code>&lt;image-source&gt;</code> may be a win10 filepath or a url.)</li><div class="notion-code" style="--level: 0; --code-lang: 'JSON'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="535b4c17-e271-4f30-bd4c-3dd890ac7b6b-1"><span class="lineno">1 </span><span class="s2">&quot;background&quot;</span><span class="err">:</span> <span class="s2">&quot;#000&quot;</span><span class="err">,</span>
 </span><span id="535b4c17-e271-4f30-bd4c-3dd890ac7b6b-2"><span class="lineno">2 </span><span class="s2">&quot;backgroundImageOpacity&quot;</span><span class="err">:</span> <span class="mf">0.2</span><span class="err">,</span>
 </span><span id="535b4c17-e271-4f30-bd4c-3dd890ac7b6b-3"><span class="lineno">3 </span><span class="s2">&quot;backgroundImageStretchMode&quot;</span><span class="err">:</span> <span class="s2">&quot;uniformToFill&quot;</span><span class="err">,</span>
 </span><span id="535b4c17-e271-4f30-bd4c-3dd890ac7b6b-4"><span class="lineno">4 </span><span class="s2">&quot;backgroundImage&quot;</span><span class="err">:</span> <span class="s2">&quot;&lt;image-source&gt;&quot;</span><span class="err">,</span>
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li><strong>recommended:</strong> add a preferred colour scheme to the <code>schemes</code> array in the general terminal setting, and reference it in your <code>Windows.Terminal.Wsl</code> profile like so:</li><div class="notion-code" style="--level: 0; --code-lang: 'JSON'"><pre><span></span><span id="288d4790-9e75-4f69-b650-f07bfe7aae74-1"><span class="lineno">1 </span><span class="s2">&quot;colorScheme&quot;</span><span class="err">:</span> <span class="s2">&quot;&lt;scheme.name&gt;&quot;</span><span class="err">,</span>
+<li><strong>recommended:</strong> add a preferred colour scheme to the <code>schemes</code> array in the general terminal setting, and reference it in your <code>Windows.Terminal.Wsl</code> profile like so:</li><div class="notion-code" style="--level: 0; --code-lang: 'JSON'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="288d4790-9e75-4f69-b650-f07bfe7aae74-1"><span class="lineno">1 </span><span class="s2">&quot;colorScheme&quot;</span><span class="err">:</span> <span class="s2">&quot;&lt;scheme.name&gt;&quot;</span><span class="err">,</span>
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
 <p style="--level: 0">a large repository of colour schemes ported from iTerm2 can be found here:</p>
 
@@ -168,7 +180,8 @@
             </div>
             
           </a>
-        <li><strong>recommended:</strong> add custom keybindings to the <code>keybindings</code> array in the general terminal settings. these do not interfere with normal use of the shell / other purposes for those keybindings.</li><div class="notion-code" style="--level: 0; --code-lang: 'JSON'"><pre><span></span><span id="38b4ac61-fa7c-47d6-a5e2-ab94d4e76958-1"><span class="lineno"> 1 </span><span class="s2">&quot;keybindings&quot;</span><span class="err">:</span> <span class="p">[</span>
+        <li><strong>recommended:</strong> add custom keybindings to the <code>keybindings</code> array in the general terminal settings. these do not interfere with normal use of the shell / other purposes for those keybindings.</li><div class="notion-code" style="--level: 0; --code-lang: 'JSON'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="38b4ac61-fa7c-47d6-a5e2-ab94d4e76958-1"><span class="lineno"> 1 </span><span class="s2">&quot;keybindings&quot;</span><span class="err">:</span> <span class="p">[</span>
 </span><span id="38b4ac61-fa7c-47d6-a5e2-ab94d4e76958-2"><span class="lineno"> 2 </span>     <span class="p">{</span>
 </span><span id="38b4ac61-fa7c-47d6-a5e2-ab94d4e76958-3"><span class="lineno"> 3 </span>       <span class="nt">&quot;command&quot;</span><span class="p">:</span> <span class="s2">&quot;copy&quot;</span><span class="p">,</span>
 </span><span id="38b4ac61-fa7c-47d6-a5e2-ab94d4e76958-4"><span class="lineno"> 4 </span>       <span class="nt">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ctrl+c&quot;</span><span class="p">]</span>
@@ -186,9 +199,12 @@
 </span><span id="38b4ac61-fa7c-47d6-a5e2-ab94d4e76958-16"><span class="lineno">16 </span>       <span class="nt">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ctrl+w&quot;</span><span class="p">]</span>
 </span><span id="38b4ac61-fa7c-47d6-a5e2-ab94d4e76958-17"><span class="lineno">17 </span>     <span class="p">}</span>
 </span><span id="38b4ac61-fa7c-47d6-a5e2-ab94d4e76958-18"><span class="lineno">18 </span>   <span class="p">]</span>
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
 </ol><h4 style="--level: 1" id="be6f98b1316c46369b5103a8a019c4ee">integration with win10</h4>
-<ol style="--level: 1"><li>win10 files can be found in <code>/mnt/c</code>. soft link to your regularly used folders. e.g.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="d8942091-80cd-4eb4-8cd5-38db2b05cc69-1"><span class="lineno">1 </span>ln -s <span class="s2">&quot;/mnt/c/Users/&lt;win10-username&gt;/OneDrive&quot;</span> ~/onedrive
+<ol style="--level: 1"><li>win10 files can be found in <code>/mnt/c</code>. soft link to your regularly used folders. e.g.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="d8942091-80cd-4eb4-8cd5-38db2b05cc69-1"><span class="lineno">1 </span>ln -s <span class="s2">&quot;/mnt/c/Users/&lt;win10-username&gt;/OneDrive&quot;</span> ~/onedrive
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
 <li>if you use vs code, it works very nicely with wsl. download the extension <code>Remote - WSL</code> on the win10 side, and that's it: to open something from ubuntu, just run <code>code &lt;folder/file&gt;</code>. (every now and then running the <code>code</code> command may cause a download/update).</li>
           <div class="notion-callout" style="--level: 0">
@@ -196,15 +212,19 @@
             <span class="notion-callout_text">as tools like git and runtime environments (python, node.js, etc.) are installed on ubuntu opening vs code in this way will become preferably for most development</span>
           </div>
         </ol><h4 style="--level: 1" id="dbfa02fd87fc4d57abfd6bb3d7ca7682">mounting drives</h4>
-<ol style="--level: 1"><li>to auto-mount external drives, add the following to <code>/etc/fstab</code> (ensuring folders are created).</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="2b3b9051-3716-4174-9f6e-d6d52101ef67-1"><span class="lineno">1 </span>&lt;drive-letter&gt;: /mnt/&lt;drive-letter&gt; drvfs defaults <span class="m">0</span> <span class="m">0</span>
+<ol style="--level: 1"><li>to auto-mount external drives, add the following to <code>/etc/fstab</code> (ensuring folders are created).</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="2b3b9051-3716-4174-9f6e-d6d52101ef67-1"><span class="lineno">1 </span>&lt;drive-letter&gt;: /mnt/&lt;drive-letter&gt; drvfs defaults <span class="m">0</span> <span class="m">0</span>
 </span><span id="2b3b9051-3716-4174-9f6e-d6d52101ef67-2"><span class="lineno">2 </span><span class="c1"># e.g. for the drive D</span>
 </span><span id="2b3b9051-3716-4174-9f6e-d6d52101ef67-3"><span class="lineno">3 </span>sudo mkdir /mnt/d
 </span><span id="2b3b9051-3716-4174-9f6e-d6d52101ef67-4"><span class="lineno">4 </span><span class="nb">echo</span> <span class="s2">&quot;D: /mnt/d drvfs defaults 0 0&quot;</span> <span class="p">|</span> sudo tee -a /etc/fstab &gt; /dev/null
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li>to manually/temporarily mount a drive:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="42da5f20-35e4-4928-8135-48ea2b953e64-1"><span class="lineno">1 </span>sudo mount -t drvfs &lt;drive-letter&gt;: /mnt/&lt;drive-letter&gt;
+<li>to manually/temporarily mount a drive:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="42da5f20-35e4-4928-8135-48ea2b953e64-1"><span class="lineno">1 </span>sudo mount -t drvfs &lt;drive-letter&gt;: /mnt/&lt;drive-letter&gt;
 </span><span id="42da5f20-35e4-4928-8135-48ea2b953e64-2"><span class="lineno">2 </span><span class="c1"># e.g. for the drive D:</span>
 </span><span id="42da5f20-35e4-4928-8135-48ea2b953e64-3"><span class="lineno">3 </span>sudo mkdir /mnt/d
 </span><span id="42da5f20-35e4-4928-8135-48ea2b953e64-4"><span class="lineno">4 </span>sudo mount -t drvfs D: /mnt/d
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
 </ol><br/><hr/><h2 style="--level: 1" id="2e55953fc7804b91809f966754eb64ad">fish</h2>
 
@@ -212,23 +232,32 @@
             <span class="notion-callout_icon">❔</span>
             <span class="notion-callout_text"><strong>highly recommended:</strong> a better unix shell built on top of bash.</span>
           </div>
-        <ol style="--level: 1"><li>install.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="303f26aa-3a28-47a0-b0e5-b3c29b8e7273-1"><span class="lineno">1 </span>sudo apt-add-repository ppa:fish-shell/release-3
+        <ol style="--level: 1"><li>install.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="303f26aa-3a28-47a0-b0e5-b3c29b8e7273-1"><span class="lineno">1 </span>sudo apt-add-repository ppa:fish-shell/release-3
 </span><span id="303f26aa-3a28-47a0-b0e5-b3c29b8e7273-2"><span class="lineno">2 </span>sudo apt update -y
 </span><span id="303f26aa-3a28-47a0-b0e5-b3c29b8e7273-3"><span class="lineno">3 </span>sudo apt install fish
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li>to set fish as the default shell, run the following and then close/reopen the prompt:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="13c09326-c7de-45cf-82ab-4e58425865ea-1"><span class="lineno">1 </span>chsh -s <span class="sb">`</span>which fish<span class="sb">`</span>
+<li>to set fish as the default shell, run the following and then close/reopen the prompt:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="13c09326-c7de-45cf-82ab-4e58425865ea-1"><span class="lineno">1 </span>chsh -s <span class="sb">`</span>which fish<span class="sb">`</span>
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li><code>~/.config/fish/config.fish</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="0ac56889-5d4d-46a9-9905-d26ab9d7ab89-1"><span class="lineno">1 </span><span class="c1"># run open &lt;location&gt; to open it in the</span>
+<li><code>~/.config/fish/config.fish</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="0ac56889-5d4d-46a9-9905-d26ab9d7ab89-1"><span class="lineno">1 </span><span class="c1"># run open &lt;location&gt; to open it in the</span>
 </span><span id="0ac56889-5d4d-46a9-9905-d26ab9d7ab89-2"><span class="lineno">2 </span><span class="c1"># native win10 file explorer</span>
 </span><span id="0ac56889-5d4d-46a9-9905-d26ab9d7ab89-3"><span class="lineno">3 </span><span class="nb">alias</span> <span class="nv">open</span><span class="o">=</span><span class="s2">&quot;explorer.exe&quot;</span>
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li><strong>optional:</strong> to slightly customise the terminal title - this will update it to show as <code>[process] path</code> (e.g. <code>[nano] ~/wip-story.txt</code>): <code>~/.config/fish/config.fish</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="a0d9a6dd-0777-4c1d-b1fb-b3d48b46c46a-1"><span class="lineno">1 </span><span class="c1"># custom title</span>
+<li><strong>optional:</strong> to slightly customise the terminal title - this will update it to show as <code>[process] path</code> (e.g. <code>[nano] ~/wip-story.txt</code>): <code>~/.config/fish/config.fish</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="a0d9a6dd-0777-4c1d-b1fb-b3d48b46c46a-1"><span class="lineno">1 </span><span class="c1"># custom title</span>
 </span><span id="a0d9a6dd-0777-4c1d-b1fb-b3d48b46c46a-2"><span class="lineno">2 </span><span class="k">function</span> fish_title
 </span><span id="a0d9a6dd-0777-4c1d-b1fb-b3d48b46c46a-3"><span class="lineno">3 </span>  <span class="nb">echo</span> <span class="s2">&quot;[&quot;</span><span class="o">(</span>status current-command<span class="o">)</span><span class="s2">&quot;] &quot;</span>
 </span><span id="a0d9a6dd-0777-4c1d-b1fb-b3d48b46c46a-4"><span class="lineno">4 </span>  <span class="nb">pwd</span>
 </span><span id="a0d9a6dd-0777-4c1d-b1fb-b3d48b46c46a-5"><span class="lineno">5 </span>end
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li><strong>optional:</strong> to replace the default &quot;welcome to fish&quot; shown on open of a shell - will keep track of how many times you've opened the shell, and will present you with a random word: <code>~/.config/fish/config.fish</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="ab4e335d-4d68-408e-8286-0c11628a2ba2-1"><span class="lineno"> 1 </span><span class="c1"># custom greeting</span>
+<li><strong>optional:</strong> to replace the default &quot;welcome to fish&quot; shown on open of a shell - will keep track of how many times you've opened the shell, and will present you with a random word: <code>~/.config/fish/config.fish</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="ab4e335d-4d68-408e-8286-0c11628a2ba2-1"><span class="lineno"> 1 </span><span class="c1"># custom greeting</span>
 </span><span id="ab4e335d-4d68-408e-8286-0c11628a2ba2-2"><span class="lineno"> 2 </span><span class="k">function</span> fish_greeting
 </span><span id="ab4e335d-4d68-408e-8286-0c11628a2ba2-3"><span class="lineno"> 3 </span>  <span class="nb">echo</span> <span class="o">(</span>date<span class="o">)</span> &gt;&gt; <span class="nv">$HOME</span>/.config/prompt-count.txt
 </span><span id="ab4e335d-4d68-408e-8286-0c11628a2ba2-4"><span class="lineno"> 4 </span>  <span class="nb">set</span> OPENED <span class="o">(</span>wc -l <span class="nv">$HOME</span>/.config/prompt-count.txt <span class="p">|</span> awk <span class="s1">&#39;{ print $1 }&#39;</span><span class="o">)</span>
@@ -246,6 +275,7 @@
 </span><span id="ab4e335d-4d68-408e-8286-0c11628a2ba2-16"><span class="lineno">16 </span>  <span class="nb">echo</span> <span class="s2">&quot;do with this what you will: &#39;&quot;</span><span class="o">(</span>shuf -n <span class="m">1</span> <span class="nv">$HOME</span>/.config/words.txt<span class="o">)</span><span class="s2">&quot;&#39;&quot;</span>
 </span><span id="ab4e335d-4d68-408e-8286-0c11628a2ba2-17"><span class="lineno">17 </span>  <span class="nb">echo</span> <span class="s2">&quot;&quot;</span>
 </span><span id="ab4e335d-4d68-408e-8286-0c11628a2ba2-18"><span class="lineno">18 </span>end
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
 </ol><h4 style="--level: 1" id="921ca22c518848bbaf86d8552b735613">theme installation: starship</h4>
 
@@ -253,17 +283,23 @@
             <span class="notion-callout_icon">❔</span>
             <span class="notion-callout_text"><strong>highly recommended:</strong> will take your fish experience to another level (+ just generally looks much nicer).</span>
           </div>
-        <ol style="--level: 1"><li>download and install.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="3435ce7c-5564-4829-a73e-6ace41a53d7b-1"><span class="lineno">1 </span>curl -fsSL https://starship.rs/install.sh <span class="p">|</span> bash
+        <ol style="--level: 1"><li>download and install.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="3435ce7c-5564-4829-a73e-6ace41a53d7b-1"><span class="lineno">1 </span>curl -fsSL https://starship.rs/install.sh <span class="p">|</span> bash
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li><code>~/.config/fish/config.fish</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="437064de-9842-4b9f-b150-33b6edfa96d9-1"><span class="lineno">1 </span><span class="c1"># load the starship theme</span>
+<li><code>~/.config/fish/config.fish</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="437064de-9842-4b9f-b150-33b6edfa96d9-1"><span class="lineno">1 </span><span class="c1"># load the starship theme</span>
 </span><span id="437064de-9842-4b9f-b150-33b6edfa96d9-2"><span class="lineno">2 </span>starship init fish <span class="p">|</span> <span class="nb">source</span>
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li><code>~/.config/starship.toml</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="cb39902e-b4dc-473d-bf25-9c3575b4d125-1"><span class="lineno">1 </span><span class="c1"># display single-line</span>
+<li><code>~/.config/starship.toml</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="cb39902e-b4dc-473d-bf25-9c3575b4d125-1"><span class="lineno">1 </span><span class="c1"># display single-line</span>
 </span><span id="cb39902e-b4dc-473d-bf25-9c3575b4d125-2"><span class="lineno">2 </span><span class="nv">add_newline</span> <span class="o">=</span> <span class="nb">false</span>
 </span><span id="cb39902e-b4dc-473d-bf25-9c3575b4d125-3"><span class="lineno">3 </span><span class="o">[</span>line_break<span class="o">]</span>
 </span><span id="cb39902e-b4dc-473d-bf25-9c3575b4d125-4"><span class="lineno">4 </span><span class="nv">disabled</span> <span class="o">=</span> <span class="nb">true</span>
 </span><span id="cb39902e-b4dc-473d-bf25-9c3575b4d125-5"><span class="lineno">5 </span>
 </span><span id="cb39902e-b4dc-473d-bf25-9c3575b4d125-6"><span class="lineno">6 </span><span class="c1"># nerd-font preset: copy/paste this from the page linked below</span>
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
 
           <a class="notion-bookmark" target="_blank" rel="noopener noreferrer" href="https://starship.rs/presets/#nerd-font-symbols" style="--level: 0">
@@ -282,7 +318,8 @@
             <span class="notion-callout_icon">❔</span>
             <span class="notion-callout_text"><strong>optional:</strong> used for secure communication with external servers (e.g. for ssh-ing to a remote machine or for pushing verified commits to github).</span>
           </div>
-        <ol style="--level: 1"><li><code>~/.config/fish/config.fish</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="500e1a43-34fb-497b-9c5b-6400e6dd8d60-1"><span class="lineno"> 1 </span><span class="c1"># ssh-agent</span>
+        <ol style="--level: 1"><li><code>~/.config/fish/config.fish</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="500e1a43-34fb-497b-9c5b-6400e6dd8d60-1"><span class="lineno"> 1 </span><span class="c1"># ssh-agent</span>
 </span><span id="500e1a43-34fb-497b-9c5b-6400e6dd8d60-2"><span class="lineno"> 2 </span><span class="k">if</span> <span class="o">[</span> -z <span class="o">(</span>pgrep ssh-agent<span class="o">)</span> <span class="o">]</span>
 </span><span id="500e1a43-34fb-497b-9c5b-6400e6dd8d60-3"><span class="lineno"> 3 </span>  <span class="nb">eval</span> <span class="o">(</span>ssh-agent -c<span class="o">)</span> &gt; /dev/null
 </span><span id="500e1a43-34fb-497b-9c5b-6400e6dd8d60-4"><span class="lineno"> 4 </span>  <span class="nb">set</span> -Ux SSH_AUTH_SOCK <span class="nv">$SSH_AUTH_SOCK</span>
@@ -295,11 +332,15 @@
 </span><span id="500e1a43-34fb-497b-9c5b-6400e6dd8d60-11"><span class="lineno">11 </span>
 </span><span id="500e1a43-34fb-497b-9c5b-6400e6dd8d60-12"><span class="lineno">12 </span><span class="c1"># gpg-agent</span>
 </span><span id="500e1a43-34fb-497b-9c5b-6400e6dd8d60-13"><span class="lineno">13 </span><span class="nb">set</span> -x GPG_TTY <span class="o">(</span>tty<span class="o">)</span>
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<br/><li>set up git (with user details).</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="881185bc-d64f-40de-9ecb-c0f038e3ef23-1"><span class="lineno">1 </span>git config --global user.email <span class="s2">&quot;&lt;you@example.com&gt;&quot;</span>
+<br/><li>set up git (with user details).</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="881185bc-d64f-40de-9ecb-c0f038e3ef23-1"><span class="lineno">1 </span>git config --global user.email <span class="s2">&quot;&lt;you@example.com&gt;&quot;</span>
 </span><span id="881185bc-d64f-40de-9ecb-c0f038e3ef23-2"><span class="lineno">2 </span>git config --global user.name <span class="s2">&quot;&lt;Your Name&gt;&quot;</span>
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li>setup ssh (install on remotes with e.g. <code>ssh-copy-id</code>, copying to github settings). commands assume you use the default save location.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="738c147c-9f0f-4ab9-9ebb-7008da581167-1"><span class="lineno">1 </span>ssh-keygen -t rsa -b <span class="m">4096</span> -C <span class="s2">&quot;&lt;you@example.com&gt;&quot;</span>
+<li>setup ssh (install on remotes with e.g. <code>ssh-copy-id</code>, copying to github settings). commands assume you use the default save location.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="738c147c-9f0f-4ab9-9ebb-7008da581167-1"><span class="lineno">1 </span>ssh-keygen -t rsa -b <span class="m">4096</span> -C <span class="s2">&quot;&lt;you@example.com&gt;&quot;</span>
 </span><span id="738c147c-9f0f-4ab9-9ebb-7008da581167-2"><span class="lineno">2 </span>ssh-add
 </span><span id="738c147c-9f0f-4ab9-9ebb-7008da581167-3"><span class="lineno">3 </span><span class="c1"># exporting public key - will copy the output to your clipboard</span>
 </span><span id="738c147c-9f0f-4ab9-9ebb-7008da581167-4"><span class="lineno">4 </span>cat ~/.ssh/id_rsa.pub <span class="p">|</span> clip.exe
@@ -308,14 +349,17 @@
 </span><span id="738c147c-9f0f-4ab9-9ebb-7008da581167-7"><span class="lineno">7 </span>
 </span><span id="738c147c-9f0f-4ab9-9ebb-7008da581167-8"><span class="lineno">8 </span><span class="c1"># to reconfigure an existing git repo to use ssh</span>
 </span><span id="738c147c-9f0f-4ab9-9ebb-7008da581167-9"><span class="lineno">9 </span>git remote set-url origin git@github.com:&lt;user&gt;/&lt;project&gt;.git
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li>setup gpg (copy pubkey export to github settings).</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="c0ef4a90-d4ec-4298-8eac-1a168ad34e8d-1"><span class="lineno">1 </span><span class="c1"># copy the pub key ID when done</span>
+<li>setup gpg (copy pubkey export to github settings).</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="c0ef4a90-d4ec-4298-8eac-1a168ad34e8d-1"><span class="lineno">1 </span><span class="c1"># copy the pub key ID when done</span>
 </span><span id="c0ef4a90-d4ec-4298-8eac-1a168ad34e8d-2"><span class="lineno">2 </span>gpg --gen-key
 </span><span id="c0ef4a90-d4ec-4298-8eac-1a168ad34e8d-3"><span class="lineno">3 </span><span class="c1"># configure git to use the key</span>
 </span><span id="c0ef4a90-d4ec-4298-8eac-1a168ad34e8d-4"><span class="lineno">4 </span>git config --global user.signingkey &lt;ID&gt;
 </span><span id="c0ef4a90-d4ec-4298-8eac-1a168ad34e8d-5"><span class="lineno">5 </span>git config --global commit.gpgsign <span class="nb">true</span>
 </span><span id="c0ef4a90-d4ec-4298-8eac-1a168ad34e8d-6"><span class="lineno">6 </span><span class="c1"># exporting public key - will copy the output to your clipboard</span>
 </span><span id="c0ef4a90-d4ec-4298-8eac-1a168ad34e8d-7"><span class="lineno">7 </span>gpg --armor --export &lt;ID&gt; <span class="p">|</span> clip.exe
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
 </ol><br/><hr/><h2 style="--level: 1" id="9c525fc59ea74730a13e88f8a5bc05a0">n (node.js)</h2>
 
@@ -323,18 +367,24 @@
             <span class="notion-callout_icon">❔</span>
             <span class="notion-callout_text"><strong>optional:</strong> used to manage/run node.js (a javascript runtime).</span>
           </div>
-        <ol style="--level: 1"><li>install n:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="57416e67-49de-4828-bc52-dc10f693e0e3-1"><span class="lineno">1 </span>curl -L https://git.io/n-install <span class="p">|</span> bash -s -- -q -n
+        <ol style="--level: 1"><li>install n:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="57416e67-49de-4828-bc52-dc10f693e0e3-1"><span class="lineno">1 </span>curl -L https://git.io/n-install <span class="p">|</span> bash -s -- -q -n
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li><code>~/.config/fish/config.fish</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="b135555e-8487-490f-b23f-3dfd86c2f8a6-1"><span class="lineno">1 </span><span class="c1"># n-install</span>
+<li><code>~/.config/fish/config.fish</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="b135555e-8487-490f-b23f-3dfd86c2f8a6-1"><span class="lineno">1 </span><span class="c1"># n-install</span>
 </span><span id="b135555e-8487-490f-b23f-3dfd86c2f8a6-2"><span class="lineno">2 </span><span class="nb">set</span> -x N_PREFIX <span class="nv">$HOME</span>/n
 </span><span id="b135555e-8487-490f-b23f-3dfd86c2f8a6-3"><span class="lineno">3 </span><span class="k">if</span> not contains <span class="nv">$N_PREFIX</span>/bin <span class="nv">$PATH</span>
 </span><span id="b135555e-8487-490f-b23f-3dfd86c2f8a6-4"><span class="lineno">4 </span>  <span class="nb">set</span> -xa PATH <span class="nv">$N_PREFIX</span>/bin
 </span><span id="b135555e-8487-490f-b23f-3dfd86c2f8a6-5"><span class="lineno">5 </span>end
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li>install recommended packages:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="cf45a9dd-d44b-4ada-9fa4-35f961d45a8c-1"><span class="lineno">1 </span><span class="c1"># a tool to streamline publishing npm packages</span>
+<li>install recommended packages:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="cf45a9dd-d44b-4ada-9fa4-35f961d45a8c-1"><span class="lineno">1 </span><span class="c1"># a tool to streamline publishing npm packages</span>
 </span><span id="cf45a9dd-d44b-4ada-9fa4-35f961d45a8c-2"><span class="lineno">2 </span>npm i -g np
 </span><span id="cf45a9dd-d44b-4ada-9fa4-35f961d45a8c-3"><span class="lineno">3 </span><span class="c1"># for downloading git repositories without git history</span>
 </span><span id="cf45a9dd-d44b-4ada-9fa4-35f961d45a8c-4"><span class="lineno">4 </span>npm i -g degit
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
 </ol><br/><hr/><h2 style="--level: 1" id="0d9b991cd9de4b1286fc3a32fdace7d0">python</h2>
 
@@ -342,27 +392,41 @@
             <span class="notion-callout_icon">❔</span>
             <span class="notion-callout_text"><strong>optional:</strong> for python language use.</span>
           </div>
-        <ol style="--level: 1"><li>install:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="c77b792c-7775-44d5-a120-9efe9226c37f-1"><span class="lineno">1 </span>sudo apt install -y python3 python3-pip
+        <ol style="--level: 1"><li>install:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="c77b792c-7775-44d5-a120-9efe9226c37f-1"><span class="lineno">1 </span>sudo apt install -y python3 python3-pip
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li><code>~/.config/fish/config.fish</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="66556df5-3f72-4455-b1d6-55c8351c033a-1"><span class="lineno">1 </span><span class="c1"># python</span>
+<li><code>~/.config/fish/config.fish</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="66556df5-3f72-4455-b1d6-55c8351c033a-1"><span class="lineno">1 </span><span class="c1"># python</span>
 </span><span id="66556df5-3f72-4455-b1d6-55c8351c033a-2"><span class="lineno">2 </span><span class="k">if</span> not contains <span class="nv">$HOME</span>/.local/bin <span class="nv">$PATH</span>
 </span><span id="66556df5-3f72-4455-b1d6-55c8351c033a-3"><span class="lineno">3 </span>  <span class="nb">set</span> -xa PATH <span class="nv">$HOME</span>/.local/bin
 </span><span id="66556df5-3f72-4455-b1d6-55c8351c033a-4"><span class="lineno">4 </span>end
 </span><span id="66556df5-3f72-4455-b1d6-55c8351c033a-5"><span class="lineno">5 </span><span class="nb">alias</span> <span class="nv">py</span><span class="o">=</span>python3
 </span><span id="66556df5-3f72-4455-b1d6-55c8351c033a-6"><span class="lineno">6 </span><span class="nb">alias</span> <span class="nv">python</span><span class="o">=</span>python3
 </span><span id="66556df5-3f72-4455-b1d6-55c8351c033a-7"><span class="lineno">7 </span><span class="nb">alias</span> <span class="nv">pip</span><span class="o">=</span>pip3
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
 </ol><h4 style="--level: 1" id="59e2aa1882bf47d88a94148c307ee5e1">using pipenv for project environments</h4>
-<ol style="--level: 1"><li>install:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="61a847a5-22c0-4015-8229-0419f013d728-1"><span class="lineno">1 </span>pip install --user pipenv
+<ol style="--level: 1"><li>install:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="61a847a5-22c0-4015-8229-0419f013d728-1"><span class="lineno">1 </span>pip install --user pipenv
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li><strong>usage:</strong> to install a pip package in the directory environment:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="12ec90f4-eeaa-4534-9990-b964890883f0-1"><span class="lineno">1 </span>pipenv install &lt;pkg&gt;
+<li><strong>usage:</strong> to install a pip package in the directory environment:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="12ec90f4-eeaa-4534-9990-b964890883f0-1"><span class="lineno">1 </span>pipenv install &lt;pkg&gt;
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li><strong>usage:</strong> to install a requirements.txt collection of pip packages in the directory environment:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="d42f38be-47e6-4017-857b-0bbd1402a44d-1"><span class="lineno">1 </span>pipenv install -r requirements.txt
+<li><strong>usage:</strong> to install a requirements.txt collection of pip packages in the directory environment:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="d42f38be-47e6-4017-857b-0bbd1402a44d-1"><span class="lineno">1 </span>pipenv install -r requirements.txt
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li><strong>usage:</strong> to run a command that has access to pip packages installed in the directory environment:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="134ccebf-9932-4e3b-a7d8-f61863c98c52-1"><span class="lineno">1 </span>pipenv run &lt;cmd&gt;
+<li><strong>usage:</strong> to run a command that has access to pip packages installed in the directory environment:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="134ccebf-9932-4e3b-a7d8-f61863c98c52-1"><span class="lineno">1 </span>pipenv run &lt;cmd&gt;
 </span><span id="134ccebf-9932-4e3b-a7d8-f61863c98c52-2"><span class="lineno">2 </span><span class="c1"># e.g. pipenv run py main.py</span>
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li><strong>usage:</strong> to launch a shell with the environment added to path, so all commands have access to packages.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="82cc7da4-e331-42ad-9829-d89203bee618-1"><span class="lineno">1 </span>pipenv shell
+<li><strong>usage:</strong> to launch a shell with the environment added to path, so all commands have access to packages.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="82cc7da4-e331-42ad-9829-d89203bee618-1"><span class="lineno">1 </span>pipenv shell
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
 </ol><br/><hr/><h2 style="--level: 1" id="396b3e95fee6418a9b64c3326bb9a6b0">php</h2>
 
@@ -370,9 +434,11 @@
             <span class="notion-callout_icon">❔</span>
             <span class="notion-callout_text"><strong>optional:</strong> for php language use. does not include database setup.</span>
           </div>
-        <ol style="--level: 1"><li>download/install apache2 and php7.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="26bf30fd-fce8-42be-9240-3761bde7c5d3-1"><span class="lineno">1 </span>sudo add-apt-repository ppa:ondrej/php
+        <ol style="--level: 1"><li>download/install apache2 and php7.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="26bf30fd-fce8-42be-9240-3761bde7c5d3-1"><span class="lineno">1 </span>sudo add-apt-repository ppa:ondrej/php
 </span><span id="26bf30fd-fce8-42be-9240-3761bde7c5d3-2"><span class="lineno">2 </span>sudo apt update -y
 </span><span id="26bf30fd-fce8-42be-9240-3761bde7c5d3-3"><span class="lineno">3 </span>sudo apt install -y php7.1 apache2
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
 <br/><li>set up composer (a php package manager).</li><ul style="--level: 0"><li>download following the command-line installer instructions.</li>
           <a class="notion-bookmark" target="_blank" rel="noopener noreferrer" href="https://getcomposer.org/download/" style="--level: 0">
@@ -385,9 +451,13 @@
             </div>
             
           </a>
-        <li>globalise the installation.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="8cb04f89-bdf5-40c9-bcd1-c604fcf1afbb-1"><span class="lineno">1 </span>sudo mv composer.phar /usr/local/bin/composer
+        <li>globalise the installation.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="8cb04f89-bdf5-40c9-bcd1-c604fcf1afbb-1"><span class="lineno">1 </span>sudo mv composer.phar /usr/local/bin/composer
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-</ul><li>start apache. defaults to document root being in <code>/var/www/html</code>, accessible via <a href="http://localhost/">http://localhost/</a>.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="90150183-af84-4817-b587-2b753974329d-1"><span class="lineno">1 </span>sudo service apache2 start
+</ul><li>start apache. defaults to document root being in <code>/var/www/html</code>, accessible via <a href="http://localhost/">http://localhost/</a>.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="90150183-af84-4817-b587-2b753974329d-1"><span class="lineno">1 </span>sudo service apache2 start
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
 </ol><br/><br/><hr/><h2 style="--level: 1" id="6f77ef0aec8a48e7bc7f221e6c48bfc8">docker</h2>
 
@@ -400,7 +470,8 @@
             <span class="notion-callout_icon">❗</span>
             <span class="notion-callout_text"><strong>warning:</strong> this is only for wsl v1. for v2, <a href="https://github.com/LongLiveCHIEF/wsl2-docker-for-win">try this custom implementation</a> or see if you can get <a href="https://docs.docker.com/docker-for-windows/wsl-tech-preview/">docker's official solution</a> working.</span>
           </div>
-        <ol style="--level: 1"><li>install <a href="https://hub.docker.com/editions/community/docker-ce-desktop-windows">https://hub.docker.com/editions/community/docker-ce-desktop-windows</a> (on the win10 side).</li><li>in the app, enable the setting <code>Expose daemon on tcp://localhost:2375 without TLS</code>.</li><li>install docker on the ubuntu side:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="03a52338-7510-42a4-9ae6-2686d6c14d5d-1"><span class="lineno"> 1 </span><span class="c1"># update package lists and install dependencies</span>
+        <ol style="--level: 1"><li>install <a href="https://hub.docker.com/editions/community/docker-ce-desktop-windows">https://hub.docker.com/editions/community/docker-ce-desktop-windows</a> (on the win10 side).</li><li>in the app, enable the setting <code>Expose daemon on tcp://localhost:2375 without TLS</code>.</li><li>install docker on the ubuntu side:</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="03a52338-7510-42a4-9ae6-2686d6c14d5d-1"><span class="lineno"> 1 </span><span class="c1"># update package lists and install dependencies</span>
 </span><span id="03a52338-7510-42a4-9ae6-2686d6c14d5d-2"><span class="lineno"> 2 </span>sudo apt update -y
 </span><span id="03a52338-7510-42a4-9ae6-2686d6c14d5d-3"><span class="lineno"> 3 </span>sudo apt install -y <span class="se">\</span>
 </span><span id="03a52338-7510-42a4-9ae6-2686d6c14d5d-4"><span class="lineno"> 4 </span>    apt-transport-https <span class="se">\</span>
@@ -420,17 +491,24 @@
 </span><span id="03a52338-7510-42a4-9ae6-2686d6c14d5d-18"><span class="lineno">18 </span>pip3 install --user docker-compose
 </span><span id="03a52338-7510-42a4-9ae6-2686d6c14d5d-19"><span class="lineno">19 </span><span class="c1"># allow user to run docker</span>
 </span><span id="03a52338-7510-42a4-9ae6-2686d6c14d5d-20"><span class="lineno">20 </span>sudo usermod -aG docker <span class="nv">$USER</span>
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li><code>~/.config/fish/config.fish</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="4e46782e-b8ad-4ee8-adc2-fa218ef4b4c2-1"><span class="lineno">1 </span><span class="c1"># docker</span>
+<li><code>~/.config/fish/config.fish</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="4e46782e-b8ad-4ee8-adc2-fa218ef4b4c2-1"><span class="lineno">1 </span><span class="c1"># docker</span>
 </span><span id="4e46782e-b8ad-4ee8-adc2-fa218ef4b4c2-2"><span class="lineno">2 </span><span class="k">if</span> not contains <span class="nv">$HOME</span>/.local/bin <span class="nv">$PATH</span>
 </span><span id="4e46782e-b8ad-4ee8-adc2-fa218ef4b4c2-3"><span class="lineno">3 </span>  <span class="nb">set</span> -xa PATH <span class="nv">$HOME</span>/.local/bin
 </span><span id="4e46782e-b8ad-4ee8-adc2-fa218ef4b4c2-4"><span class="lineno">4 </span>end
 </span><span id="4e46782e-b8ad-4ee8-adc2-fa218ef4b4c2-5"><span class="lineno">5 </span><span class="nb">set</span> -x DOCKER_HOST tcp://localhost:2375
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li>create soft link to mount point.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="e1c69cb6-22fb-47c6-9d85-119fac704704-1"><span class="lineno">1 </span>sudo ln -s /mnt/c /c
+<li>create soft link to mount point.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="e1c69cb6-22fb-47c6-9d85-119fac704704-1"><span class="lineno">1 </span>sudo ln -s /mnt/c /c
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li>check it works (win10 docker desktop must be running).</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="51a94fcc-e504-476b-834a-1a4d0d57af29-1"><span class="lineno">1 </span>docker info
+<li>check it works (win10 docker desktop must be running).</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="51a94fcc-e504-476b-834a-1a4d0d57af29-1"><span class="lineno">1 </span>docker info
 </span><span id="51a94fcc-e504-476b-834a-1a4d0d57af29-2"><span class="lineno">2 </span>docker-compose --version
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
 </ol><br/><br/><hr/><h2 style="--level: 1" id="8c7125673d924613b35d5fb3cdd0e533">gui</h2>
 
@@ -449,20 +527,28 @@
             </div>
             <img class="notion-bookmark_cover" src="https://a.fsdn.com/con/app/proj/vcxsrv/screenshots/240118.jpg/245/183/1"/>
           </a>
-        <li><code>~/.config/fish/config.fish</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="b5db68e8-6d1c-492b-bb64-4bd4505c016e-1"><span class="lineno">1 </span><span class="c1"># stream to xserver</span>
+        <li><code>~/.config/fish/config.fish</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="b5db68e8-6d1c-492b-bb64-4bd4505c016e-1"><span class="lineno">1 </span><span class="c1"># stream to xserver</span>
 </span><span id="b5db68e8-6d1c-492b-bb64-4bd4505c016e-2"><span class="lineno">2 </span><span class="nb">set</span> -x DISPLAY :0
 </span><span id="b5db68e8-6d1c-492b-bb64-4bd4505c016e-3"><span class="lineno">3 </span><span class="nb">set</span> -x LIBGL_ALWAYS_INDIRECT <span class="m">1</span>
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li>run dbus.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="eec09275-7fdd-4bda-8f1d-7fe888ab98ec-1"><span class="lineno">1 </span>sudo apt install dbus-x11
+<li>run dbus.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="eec09275-7fdd-4bda-8f1d-7fe888ab98ec-1"><span class="lineno">1 </span>sudo apt install dbus-x11
 </span><span id="eec09275-7fdd-4bda-8f1d-7fe888ab98ec-2"><span class="lineno">2 </span>sudo systemd-machine-id-setup
 </span><span id="eec09275-7fdd-4bda-8f1d-7fe888ab98ec-3"><span class="lineno">3 </span>sudo service dbus start
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
 </ol><h4 style="--level: 1" id="d6c05bf7bd874cf1b8debd1465c369ba">example app: webstorm</h4>
-<ol style="--level: 1"><li>download and install.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="3f4d9c49-fdc3-4fb8-b107-b06d17d93861-1"><span class="lineno">1 </span>wget <span class="o">[</span>https://download.jetbrains.com/webstorm/WebStorm-2019.3.3.tar.gz<span class="o">](</span>https://download.jetbrains.com/webstorm/WebStorm-2019.3.3.tar.gz<span class="o">)</span>
+<ol style="--level: 1"><li>download and install.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="3f4d9c49-fdc3-4fb8-b107-b06d17d93861-1"><span class="lineno">1 </span>wget <span class="o">[</span>https://download.jetbrains.com/webstorm/WebStorm-2019.3.3.tar.gz<span class="o">](</span>https://download.jetbrains.com/webstorm/WebStorm-2019.3.3.tar.gz<span class="o">)</span>
 </span><span id="3f4d9c49-fdc3-4fb8-b107-b06d17d93861-2"><span class="lineno">2 </span>sudo tar xfz WebStorm-*.tar.gz -C /opt/
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li>add shortcut - <code>~/.oh-my-zsh/custom/init.zsh</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="ea5ff601-516a-44f0-9c3c-36da40162a61-1"><span class="lineno">1 </span><span class="c1"># webstorm</span>
+<li>add shortcut - <code>~/.oh-my-zsh/custom/init.zsh</code></li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="ea5ff601-516a-44f0-9c3c-36da40162a61-1"><span class="lineno">1 </span><span class="c1"># webstorm</span>
 </span><span id="ea5ff601-516a-44f0-9c3c-36da40162a61-2"><span class="lineno">2 </span><span class="nb">alias</span> <span class="nv">webstorm</span><span class="o">=</span><span class="s2">&quot;/opt/WebStorm-193.6494.34/bin/webstorm.sh&quot;</span>
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
 <li>have the xserver running. if it isn't already, run <code>XLaunch</code> (on win10) with the default configuration (just keep hitting <code>Enter</code>).</li><li>launch by running the command <code>webstorm</code>.</li></ol><h4 style="--level: 1" id="8949ce2561364a87b2384065443e9c17">xfce4 desktop</h4>
 
@@ -475,11 +561,17 @@
             <span class="notion-callout_icon">❗</span>
             <span class="notion-callout_text"><strong>warning:</strong> a number of desktop environments were attempted - too many errors were encountered, download sizes were massive, or apps just wouldn't open for no identifiable reason. so, xfce4 has been included in this tutorial as the best option known of at the time of its writing.</span>
           </div>
-        <ol style="--level: 1"><li>install.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="56aa40ad-68c7-4494-8f84-40a0e6e40a44-1"><span class="lineno">1 </span>sudo apt install -y xfce4
+        <ol style="--level: 1"><li>install.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="56aa40ad-68c7-4494-8f84-40a0e6e40a44-1"><span class="lineno">1 </span>sudo apt install -y xfce4
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li>fix permissions.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="008ae03d-9167-41bf-9de5-efb0eb51eef0-1"><span class="lineno">1 </span>sudo chown -R <span class="nv">$USER</span>:<span class="nv">$USER</span> ~
+<li>fix permissions.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="008ae03d-9167-41bf-9de5-efb0eb51eef0-1"><span class="lineno">1 </span>sudo chown -R <span class="nv">$USER</span>:<span class="nv">$USER</span> ~
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
-<li>launch. to close: do <code>ALT + F4</code>, then navigate back to the terminal window and do <code>CTRL + C</code>.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span></span><span id="ccbb5f83-135b-4d1f-b2e4-b5092cdd539f-1"><span class="lineno">1 </span>sudo service dbus start <span class="o">&amp;&amp;</span> /mnt/c/Program<span class="se">\ </span>Files/VcXsrv/vcxsrv.exe -ac -wgl -fullscreen -dpms <span class="p">&amp;</span> startxfce4
+<li>launch. to close: do <code>ALT + F4</code>, then navigate back to the terminal window and do <code>CTRL + C</code>.</li><div class="notion-code" style="--level: 0; --code-lang: 'Bash'"><pre><span class="code-padding"><span class="lineno">0</span>
+</span><span></span><span id="ccbb5f83-135b-4d1f-b2e4-b5092cdd539f-1"><span class="lineno">1 </span>sudo service dbus start <span class="o">&amp;&amp;</span> /mnt/c/Program<span class="se">\ </span>Files/VcXsrv/vcxsrv.exe -ac -wgl -fullscreen -dpms <span class="p">&amp;</span> startxfce4
+</span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>
 </ol><br/>
           </article>

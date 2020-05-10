@@ -169,7 +169,10 @@ class HTMLRenderer(Renderer):
         # for match in re.finditer(re.compile(r'<span class="lineno">(\s*\d*\s*)<\/span>'), innerhtml):
         #     innerhtml = innerhtml.replace(f'<span class="lineno">{match.group(1)}</span>',
         #        f'<span class="lineno"><a href="#{block.id}-{match.group(1).strip()}">{match.group(1)}</a></span>')
-        return self.set_attrs(innerhtml, {'style': f'--level: {level}; --code-lang: \'{block.language}\''})
+        return self.set_attrs(innerhtml, {'style': f'--level: {level}; --code-lang: \'{block.language}\''}) \
+            .replace('<pre>', '''<pre><span class="code-padding"><span class="lineno">0</span>
+</span>''').replace('</pre>', '''<span class="code-padding"><span class="lineno">0</span>
+</span></pre>''')
 
     def handle_header(self, block, level=0, prev=None, post=None):
         return self.md(f'## {block.title}', attrs={'style': f'--level: {level}', 'id': block.id.replace('-', '')})

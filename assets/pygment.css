@@ -134,11 +134,12 @@
   position: relative;
   user-select: none;
 }
-.notion-page .notion-code pre > span:nth-child(2) .lineno {
-  padding-top: 2em;
+.notion-page .notion-code pre > span.code-padding {
+  user-select: none;
 }
-.notion-page .notion-code pre > span:last-child .lineno {
-  padding-bottom: 1.65em;
+.notion-page .notion-code pre > span.code-padding .lineno {
+  color: var(--code-details_bg);
+  padding-top: 0.5em;
 }
 
 /* highlight */

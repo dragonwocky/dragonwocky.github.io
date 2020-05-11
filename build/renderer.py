@@ -228,7 +228,7 @@ class HTMLRenderer(Renderer):
     def handle_equation(self, block, level=0, prev=None, post=None):
         return f'''
           <figure style="--level: {level}">
-            <img src="https://chart.googleapis.com/chart?cht=tx&&chs=350&chl={block.latex}"/>
+            <img loading="lazy" src="https://chart.googleapis.com/chart?cht=tx&&chs=350&chl={block.latex}"/>
           </figure>
         '''
 
@@ -329,7 +329,8 @@ class HTMLRenderer(Renderer):
     handle_pdf = handle_file
 
     def handle_image(self, block, level=0, prev=None, post=None):
-        return f'<img alt="{block.caption}" src="{self.signed_url(block.source)}?cache=v2" style="--level: {level}"/>'
+        return f'''<img loading="lazy" alt="{block.caption}" src="{self.signed_url(block.source)
+            }?cache=v2" style="--level: {level}"/>'''
 
     def handle_video(self, block, level=0, prev=None, post=None):
         source = self.signed_url(block.source)
@@ -357,10 +358,12 @@ class HTMLRenderer(Renderer):
               <h4>{block.title}</h4>
               {f'<p>{block.description}</p>' if block.description else ''}
               <div class="notion-bookmark_url">
-                {f'<img src="{self.signed_url(block.bookmark_icon)}"/>' if block.bookmark_icon else ''} <span>{link}</span>
+                {f'<img loading="lazy" src="{self.signed_url(block.bookmark_icon)}"/>' if block.bookmark_icon
+                    else ''} <span>{link}</span>
               </div>
             </div>
-            {f'<img class="notion-bookmark_cover" src="{self.signed_url(block.bookmark_cover)}"/>' if block.bookmark_cover else ''}
+            {f"""<img loading="lazy" class="notion-bookmark_cover" src="{self.signed_url(block.bookmark_cover)
+                }"/>""" if block.bookmark_cover else ''}
           </a>
         '''
 
@@ -368,7 +371,7 @@ class HTMLRenderer(Renderer):
         if len(block.icon) == 1:
             icon = f'<span class="notion-callout_icon">{block.icon}</span>'
         else:
-            icon = f'<img class="notion-callout_icon" src="{self.signed_url(block.icon)}?width=40&cache=v2"/>'
+            icon = f'<img loading="lazy" class="notion-callout_icon" src="{self.signed_url(block.icon)}?width=40&cache=v2"/>'
         return f'''
           <div class="notion-callout" style="--level: {level}">
             {icon}

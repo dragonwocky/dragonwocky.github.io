@@ -56,7 +56,7 @@ def gen_card(name, url='', colour='',  desc='', image='', time='', badges=[], ta
         .replace('__url__', url or '') \
         .replace('__colour__', colour or 'var(--primary)') \
         .replace('__desc__', desc or '') \
-        .replace('__image__', f'<img class="card-image" src="{image}">' if image else '') \
+        .replace('__image__', f'<img loading="lazy" class="card-image" src="{image}">' if image else '') \
         .replace('__timestamp__', time or '') \
         .replace('__badges__', ''.join(badges) or '') \
         .replace('__tags__', tags) \
@@ -139,7 +139,7 @@ for i, post in enumerate(posts):
     tags = ' #'.join(post['tags'])
     tags = '#' + tags if tags else ''
     posts[i]['image'] = re.search(
-        r'img alt="[^"]*" src="([^"]*)"', post['content'])
+        r'img loading="lazy" alt="[^"]*" src="([^"]*)"', post['content'])
     post_html = templates['post'] \
         .replace('__sidebar__', sidebar) \
         .replace('__footer__', templates['footer']) \

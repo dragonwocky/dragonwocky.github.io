@@ -20,12 +20,12 @@
   --notion-bookmark_hover: rgba(55, 53, 47, 0.08);
   --notion-bookmark_border: rgba(55, 53, 47, 0.16);
   --notion-bookmark_desc: rgba(55, 53, 47, 0.6);
-  --notion-grey: rgb(55, 53, 47);
   --notion-text: var(--text);
   --notion-text_shadow: var(--text);
+  --notion-text_offset: rgb(55, 53, 47);
+  --notion-text_grey: rgba(55, 53, 47, 0.6);
   --notion-hr: rgb(228, 227, 226);
   --notion-callout_bg: rgb(238, 238, 238);
-  --notion-callout_type: rgba(55, 53, 47, 0.6);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -33,10 +33,10 @@
     --notion-bookmark_hover: rgba(255, 255, 255, 0.08);
     --notion-bookmark_border: rgba(255, 255, 255, 0.16);
     --notion-bookmark_desc: rgba(255, 255, 255, 0.6);
-    --notion-grey: rgba(255, 255, 255, 0.9);
+    --notion-text_offset: rgba(255, 255, 255, 0.9);
+    --notion-text_grey: rgba(195, 195, 195, 0.6);
     --notion-hr: rgba(255, 255, 255, 0.1);
     --notion-callout_bg: #202121;
-    --notion-callout_type: rgba(195, 195, 195, 0.6);
   }
 }
 
@@ -108,13 +108,13 @@
   text-shadow: 0 0 0.025em var(--notion-text_shadow);
 }
 
-.notion-page figure img {
-  filter: invert(100%) contrast(88%);
+.notion-page .notion-mention {
+  color: var(--notion-text_grey);
 }
 
 .notion-page blockquote {
   font-size: 1.1em;
-  color: var(--notion-grey);
+  color: var(--notion-text_offset);
   padding-left: 1em;
   margin-left: calc((var(--level, 0) * var(--notion-level_margin)) + 0.5em);
   border-left: 0.175em solid var(--text);
@@ -138,9 +138,10 @@
 .notion-page img {
   width: 100%;
 }
-.notion-page img[src*='chart.googleapis.com/chart?cht=tx'] {
+.notion-page figure img[src*='chart.googleapis.com/chart?cht=tx'] {
   width: 50%;
   min-width: 8em;
+  filter: invert(100%) contrast(88%);
 }
 
 @media (min-width: 769px) {
@@ -261,7 +262,9 @@
   margin-right: 0.25em;
   width: 1.25em;
   height: 1.3em;
-  fill: inherit;
+}
+.notion-file svg.notion-file_icon path {
+  fill: currentColor;
 }
 .notion-page-link .notion-page-link_icon,
 .notion-database .notion-database_icon {
@@ -271,7 +274,7 @@
 .notion-page-link .notion-page-link_what,
 .notion-database .notion-database_what {
   font-size: 0.75em;
-  color: var(--notion-callout_type);
+  color: var(--notion-text_grey);
 }
 
 .notion-bookmark {
@@ -293,7 +296,7 @@
   padding-right: 1.5em;
 }
 .notion-bookmark .notion-bookmark_content h4 {
-  color: var(--notion-grey);
+  color: var(--notion-text_offset);
   font-weight: normal;
   font-size: 0.875em;
   overflow: hidden;
@@ -311,16 +314,21 @@
   display: flex;
   height: 1em;
 }
+
+.notion-page-link .notion-page-link_icon img,
 .notion-bookmark .notion-bookmark_url img {
   max-height: 1em;
   max-width: 1em;
   display: inline-block;
   vertical-align: middle;
-  margin: 0.25px 0.3em 0 0;
+  margin: 0.015625em 0.3em 0 0;
   border-radius: 0.1em;
 }
+.notion-page-link .notion-page-link_icon img {
+  margin-left: 0.25em;
+}
 .notion-bookmark .notion-bookmark_url span {
-  color: var(--notion-grey);
+  color: var(--notion-text_offset);
   font-size: 0.75em;
   height: 1.5em;
   word-break: break-all;

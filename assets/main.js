@@ -26,11 +26,7 @@ function main() {
     );
   });
 
-  fetch(
-    `${
-      window.location.pathname.includes('posts') ? '.' : ''
-    }./assets/timezones.json`
-  )
+  fetch('/assets/timezones.json')
     .then((res) => res.json())
     .then((data) => {
       const timezone =
@@ -39,25 +35,32 @@ function main() {
             .toLocaleTimeString('en-AU', { timeZoneName: 'long' })
             .replace(/^[\d:]*\s*(am|pm)\s*/gi, '')
         ];
-      document.querySelectorAll('.utc-timestamp').forEach((time) => {
-        time.innerHTML =
-          new Intl.DateTimeFormat('en', {
+      document
+        .querySelectorAll('.utc-timestamp, .notion-datetime')
+        .forEach((time) => {
+          let format = {
             year: 'numeric',
             month: 'short',
             day: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit',
-          })
-            .formatToParts(new Date(time.innerHTML))
-            .map(({ type, value }) => value)
-            .reduce((string, part) =>
-              part === ', ' && string.includes(',')
-                ? string + ' '
-                : string + part
-            ) +
-          ' ' +
-          timezone;
-      });
+          };
+          if (time.innerHTML.length > 16)
+            format = {
+              ...format,
+              hour: '2-digit',
+              minute: '2-digit',
+            };
+          time.innerHTML =
+            new Intl.DateTimeFormat('en', format)
+              .formatToParts(new Date(time.innerHTML))
+              .map(({ type, value }) => value)
+              .reduce((string, part) =>
+                part === ', ' && string.includes(',')
+                  ? string + ' '
+                  : string + part
+              ) +
+            ' ' +
+            timezone;
+        });
     })
     .catch((err) => console.error(err));
 }

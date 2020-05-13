@@ -5,6 +5,7 @@ import re
 import urllib.parse
 import mimetypes
 from datetime import datetime
+from pytz import timezone
 from commonmark import commonmark
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
@@ -34,10 +35,10 @@ class Renderer(object):
 
     def __init__(self, root, token_v2=os.getenv('NOTION_TOKEN')):
         self.root = root
+        if not isinstance(token_v2, NotionClient):
+            self.client = NotionClient(token_v2=token_v2)
         if not isinstance(self.root, Block):
-            if not isinstance(token_v2, NotionClient):
-                client = NotionClient(token_v2=token_v2)
-            self.root = client.get_block(self.root)
+            self.root = self.client.get_block(self.root)
         self._slugs = []
 
     def get_handler(self, block):
@@ -147,14 +148,62 @@ class HTMLRenderer(Renderer):
             ''', attrs)
         return self.set_attrs(self.set_tag(''.join(lines), tag), attrs)
 
+    def parse_mentions(self, block):
+        content = ''
+        for part in block.get().get('properties', {}).get('title') or block.collection.get().get('name', []):
+            if len(part) > 1:
+                if part[0] == '‣':
+                    # user mention
+                    if part[1][0][0] == 'u':
+                        content += f'''<span class="notion-mention"><span class="notion-user">@{
+                            self.client.get_user(part[1][0][1]).full_name}</span></span>'''
+                    # inline page link
+                    if part[1][0][0] == 'p':
+                        page_id = part[1][0][1].replace('-', '')
+                        page = self.client.get_block(page_id)
+                        content += f'''<a href="https://notion.so/{page_id}">{page.collection.get('icon','')
+                            } {self.parse_mentions(page)} </a>'''
+                    # date
+                    if part[1][0][0] == 'd':
+                        start_date = part[1][0][1].get(
+                            'start_date', '')
+                        start_time = part[1][0][1].get(
+                            'start_time', '')
+                        end_date = part[1][0][1].get(
+                            'end_date', '')
+                        end_time = part[1][0][1].get(
+                            'end_time', '')
+                        UTC = timezone('UTC')
+                        mention_timezone = timezone(part[1][0][1].get(
+                            'time_zone', 'UTC'))
+                        start_datetime = datetime.strftime(mention_timezone.localize(
+                            datetime.strptime(
+                                f'{start_date} {start_time}',
+                                r'%Y-%m-%d %H:%M' if start_time else r'%Y-%m-%d ')
+                        ).astimezone(UTC), r'%b %d, %Y %I:%M %p' if start_time else r'%b %d, %Y')
+                        content += f'''<span class="notion-mention"><span class="notion-datetime">{
+                                start_datetime} UTC</span>'''
+                        if end_date:
+                            end_datetime = datetime.strftime(mention_timezone.localize(
+                                datetime.strptime(
+                                    f'{end_date} {end_time}',
+                                    r'%Y-%m-%d %H:%M' if end_time else r'%Y-%m-%d ')
+                            ).astimezone(UTC), r'%b %d, %Y %I:%M %p' if end_time else r'%b %d, %Y')
+                            content += f' - <span class="notion-datetime">{end_datetime} UTC</span>'
+                        content += '</span>'
+            else:
+                content += part[0]
+        return content or block.title
+
     def handle_title(self, block, level=0, prev=None, post=None):
-        return self.md(f'# {block.title}', attrs={'style': f'--level: {level}', 'id': block.id.replace('-', '')})
+        return self.md(f'# {self.parse_mentions(block)}', attrs={'style': f'--level: {level}',
+                                                                 'id': block.id.replace('-', '')})
 
     def handle_default(self, block, level=0, prev=None, post=None):
         if hasattr(block, 'title'):
             if not block.title:
                 return '<br/>'
-            return self.md(block.title, attrs={'style': f'--level: {level}'})
+            return self.md(self.parse_mentions(block), attrs={'style': f'--level: {level}'})
         return ''
 
     handle_text = handle_default
@@ -175,16 +224,19 @@ class HTMLRenderer(Renderer):
 </span></pre>''')
 
     def handle_header(self, block, level=0, prev=None, post=None):
-        return self.md(f'## {block.title}', attrs={'style': f'--level: {level}', 'id': block.id.replace('-', '')})
+        return self.md(f'## {self.parse_mentions(block)}', attrs={'style': f'--level: {level}',
+                                                                  'id': block.id.replace('-', '')})
 
     def handle_sub_header(self, block, level=0, prev=None, post=None):
-        return self.md(f'### {block.title}', attrs={'style': f'--level: {level}', 'id': block.id.replace('-', '')})
+        return self.md(f'### {self.parse_mentions(block)}', attrs={'style': f'--level: {level}',
+                                                                   'id': block.id.replace('-', '')})
 
     def handle_sub_sub_header(self, block, level=0, prev=None, post=None):
-        return self.md(f'#### {block.title}', attrs={'style': f'--level: {level}', 'id': block.id.replace('-', '')})
+        return self.md(f'#### {self.parse_mentions(block)}', attrs={'style': f'--level: {level}',
+                                                                    'id': block.id.replace('-', '')})
 
     def handle_quote(self, block, level=0, prev=None, post=None):
-        return self.inline_md(block.title, 'blockquote', attrs={'style': f'--level: {level}'})
+        return self.inline_md(self.parse_mentions(block), 'blockquote', attrs={'style': f'--level: {level}'})
 
     def handle_divider(self, block, level=0, prev=None, post=None):
         return '<hr/>'
@@ -200,18 +252,18 @@ class HTMLRenderer(Renderer):
         return f'''
           <p class="notion-checkbox" style="--level: {level}">
             <input type="checkbox" id="chk_{block.id}" name="chk_{block.id}" disabled{" checked" if block.checked else ""}>
-            <label for="chk_{block.id}">{block.title}</label>
+            <label for="chk_{block.id}">{self.parse_mentions(block)}</label>
           </p>
         '''
 
     def handle_toggle(self, block, level=0, prev=None, post=None):
-        return f'<details style="--level: {level}">{self.inline_md(block.title, "summary")}', '</details>'
+        return f'<details style="--level: {level}">{self.inline_md(self.parse_mentions(block), "summary")}', '</details>'
 
     def handle_bulleted_list(self, block, level=0, prev=None, post=None):
         text = ''
         if prev is None or prev.type != 'bulleted_list':
             text += f'<ul style="--level: {level}">'
-        text += self.inline_md(block.title, 'li')
+        text += self.inline_md(self.parse_mentions(block), 'li')
         if post is None or post.type != 'bulleted_list':
             return text, '</ul>'
         return text
@@ -220,7 +272,7 @@ class HTMLRenderer(Renderer):
         text = ''
         if prev is None or prev.type != 'numbered_list':
             text += f'<ol style="--level: {level}">'
-        text += self.inline_md(block.title, 'li')
+        text += self.inline_md(self.parse_mentions(block), 'li')
         if post is None or post.type != 'numbered_list':
             return text, '</ol>'
         return text
@@ -236,13 +288,16 @@ class HTMLRenderer(Renderer):
         return ''
 
     def handle_page(self, block, level=0, prev=None, post=None):
+        icon = block.icon or '📄'
+        if len(icon) > 1:
+            icon = f'<img loading="lazy" src="{self.signed_url(icon)}"/>'
         return f'''
           <a class="notion-page-link"
             href="https://notion.so/{block.id.replace('-', '')}"
             style="--level: {level}"
           >
-            <span class="notion-page-link_icon">📄</span>
-            <span class="notion-page-link_text">{block.title or f"https://notion.so/{block.id.replace('-', '')}"}
+            <span class="notion-page-link_icon">{icon}</span>
+            <span class="notion-page-link_text">{self.parse_mentions(block) or f"https://notion.so/{block.id.replace('-', '')}"}
               <span class="notion-page-link_what">[page on notion]</span>
             </span>
           </a>
@@ -256,7 +311,7 @@ class HTMLRenderer(Renderer):
             style="--level: {level}"
           >
             <span class="notion-database_icon">🗄️</span>
-            <span class="notion-database_text">{block.title or url}
+            <span class="notion-database_text">{self.parse_mentions(block) or url}
               <span class="notion-database_what">[database on notion]</span>
             </span>
           </a>
@@ -375,7 +430,7 @@ class HTMLRenderer(Renderer):
         return f'''
           <div class="notion-callout" style="--level: {level}">
             {icon}
-            {self.inline_md(block.title, 'span', attrs={
+            {self.inline_md(self.parse_mentions(block), 'span', attrs={
                             "class": "notion-callout_text"})}
           </div>
         '''
@@ -387,8 +442,8 @@ class NotebookRenderer(object):
         self.root = root
         if not isinstance(self.root, Block):
             if not isinstance(token_v2, NotionClient):
-                client = NotionClient(token_v2=token_v2)
-            self.root = client.get_block(self.root)
+                self.client = NotionClient(token_v2=token_v2)
+            self.root = self.client.get_block(self.root)
         self._slugs = []
 
     def collect_pages(self):

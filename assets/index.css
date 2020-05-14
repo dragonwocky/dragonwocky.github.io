@@ -34,6 +34,10 @@ main > *:not(article):not(footer) {
 article:not(.card-container) {
   padding: 2em;
 }
+article:not(.card-container) p a {
+  color: var(--text);
+  text-decoration: underline var(--primary);
+}
 article:not(.visible) {
   display: none;
   animation: fade 500ms ease;
@@ -105,7 +109,7 @@ article:not(.visible) {
   margin-top: 0.4em;
 }
 .card .card-content h3 a {
-  color: currentColor;
+  color: var(--text);
 }
 .card .card-content .card-description {
   font-size: 1em;

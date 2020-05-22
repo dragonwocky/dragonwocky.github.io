@@ -138,6 +138,7 @@ aside {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  overscroll-behavior: contain;
   background: var(--sidebar);
   color: var(--text-light);
 }
@@ -237,6 +238,7 @@ footer a {
   }
   main {
     overflow-y: auto;
+    overscroll-behavior: contain;
     display: flex;
     flex-direction: column;
   }
@@ -253,6 +255,9 @@ footer a {
   }
 }
 @media (max-width: 768px) {
+  body {
+    overscroll-behavior: contain;
+  }
   aside {
     text-align: center;
     padding-bottom: 1.5em;

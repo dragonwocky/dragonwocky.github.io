@@ -24,7 +24,7 @@
     "name": "discord",
     "tag": "@dragonwocky#8449",
     "colour": "#6073b5",
-    "url": "https://discordapp.com/invite/g39aNQe",
+    "url": "https://dsc.bio/dragnwocky",
     "image": "https://discordapp.com/assets/f8389ca1a741a115313bede9ac02e2c0.svg"
   },
   {
@@ -32,5 +32,11 @@
     "tag": "thedragonring.bod@gmail.com",
     "url": "mailto:thedragonring.bod@gmail.com",
     "image": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/mozilla/36/envelope_2709.png"
+  },
+  {
+    "name": "boxofdevs team",
+    "colour": "#955b35",
+    "url": "https://discordapp.com/invite/g39aNQe",
+    "image": "/assets/boxofdevs.svg"
   }
 ]

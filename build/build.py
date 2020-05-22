@@ -1,4 +1,5 @@
-from renderer import HTMLNotebookRenderer, HTMLRenderer
+from notion.client import NotionClient
+from renderer import HTMLNotebookRenderer
 import json
 import os
 import re
@@ -113,20 +114,22 @@ def gen_post_card(post):
         name=post.get('title'),
         url=f'./posts/{post["slug"]}',
         colour='',
-        desc=post['description'],
+        desc=post.get('description', ''),
         image=post['image'].group(1) if post['image'] else '',
-        time=post['time'],
+        time=post.get('time', ''),
         badges=[],
-        tags=post['tags']
+        tags=post.get('tags', [])
     )
 
 
-posts = sorted({
+client = os.getenv('NOTION_TOKEN')
+
+posts = sorted(HTMLNotebookRenderer(client, {'filter_prop': 'published'}).render(
     # notebook
-    **HTMLNotebookRenderer('963e491ccb22434da1bc8e7a6bf4177e').render(),
+    '963e491ccb22434da1bc8e7a6bf4177e',
     # dev
-    **HTMLNotebookRenderer('80d09a8e462243da8a90a3e7282f0904').render()
-}.values(), key=lambda post: post['time'], reverse=True)
+    '80d09a8e462243da8a90a3e7282f0904'
+), key=lambda post: datetime.strptime(post.get('time', ''), r'%b %d, %Y %I:%M %p'), reverse=True)
 
 # remove old posts
 for file in os.listdir(f'{__folder__}posts'):
@@ -134,37 +137,34 @@ for file in os.listdir(f'{__folder__}posts'):
         os.remove(f'{__folder__}posts/{file}')
 
 for i, post in enumerate(posts):
-    posts[i]['time'] = datetime.strftime(post['time'], r'%b %d, %Y %I:%M %p')
+    # html.escape stuff!!
     posts[i]['formatted-time'] = f'''last updated on <span class="utc-timestamp">{post["time"]} UTC</span>'''
-    tags = ' #'.join(post['tags'])
+    tags = ' #'.join(post.get('tags', ''))
     tags = '#' + tags if tags else ''
     posts[i]['image'] = re.search(
-        r'img loading="lazy" alt="[^"]*" src="([^"]*)"', post['content'])
+        r'img loading="lazy" alt="[^"]*" src="([^"]*)"', post.get('content', ''))
     post_html = templates['post'] \
         .replace('__sidebar__', sidebar) \
         .replace('__footer__', templates['footer']) \
         .replace('__depth__', '../') \
-        .replace('__title__', post['title']) \
+        .replace('__title__', post.get('title', '')) \
         .replace('__image__', post['image'].group(1) if post['image'] else 'https://dragonwocky.me/assets/avatar.jpg') \
-        .replace('__slug__', post['slug']) \
-        .replace('__last-modified__', post['time']) \
-        .replace('__tags__', ' '.join(post['tags'])) \
-        .replace('__description__', post['description']) \
-        .replace('__content__', post['content'].replace('>', f'''>
+        .replace('__slug__', post.get('slug', '')) \
+        .replace('__last-modified__', post.get('time', '')) \
+        .replace('__tags__', ' '.join(post.get('tags', []))) \
+        .replace('__description__', post.get('description', '')) \
+        .replace('__content__', post.get('content', '').replace('>', f'''>
             <p class="post-meta">{post["formatted-time"]} <b class="tags">{tags}</b></p>
         ''', 1))
     with open(f'{__folder__}posts/{post["slug"]}.html', 'w') as post_output:
         post_output.write(post_html)
-
-hire_me = HTMLRenderer('6becc6d78aac4f709ff82229f156c7fa').render()
 
 index = templates['index'] \
     .replace('__sidebar__', sidebar) \
     .replace('__footer__', templates['footer']) \
     .replace('__depth__', '') \
     .replace('__portfolio__', ''.join(map(gen_portfolio_card, data['portfolio']))) \
-    .replace('__posts__', ''.join(map(gen_post_card, posts))) \
-    .replace('__hire-me__', hire_me)
+    .replace('__posts__', ''.join(map(gen_post_card, posts)))
 
 with open(f'{__folder__}index.html', 'w') as index_output:
     index_output.write(index)

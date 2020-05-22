@@ -88,7 +88,7 @@
   --code-error: var(--code-punctuation);
 }
 
-.notion-page code {
+.notion-block code {
   font: 0.85em var(--code-font);
   background: var(--code-background);
   color: var(--code-inline);
@@ -96,12 +96,12 @@
   padding: 0.2em 0.4em;
 }
 
-.notion-page .notion-code {
+.notion-block .notion-code {
   position: relative;
   font: 1.03225806em var(--code-font);
   margin: 0.5em 0 0.5em 0;
 }
-.notion-page .notion-code pre {
+.notion-block .notion-code pre {
   background: var(--code-background);
   color: var(--code-generic);
   border-radius: 0.3em;
@@ -109,7 +109,7 @@
   padding-right: 1em;
   overflow-x: auto;
 }
-.notion-page .notion-code::before {
+.notion-block .notion-code::before {
   content: var(--code-lang, none);
   color: var(--code-details);
   font: 0.7em var(--code-font);
@@ -125,7 +125,7 @@
 }
 
 /* line numbers */
-.notion-page .notion-code .lineno {
+.notion-block .notion-code .lineno {
   color: var(--code-details);
   background: var(--code-details_bg);
   display: inline-block;
@@ -134,239 +134,239 @@
   position: relative;
   user-select: none;
 }
-.notion-page .notion-code pre > span.code-padding {
+.notion-block .notion-code pre > span.code-padding {
   user-select: none;
 }
-.notion-page .notion-code pre > span.code-padding .lineno {
+.notion-block .notion-code pre > span.code-padding .lineno {
   color: var(--code-details_bg);
   padding-top: 0.5em;
 }
 
 /* highlight */
-.notion-page .notion-code .hll {
+.notion-block .notion-code .hll {
   background-color: var(--code-highlight);
 }
 
 /* generic */
-.notion-page .notion-code .g,
+.notion-block .notion-code .g,
 /* generic/emphasis */
-.notion-page .notion-code .ge
+.notion-block .notion-code .ge
 /* generic/prompt */
-.notion-page .notion-code .gp,
+.notion-block .notion-code .gp,
 /* generic/strong */
-.notion-page .notion-code .gs,
+.notion-block .notion-code .gs,
 /* generic/traceback */
-.notion-page .notion-code .gt {
+.notion-block .notion-code .gt {
   color: var(--code-generic);
 }
 /* generic/deleted */
-.notion-page .notion-code .gd {
+.notion-block .notion-code .gd {
   color: var(--code-generic_deleted);
   background-color: var(--code-generic_deleted_bg);
 }
 /* generic/inserted */
-.notion-page .notion-code .gi {
+.notion-block .notion-code .gi {
   color: var(--code-generic_inserted);
   background-color: var(--code-generic_inserted_bg);
 }
 /* generic/output */
-.notion-page .notion-code .go {
+.notion-block .notion-code .go {
   color: var(--code-generic_output);
   background-color: var(--code-generic_output_bg);
 }
 /* generic/emphasis */
-.notion-page .notion-code .ge {
+.notion-block .notion-code .ge {
   text-decoration: underline;
   -webkit-text-decoration: underline;
 }
 /* generic/heading */
-.notion-page .notion-code .gh {
+.notion-block .notion-code .gh {
   color: var(--code-generic_heading);
 }
 /* generic/subheading */
-.notion-page .notion-code .gu {
+.notion-block .notion-code .gu {
   color: var(--code-generic_heading);
 }
 /* generic/error */
-.notion-page .notion-code .gr {
+.notion-block .notion-code .gr {
   color: var(--code-error);
 }
 
 /* error ??? */
-.notion-page .notion-code .err {
+.notion-block .notion-code .err {
   color: var(--code-error);
 }
 
 /* comment */
-.notion-page .notion-code .c,
+.notion-block .notion-code .c,
 /* comment/multiline */
-.notion-page .notion-code .cm ,
+.notion-block .notion-code .cm ,
 /* comment/single */
-.notion-page .notion-code .c1,
+.notion-block .notion-code .c1,
 /* comment/special */
-.notion-page .notion-code .cs {
+.notion-block .notion-code .cs {
   color: var(--code-comment);
 }
 /* comment/preproc */
-.notion-page .notion-code .cp {
+.notion-block .notion-code .cp {
   color: var(--code-comment_preproc);
   font-weight: bold;
 }
 
 /* keyword */
-.notion-page .notion-code .k,
+.notion-block .notion-code .k,
 /* keyword/declaration */
-.notion-page .notion-code .kd,
+.notion-block .notion-code .kd,
 /* keyword/pseudo */
-.notion-page .notion-code .kp,
+.notion-block .notion-code .kp,
 /* keyword/reserved */
-.notion-page .notion-code .kr {
+.notion-block .notion-code .kr {
   color: var(--code-keyword);
   font-weight: bold;
 }
 
 /* keyword/namespace */
-.notion-page .notion-code .kn {
+.notion-block .notion-code .kn {
   color: var(--code-keyword_namespace);
   font-weight: bold;
 }
 /* keyword/constant */
-.notion-page .notion-code .kc {
+.notion-block .notion-code .kc {
   color: var(--code-keyword_constant);
 }
 /* keyword/type */
-.notion-page .notion-code .kt {
+.notion-block .notion-code .kt {
   color: var(--code-keyword_type);
   font-weight: bold;
 }
 
 /* literal */
-.notion-page .notion-code .l,
+.notion-block .notion-code .l,
 /* literal/date */
-.notion-page .notion-code .ld {
+.notion-block .notion-code .ld {
   color: var(--code-literal);
 }
 /* literal/number */
-.notion-page .notion-code .m,
+.notion-block .notion-code .m,
 /* literal/number/float */
-.notion-page .notion-code .mf,
+.notion-block .notion-code .mf,
 /* literal/number/hex */
-.notion-page .notion-code .mh,
+.notion-block .notion-code .mh,
 /* literal/number/integer */
-.notion-page .notion-code .mi,
+.notion-block .notion-code .mi,
 /* literal/number/oct */
-.notion-page .notion-code .mo,
+.notion-block .notion-code .mo,
 /* literal/number/integer/long */
-.notion-page .notion-code .il {
+.notion-block .notion-code .il {
   color: var(--code-literal_number);
 }
 /* literal/string */
-.notion-page .notion-code .s,
+.notion-block .notion-code .s,
 /* literal/string/backtick */
-.notion-page .notion-code .sb,
+.notion-block .notion-code .sb,
 /* literal/string/char */
-.notion-page .notion-code .sc,
+.notion-block .notion-code .sc,
 /* literal/string/doc */
-.notion-page .notion-code .sd,
+.notion-block .notion-code .sd,
 /* literal/string/double */
-.notion-page .notion-code .s2,
+.notion-block .notion-code .s2,
 /* literal/string/heredoc */
-.notion-page .notion-code .sh,
+.notion-block .notion-code .sh,
 /* literal/string/interpol */
-.notion-page .notion-code .si,
+.notion-block .notion-code .si,
 /* literal/string/other */
-.notion-page .notion-code .sx,
+.notion-block .notion-code .sx,
 /* literal/string/single */
-.notion-page .notion-code .s1,
+.notion-block .notion-code .s1,
 /* literal/string/symbol */
-.notion-page .notion-code .ss {
+.notion-block .notion-code .ss {
   color: var(--code-literal_string);
 }
 /* literal/string/escape */
-.notion-page .notion-code .se,
+.notion-block .notion-code .se,
 /* literal/string/regex */
-.notion-page .notion-code .sr {
+.notion-block .notion-code .sr {
   color: var(--code-literal_string_special);
   font-style: italic;
 }
 
 /* name */
-.notion-page .notion-code .n,
+.notion-block .notion-code .n,
 /* name/class */
-.notion-page .notion-code .nc 
+.notion-block .notion-code .nc 
 /* name/exception */
-.notion-page .notion-code .ne,
+.notion-block .notion-code .ne,
 /* name/label */
-.notion-page .notion-code .nl,
+.notion-block .notion-code .nl,
 /* name/namespace */
-.notion-page .notion-code .nn,
+.notion-block .notion-code .nn,
 /* name/property */
-.notion-page .notion-code .py,
+.notion-block .notion-code .py,
 /* name/other */
-.notion-page .notion-code .nx {
+.notion-block .notion-code .nx {
   color: var(--code-name);
 }
 /* name/builtin */
-.notion-page .notion-code .nb,
+.notion-block .notion-code .nb,
 /* name/builtin/pseudo */
-.notion-page .notion-code .bp {
+.notion-block .notion-code .bp {
   color: var(--code-name_builtin);
 }
 /* name/attribute */
-.notion-page .notion-code .na {
+.notion-block .notion-code .na {
   color: var(--code-name_attribute);
 }
 /* name/constant */
-.notion-page .notion-code .no {
+.notion-block .notion-code .no {
   color: var(--code-name_constant);
 }
 /* name/entity */
-.notion-page .notion-code .ni {
+.notion-block .notion-code .ni {
   color: var(--code-name_entity);
   font-weight: bold;
 }
-.notion-page .notion-code .nf {
+.notion-block .notion-code .nf {
   color: var(--code-name_function);
   font-weight: bold;
 }
 /* name/label */
-.notion-page .notion-code .nl {
+.notion-block .notion-code .nl {
   font-weight: bold;
 }
 /* name/decorator */
-.notion-page .notion-code .nd,
+.notion-block .notion-code .nd,
 /* name/tag */
-.notion-page .notion-code .nt {
+.notion-block .notion-code .nt {
   color: var(--code-name_tag);
   font-weight: bold;
 }
 /* name/variable */
-.notion-page .notion-code .nv,
+.notion-block .notion-code .nv,
 /* name/variable.class */
-.notion-page .notion-code .vc,
+.notion-block .notion-code .vc,
 /* name/variable.global */
-.notion-page .notion-code .vg,
+.notion-block .notion-code .vg,
 /* name/variable/instance */
-.notion-page .notion-code .vi {
+.notion-block .notion-code .vi {
   color: var(--code-name_variable);
 }
 
 /* operator */
-.notion-page .notion-code .o,
+.notion-block .notion-code .o,
 /* operator/word */
-.notion-page .notion-code .ow {
+.notion-block .notion-code .ow {
   color: var(--code-operator);
 }
 
 /* other */
-.notion-page .notion-code .x {
+.notion-block .notion-code .x {
   color: var(--code-generic);
 }
 /* punctuation */
-.notion-page .notion-code .p {
+.notion-block .notion-code .p {
   color: var(--code-punctuation);
 }
 /* whitespace */
-.notion-page .notion-code .w {
+.notion-block .notion-code .w {
   color: var(--code-whitespace);
 }

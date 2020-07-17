@@ -1,0 +1,29 @@
+name: build site from templates/data
+
+on:
+  push:
+  schedule:
+    - cron: '*/15 * * * *'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup python
+      uses: actions/setup-python@v2
+    - name: install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: run compile task
+      run: |
+        python build/build.py
+      env: 
+        NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+    - uses: stefanzweifel/git-auto-commit-action@v4.1.6
+      with:
+        commit_message: automatically update notion posts
+        branch: ${{ github.head_ref }}

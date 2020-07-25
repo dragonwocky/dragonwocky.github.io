@@ -24,7 +24,7 @@
     <meta property="og:title" content="wsl: setup - dragonwocky" />
     <meta property="og:site_name" content="dragonwocky" />
     <meta property="og:description" content="a documentation on setting up the windows subsystem for linux (v1) for use as a development environment" />
-    <meta property="article:modified_time" content="Jul 13, 2020 02:43 AM" />
+    <meta property="article:modified_time" content="Jul 25, 2020 04:28 AM" />
     <meta property="article:author:username" content="dragonwocky" />
     <meta property="article:tag" content="wsl: setup server/os" />
     <meta property="og:image" content="https://www.notion.so/signed/https%3A%2F%2Fs3.us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc3ccccbb-fb75-458c-8eb5-3f55e9a99153%2FUntitled.png?cache=v2" />
@@ -97,7 +97,7 @@
     <main>
       
                     <article class="notion-block">
-            <p class="post-meta">last updated on <span class="utc-timestamp">Jul 13, 2020 02:43 AM UTC</span> <b class="tags">#wsl: setup #server/os</b></p>
+            <p class="post-meta">last updated on <span class="utc-timestamp">Jul 25, 2020 04:28 AM UTC</span> <b class="tags">#wsl: setup #server/os</b></p>
         
                         <h1 style="--level: 0;" id="4f75134e465a48f6ab3446f62ade914b">wsl: setup</h1><p style="--level: 1;">a documentation of how to get a similar or better setup than me using the windows subsystem for linux (v1) as a development environment.</p><p style="--level: 1;">i run this off my surface pro 7, and <a href="#be6f98b1316c46369b5103a8a019c4ee">so long as I keep the majority of my files located in the win10 filesystem</a> then i&#x27;ve never had any major problems or performance issues.</p><h4 style="--level: 1;" id="8bd79fac938e404ba5fb77d35dfac252">understanding this tutorial</h4><ul style="--level: 1;"><li>it is assumed you have a basic understanding of how to use the command line (e.g. knowing what <code>sudo</code> is). unless otherwise specified, <code>bash</code> code blocks are terminal commands.</li><li>when you see text like <code>&lt;this&gt;</code> (between a <code>&lt;</code> and <code>&gt;</code>), it means you need to replace it with your own input. e.g. <code>&lt;font&gt;</code> might need to become <code>Ubuntu Mono</code>.</li><li>if a step is just titled <code>~/file</code>, you need to edit the file and then re-source it. accompanying code blocks contain the insert and if necessary detail where to add it. the recommended way of doing this with a <code>.sh</code> or <code>.fish</code> file is via <code>nano &lt;filename&gt;</code> (edits) <code>source &lt;filename&gt;</code>.</li></ul><p style="--level: 1;"></p>
             <div class="notion-widget notion-callout" style="--level: 1;">
@@ -130,7 +130,7 @@
                 </div>
                 
             </a>
-        <li>open the ubuntu app. it will complete installation of itself, and prompt you to create a user &amp; password. (this password is what you will need to put in when running a command with <code>sudo</code>).</li><li>to ensure everything as up-to-date as possible, run:</li><div class="notion-code"style="--level: 0; --code-lang: 'Bash';"><pre><span class="code-padding"><span class="lineno">0</span>
+        <p style="--level: 0;"></p><li>open the ubuntu app. it will complete installation of itself, and prompt you to create a user &amp; password. (this password is what you will need to put in when running a command with <code>sudo</code>).</li><li>to ensure everything as up-to-date as possible, run:</li><div class="notion-code"style="--level: 0; --code-lang: 'Bash';"><pre><span class="code-padding"><span class="lineno">0</span>
 </span><span></span><span id="ac283eee-6d7a-45ba-96bf-bf65e53c79f9-1"><span class="lineno">1 </span>sudo apt update -y <span class="o">&amp;&amp;</span> sudo apt upgrade -y
 </span><span class="code-padding"><span class="lineno">0</span>
 </span></pre></div>

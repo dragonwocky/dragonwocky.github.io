@@ -14,11 +14,12 @@ jobs:
         deno-version: [1.5.2]
 
     steps:
-      - name: git checkout
-        uses: actions/checkout@v2
-      - name: deno v${{ matrix.deno-version }}
-        uses: denolib/setup-deno@v2
+      - uses: actions/checkout@v2
+      - uses: denolib/setup-deno@v2
         with:
           deno-version: ${{ matrix.deno-version }}
-      - name: run gen.js
-        run: deno run --allow-read --allow-write --allow-net gen.js
+      - run: deno run --allow-read --allow-write --allow-net gen.js
+      - uses: stefanzweifel/git-auto-commit-action@v4.1.6
+        with:
+          commit_message: regenerate site
+          branch: ${{ github.head_ref }}

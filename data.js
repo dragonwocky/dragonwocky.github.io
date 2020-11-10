@@ -1,6 +1,6 @@
 export const meta = {
   title: 'dragonwocky',
-  icon: 'https://dragonwocky.me/assets/avatar.jpg',
+  icon: 'https://dragonwocky.me/avatar.jpg',
   description: `hey, i'm a teenage aussie programmer experienced in back- & front-end web development and design.
     i like to read, cook, and play minecraft.`,
   banner:

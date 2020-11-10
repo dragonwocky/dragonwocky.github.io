@@ -1,0 +1,13 @@
+<li class="my-2">
+  <a
+    href="{{badge.link}}"
+    class="flex flex-wrap md:justify-start rounded-md text-dark-400 bg-dark-800 bg-opacity-50 hover:bg-opacity-100 px-4 py-2 transition-colors duration-150"
+  >
+    {{component.badge/icon if:badge.icon}}<b
+      class="mr-2"
+      style="border-bottom: 2px solid {{badge.color}};"
+      >{{badge.label}}</b
+    >
+    <span class="break-all">{{badge.message}}</span>
+  </a>
+</li>

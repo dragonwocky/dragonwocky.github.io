@@ -1,0 +1,178 @@
+/*
+ * dragonwocky.me
+ * (c) 2020 dragonwocky <thedragonring.bod@gmail.com>
+ * (https://dragonwocky.me/) under the MIT license
+ */
+
+@import './main.css';
+
+@keyframes slide {
+  0% {
+    z-index: -1;
+    right: 50%;
+  }
+  99% {
+    z-index: -1;
+  }
+  100% {
+    z-index: auto;
+    right: 0%;
+  }
+}
+
+main > *:not(article):not(footer) {
+  display: none;
+}
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1em;
+}
+.card-container > h1 {
+  display: none;
+}
+article:not(.card-container) {
+  padding: 2em;
+}
+article:not(.card-container) p a {
+  color: var(--text);
+  text-decoration: underline var(--primary);
+}
+article:not(.visible) {
+  display: none;
+  animation: fade 500ms ease;
+}
+@media (max-width: 768px) {
+  .card-container {
+    text-align: center;
+  }
+  article:not(.card-container) {
+    padding-top: 0;
+  }
+  article:not(.card-container).visible h1 {
+    display: none;
+  }
+}
+@media (min-width: 769px) {
+  .card-container {
+    font-size: 1em;
+  }
+  article:not(.card-container) {
+    width: 80%;
+    padding-top: 2em;
+    margin: auto;
+  }
+}
+
+.card-container > .card-search {
+  flex-basis: 100%;
+  margin: 1em;
+  padding: 1em 1.4em;
+  font: 1em var(--font);
+  box-shadow: var(--shadow) 0.5em 0.875em 2.375em,
+    var(--shadow) 0.0625em 0.1875em 0.5em;
+  background: var(--box);
+  border: none;
+  color: var(--text);
+}
+.card-container > .card-search:focus {
+  outline: none;
+  box-shadow: var(--shadow) 0.5em 0.875em 2.375em,
+    var(--shadow) 0.0625em 0.1875em 0.5em, 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+
+.card {
+  flex: 1 1 100%;
+  margin: 1em;
+  padding: 1em 1.4em;
+  border-radius: 0.2em;
+  border-top: 0.25em solid var(--card);
+  box-shadow: var(--shadow) 0.5em 0.875em 2.375em,
+    var(--shadow) 0.0625em 0.1875em 0.5em;
+  background: var(--box);
+  position: relative;
+}
+.card .card-link {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.with-images .card .card-image {
+  max-width: 100%;
+  border-radius: 0.2em;
+  margin-bottom: 0.6em;
+}
+.card .card-content h3 {
+  margin-top: 0.4em;
+}
+.card .card-content h3 a {
+  color: var(--text);
+}
+.card .card-content .card-description {
+  font-size: 1em;
+  margin: 0 0 1em 0;
+}
+.card .card-content .card-description a {
+  color: var(--text);
+  text-decoration: dotted underline;
+  -webkit-text-decoration: dotted underline;
+}
+.card .card-content .card-meta {
+  font-size: 0.8em;
+  color: var(--grey-dark);
+  margin: 0 0 1em 0;
+}
+@media (min-width: 769px) {
+  .card-container:not(.with-images) .card {
+    flex-basis: calc(33% - 2em);
+  }
+  .card-container:not(.with-images) .card:nth-of-type(3n) {
+    max-width: 38em;
+    flex-basis: calc(55% - 2em);
+  }
+  .with-images .card .card-image + .card-content {
+    float: left;
+    width: 67.5%;
+  }
+  .with-images .card .card-image {
+    float: right;
+    max-width: 30%;
+    margin: 0;
+  }
+  /* .with-images .card:nth-of-type(2n) .card-image {
+    float: left;
+  }
+  .with-images .card:nth-of-type(2n) .card-content {
+    float: right;
+  } */
+}
+
+.card ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.card .badge {
+  display: inline-block;
+  margin-right: 0.4375em;
+}
+.card .badge b {
+  box-shadow: none;
+  color: var(--text);
+  background-color: var(--button-light);
+}
+.card .badge a > :first-child {
+  border-top-left-radius: 0.3125em;
+  border-bottom-left-radius: 0.3125em;
+}
+.card .badge a > :last-child {
+  border-top-right-radius: 0.3125em;
+  border-bottom-right-radius: 0.3125em;
+}
+.card .slide {
+  position: relative;
+  animation: slide 150ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}

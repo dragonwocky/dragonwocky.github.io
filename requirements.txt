@@ -1,5 +1,0 @@
-notion
-requests
-python-dotenv
-commonmark
-pygments

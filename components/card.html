@@ -1,0 +1,28 @@
+<div class="flex-grow ease-in-out md:max-w-50% xl:max-w-33.333% p-5">
+  <div
+    class="relative transition-transform duration-50 flex flex-col md:text-sm lg:text-base h-full"
+    data-tilt-container
+  >
+    <div
+      class="shadow-xl bg-dark-900 absolute h-full w-full z-0 rounded-sm"
+      data-tilt-card
+    >
+      <img class="w-full" src="{{card.image}}" loading="lazy" alt="" />
+    </div>
+    <a href="{{card.link}}" class="stretched-link h-0">{{card.title}}</a>
+    <img class="w-full opacity-0" src="{{card.image}}" loading="lazy" alt="" />
+    <div class="h-full flex flex-col mt-2 px-6">
+      <div
+        class="z-1 mt-4 mb-2 pl-2 border-red-ribbon border-l-3px"
+        style="border-left: 3px solid {{card.color}};"
+      >
+        <h3 class="font-bold text-xl md:text-lg lg:text-xl">{{card.title}}</h3>
+        {{component.card/subtitle if:card.subtitle}}
+      </div>
+      <p class="z-2 mb-4 pointer-events-none">{{card.description}}</p>
+      <div class="pt-2 pb-4 mt-auto z-1">
+        {{component.card/tag for:card.tags as:tag if:card.tags}}
+      </div>
+    </div>
+  </div>
+</div>

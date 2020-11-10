@@ -1,0 +1,55 @@
+<aside
+  class="w-100% md:text-sm lg:text-base md:w-40% lg:w-35% md:h-full py-7 px-10 md:overflow-y-auto bg-dark-900 text-dark-100"
+>
+  <h1 class="flex md:block md:justify-start mb-4 md:mb-0 text-2xl font-bold">
+    <img
+      src="{{profile.icon}}"
+      loading="lazy"
+      alt=""
+      class="w-2.25rem md:w-full max-w-200px md:max-w-150px lg:max-w-200px mr-2 md:-ml-0.5rem md:mr-0 md:mb-4 p-0.2rem md:p-2 rounded-full border-1.5 md:border-3 border-red-ribbon"
+      style="border-top-color: transparent; border-left-color: transparent"
+    />
+    <div class="flex">
+      {{profile.name}}
+      <style>
+        [data-toggle]:checked ~ span {
+          transform: translateX(100%);
+        }
+        [data-toggle]:checked ~ [data-toggle-icon-on] {
+          opacity: 1;
+        }
+        [data-toggle]:checked ~ [data-toggle-icon-off] {
+          opacity: 0;
+        }
+      </style>
+      <label
+        for="toggleTheme"
+        class="cursor-pointer inline mt-0.75rem ml-0.75rem"
+      >
+        <div class="relative">
+          <input data-toggle id="toggleTheme" type="checkbox" class="hidden" />
+          <div class="w-10 h-4 bg-dark-800 rounded-full shadow-inner"></div>
+          <span
+            class="-top-0.25rem -left-0.25rem transition-transform duration-300 ease-in-out absolute w-6 h-6 bg-dark-700 rounded-full shadow"
+          ></span>
+          <span
+            data-toggle-icon-on
+            class="-top-0.25rem -left-0.25rem transition opacity-0 duration-300 ease-in-out absolute w-6 h-6 p-1 text-dark-300"
+          >
+            {{component.icon/sun}}
+          </span>
+          <span
+            data-toggle-icon-off
+            class="-top-0.25rem -left-0.25rem transition duration-300 ease-in-out absolute w-6 h-6 p-1 text-dark-300"
+          >
+            {{component.icon/moon}}
+          </span>
+        </div>
+      </label>
+    </div>
+  </h1>
+  <h2>{{profile.bio}}</h2>
+  <ul class="mt-4">
+    {{component.badge for:badges as:badge}}
+  </ul>
+</aside>

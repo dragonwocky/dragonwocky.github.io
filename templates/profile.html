@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en" prefix="og: http://ogp.me/ns/profile#" class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{meta.title}}</title>
+    <meta name="title" content="{{meta.title}}" />
+    <meta name="description" content="{{meta.description}}" />
+    <meta name="keyword" content="{{meta.tags}}" />
+    <meta name="theme-color" content="{{meta.color}}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{meta.url}}" />
+    <meta property="og:title" content="dragonwocky" />
+    <meta property="og:description" content="{{meta.description}}" />
+    <meta property="og:image" content="{{meta.banner}}" />
+    <meta property="twitter:creator" content="{{meta.twitter}}" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <link rel="shortcut icon" href="{{meta.icon}}" />
+    <link rel="apple-touch-icon" href="{{meta.icon}}" />
+    <!-- {{component.style/loading}} -->
+    {{component.style/profile}} {{component.style/scrollbars}}
+    {{component.style/font-quick}} {{component.style/stretched-link}}
+    <!-- <link
+      rel="preconnect"
+      href="https://cdn.statically.io/gh/mudgen/runcss/master/src/runcss.min.js"
+    /> -->
+    <link rel="preconnect" href="https://js.stripe.com/v3/" crossorigin />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap"
+      crossorigin
+    />
+  </head>
+  <body class="h-full">
+    <div
+      id="root"
+      class="md:flex overflow-hidden bg-dark-800 text-dark-100 font-quick subpixel-antialiased md:h-full"
+    >
+      {{component.profile/sidebar}}
+      <main
+        class="flex-shrink flex flex-col py-2 px-5 md:h-full md:overflow-y-auto w-full"
+      >
+        <section
+          class="flex flex-col md:flex-row bg-dark-900 rounded-sm m-5 py-5 px-4"
+        >
+          <p class="mx-2 my-auto">{{donate.message}}</p>
+          {{component.profile/donate for:donate.amounts as:donation}}
+        </section>
+        <section class="flex flex-wrap w-full">
+          {{component.card for:portfolio as:card}}
+          <!-- -->
+          {{component.card for:posts as:card}}
+        </section>
+      </main>
+      {{component.scrollup}} {{component.alert}}
+    </div>
+    <link
+      href="https://unpkg.com/runcss@^0/dist/preflight.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="loader.js" type="module" defer></script>
+  </body>
+</html>

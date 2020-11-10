@@ -19,8 +19,9 @@
     <link rel="shortcut icon" href="{{meta.icon}}" />
     <link rel="apple-touch-icon" href="{{meta.icon}}" />
     <!-- {{component.style/loading}} -->
-    {{component.style/profile}} {{component.style/scrollbars}}
-    {{component.style/font-quick}} {{component.style/stretched-link}}
+    {{component.style/preflight.html}} {{component.style/profile}}
+    {{component.style/scrollbars}} {{component.style/font-quick}}
+    {{component.style/stretched-link}}
     <!-- <link
       rel="preconnect"
       href="https://cdn.statically.io/gh/mudgen/runcss/master/src/runcss.min.js"
@@ -55,11 +56,6 @@
       </main>
       {{component.scrollup}} {{component.alert}}
     </div>
-    <link
-      href="https://unpkg.com/runcss@^0/dist/preflight.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
     <script src="loader.js" type="module" defer></script>
   </body>
 </html>

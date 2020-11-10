@@ -1,0 +1,24 @@
+name: build site from templates & data
+
+on:
+  push:
+  schedule:
+    - cron: '0 0 * * 1'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        deno-version: [1.5.2]
+
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v2
+      - name: deno v${{ matrix.deno-version }}
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: ${{ matrix.deno-version }}
+      - name: run gen.js
+        run: deno run --allow-read --allow-write --allow-net gen.js

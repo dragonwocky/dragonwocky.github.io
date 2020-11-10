@@ -1,11 +1,6 @@
-import { createApp, serveStatic } from 'https://servestjs.org/@v1.1.6/mod.ts';
 import 'https://unpkg.com/terser@5.3.8/dist/bundle.min.js';
 import { copyDir, readHTMLDeep, accessNestedPropByString } from './helpers.js';
 import { meta, profile, donate, badges, portfolio, posts } from './data.js';
-
-/**
- * todo: notion renderer, license, light mode
- */
 
 function template(
   string,
@@ -183,19 +178,14 @@ async function generate(data) {
 generate({ meta, profile, donate, badges, portfolio, posts })
   .then(async (content) => {
     try {
-      await Deno.remove('build', { recursive: true });
+      await Deno.remove('docs', { recursive: true });
     } catch {}
-    await copyDir('static', 'build');
+    await copyDir('static', 'docs');
     const { code } = await Terser.minify(
       decoder.decode(await Deno.readFile('components/script/loader.js')),
       { toplevel: true }
     );
-    await Deno.writeFile('build/loader.js', encoder.encode(code));
-    return Deno.writeFile('build/index.html', encoder.encode(content));
-  })
-  .then(() => {
-    const app = createApp();
-    app.use(serveStatic('./build'));
-    app.listen({ port: 3000 });
+    await Deno.writeFile('docs/loader.js', encoder.encode(code));
+    return Deno.writeFile('docs/index.html', encoder.encode(content));
   })
   .catch(console.error);

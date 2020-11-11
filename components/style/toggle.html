@@ -2,6 +2,12 @@
   [data-toggle]:checked ~ span {
     transform: translateX(100%);
   }
+  [data-toggle]:checked ~ span {
+    transform: translateX(100%);
+  }
+  [data-toggle]:focus ~ [data-toggle-bubble] {
+    outline: 1px solid black;
+  }
   [data-toggle]:checked ~ [data-toggle-icon-on] {
     opacity: 1;
   }

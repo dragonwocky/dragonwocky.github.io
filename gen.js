@@ -31,7 +31,7 @@ function template(
   function minify(string) {
     if (!preserve.spaces) string = string.replace(/\s+/g, ' ');
     if (!preserve.lines) string = string.replace(/\n/g, ' ');
-    return string;
+    return string.replace(/<\/style>\s*<style>/g, '');
   }
   function replace(string) {
     let result,

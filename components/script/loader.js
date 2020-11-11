@@ -1,4 +1,7 @@
-// import processClasses, { configure, exportCSS } from './runcss.js';
+// import processClasses, {
+//   configure,
+//   exportCSS,
+// } from 'https://cdn.statically.io/gh/mudgen/runcss/master/src/runcss.min.js';
 import 'https://js.stripe.com/v3/';
 
 // const copyToClipboard = (str) => {

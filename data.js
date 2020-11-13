@@ -98,7 +98,7 @@ export const badges = [
 export const portfolio = new Promise(async (res, rej) => {
   const enhancer = {
     gh: await (
-      await fetch('https://api.github.com/repos/dragonwocky/notion-enhancer')
+      await fetch('https://api.github.com/repos/notion-enhancer/notion-enhancer')
     ).json(),
     npm: await (
       await fetch(
@@ -113,7 +113,7 @@ export const portfolio = new Promise(async (res, rej) => {
   res([
     {
       color: '#4b85d1',
-      link: 'https://dragonwocky.me/notion-enhancer/',
+      link: 'https://github.com/notion-enhancer/notion-enhancer',
       title: 'notion-enhancer',
       subtitle: [
         `v${enhancer.registry.version}`,

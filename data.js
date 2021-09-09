@@ -39,11 +39,6 @@ export const donate = {
       checkoutMode: 'payment',
       priceID: 'price_1HlLxNEmZ8V4VWEQJCdHQPuX',
     },
-    {
-      name: 'sponsor ($50/yr)',
-      checkoutMode: 'subscription',
-      priceID: 'price_1HlLy7EmZ8V4VWEQVbKWgy80',
-    },
   ],
 };
 
@@ -53,16 +48,14 @@ export const badges = [
     message: 'u/thedragonring',
     color: '#de3d02',
     link: 'https://www.reddit.com/user/thedragonring',
-    icon:
-      'https://styles.redditmedia.com/t5_6/styles/communityIcon_a8uzjit9bwr21.png',
+    icon: 'https://styles.redditmedia.com/t5_6/styles/communityIcon_a8uzjit9bwr21.png',
   },
   {
     label: 'github',
     message: '@dragonwocky',
     color: '#83b7cb',
     link: 'https://github.com/dragonwocky',
-    icon:
-      'https://github.githubassets.com/images/modules/logos_page/Octocat.png',
+    icon: 'https://github.githubassets.com/images/modules/logos_page/Octocat.png',
   },
   {
     label: 'twitter',
@@ -83,8 +76,7 @@ export const badges = [
     message: 'thedragonring.bod@gmail.com',
     color: '#97abb4',
     link: 'mailto:thedragonring.bod@gmail.com',
-    icon:
-      'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/mozilla/36/envelope_2709.png',
+    icon: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/mozilla/36/envelope_2709.png',
   },
   {
     label: 'boxofdevs team',
@@ -101,13 +93,9 @@ export const portfolio = new Promise(async (res, rej) => {
       await fetch('https://api.github.com/repos/notion-enhancer/notion-enhancer')
     ).json(),
     npm: await (
-      await fetch(
-        'https://api.npmjs.org/downloads/point/last-week/notion-enhancer'
-      )
+      await fetch('https://api.npmjs.org/downloads/point/last-week/notion-enhancer')
     ).json(),
-    registry: await (
-      await fetch('https://registry.npmjs.org/notion-enhancer/latest')
-    ).json(),
+    registry: await (await fetch('https://registry.npmjs.org/notion-enhancer/latest')).json(),
   };
 
   res([
